@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bouziani Imane - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #fafafa;
+      margin: 0;
+      padding: 0;
+      color: #444;
+    }
+    header {
+      background: linear-gradient(270deg, #fbc2eb, #a6c1ee, #fbc2eb);
+      background-size: 600% 600%;
+      animation: gradientMove 12s ease infinite;
+      text-align: center;
+      padding: 50px 20px;
+      color: white;
+    }
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+    header p {
+      margin: 10px 0 0;
+      font-size: 1.1em;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: #fff;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      text-decoration: none;
+      color: #666;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s;
+    }
+    nav a i {
+      transition: transform 0.3s, color 0.3s;
+    }
+    nav a:hover {
+      color: #a6c1ee;
+    }
+    nav a:hover i {
+      transform: rotate(10deg) scale(1.2);
+      color: #fbc2eb;
+    }
+    section {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      animation: fadeIn 1s ease;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      color: #a6c1ee;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li::before {
+      content: ' | ';
+      margin-right: 10px;
+    }
+    .illustration {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .illustration img {
+      max-width: 300px;
+      border-radius: 15px;
+      animation: floating 4s ease-in-out infinite;
+    }
+    /* Animation flottante */
+    @keyframes floating {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      background: linear-gradient(120deg, #a6c1ee 0%, #fbc2eb 100%);
+      color: white;
+      font-weight: 600;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      animation: fadeIn 1.5s ease-in;
+    }
+    /* Bouton retour en haut */
+    #topBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #a6c1ee;
+      border: none;
+      color: white;
+      padding: 12px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+      z-index: 999;
+    }
+    #topBtn:hover { background: #fbc2eb; }
+    /* Texte effet machine à écrire */
+    #typing {
+      margin-top: 10px;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bouziani Imane</h1>
+    <p id="typing"></p>
+    <p>|  bouzianiimane1@gmail.com |  +213 664 64 77 79 | WhatsApp : 0673945830  | Oran, Algérie  |</p>
+  </header>
+
+  <nav>
+    <a href="#education"><i class="fa-solid fa-graduation-cap"></i> Éducation</a>
+    <a href="#experience"><i class="fa-solid fa-briefcase"></i> Expérience</a>
+    <a href="#skills"><i class="fa-solid fa-laptop-code"></i> Compétences</a>
+    <a href="#languages"><i class="fa-solid fa-language"></i> Langues</a>
+    <a href="#activities"><i class="fa-solid fa-star"></i> Activités</a>
+    <a href="#qualities"><i class="fa-solid fa-heart"></i> Qualités</a>
+  </nav>
+
+  <section id="education" data-aos="fade-up">
+    <h2><i class="fa-solid fa-graduation-cap"></i> Éducation</h2>
+    <div class="illustration"><img src="images/college project-bro.svg" alt="Éducation"></div>
+    <ul>
+      <li>Master en Intelligence Artificielle – Mention Très Bien (2025)</li>
+      <li>Licence en Informatique – Systèmes d’Information (2023)</li>
+      <li>Certificat Label Startup – Projet IA appliqué aux véhicules intelligents (2023)</li>
+      <li>Certification STEAM – Intégration de l’IA dans les programmes éducatifs</li>
+    </ul>
+  </section>
+
+  <section id="experience" data-aos="fade-up">
+    <h2><i class="fa-solid fa-briefcase"></i> Expérience Professionnelle</h2>
+    <div class="illustration"><img src="images/Pair programming-bro.svg" alt="Travail"></div>
+    <ul>
+      <li>Spécialiste IT – ZHONGMA International Construction (2023 – 2025)</li>
+      <li>Spécialiste IT – Clinique Neurologie Privée (2024 – 2025)</li>
+      <li>Stage Imagerie Médicale – Clinique Radiologie Privée (2025)</li>
+      <li>Enseignante STEAM & Programmation – Université (2022 – 2023)</li>
+      <li>Fondatrice & Présidente – Club Scientifique Auto Tech (2022 – 2024)</li>
+    </ul>
+  </section>
+
+  <section id="skills" data-aos="fade-up">
+    <h2><i class="fa-solid fa-laptop-code"></i> Compétences Techniques</h2>
+    <div class="illustration"><img src="images/Data extraction-amico.svg" alt="Compétences"></div>
+    <ul>
+      <li>Langages : Python, Java, C/C++, Dart, Swift, R, MATLAB, SQL, HTML, CSS, JavaScript</li>
+      <li>IA & Data Science : TensorFlow, PyTorch, Keras, Scikit-Learn, OpenCV...</li>
+      <li>Bases de données : MySQL, Oracle, SQL Server</li>
+      <li>Outils 3D & Simulation : Unity, Unreal Engine, Blender, MATLAB Simulink</li>
+      <li>Systèmes & Réseaux : Windows, Linux, Wireshark, cybersécurité</li>
+    </ul>
+  </section>
+
+  <section id="languages" data-aos="fade-up">
+    <h2><i class="fa-solid fa-language"></i> Langues</h2>
+    <div class="illustration"><img src="images/Collaboration-bro.svg" alt="Langues"></div>
+    <ul>
+      <li>Arabe : Natif</li>
+      <li>Anglais : Avancé</li>
+      <li>Français : Professionnel</li>
+    </ul>
+  </section>
+
+  <section id="activities" data-aos="fade-up">
+    <h2><i class="fa-solid fa-star"></i> Activités & Réalisations</h2>
+    <div class="illustration">
+      <img src="images/people creating robot-bro.svg" alt="Activités 1">
+      <img src="images/Kids Studying from Home-bro.svg" alt="Activités 2">
+      <img src="images/Doctor-bro.svg" alt="Activités 3">
+    </div>
+    <ul>
+      <li>Participation à des hackathons internationaux (IA, Robotique, Data Science)</li>
+      <li>Organisation d’ateliers IA & Programmation (STEM & Women in Tech)</li>
+      <li>Développement d’un jeu éducatif 3D</li>
+      <li>Conception de systèmes de diagnostic médical basés sur l’IA</li>
+    </ul>
+  </section>
+
+  <section id="qualities" data-aos="fade-up">
+    <h2><i class="fa-solid fa-heart"></i> Qualités Professionnelles</h2>
+    <div class="illustration"><img src="images/Blog post-bro.svg" alt="Qualités"></div>
+    <ul>
+      <li>Autonome │ Créative │ Rigoureuse │ Dynamique │ Esprit d’équipe │ Analytique</li>
+    </ul>
+  </section>
+
+  <footer>
+    <h3 style="margin-top:20px; color:white; font-weight:600;"> Remerciements</h3>
+    <p style="font-size: 0.9em; margin-top: 8px; opacity: 0.9;">
+      Merci à ma maman et à mon papa pour leur amour et leur soutien infini 🤍
+    </p>
+  </footer>
+  <footer>
+    <p>@ Bouziani Imane.com - 2025</p>
+  </footer>
+
+  <!-- Bouton retour en haut -->
+  <button id="topBtn"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    // Effet machine à écrire
+    const text = " Ingénieure en Intelligence Artificielle ";
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 100);
+      }
+    }
+    typeWriter();
+
+    // Bouton retour en haut
+    const btn = document.getElementById("topBtn");
+    window.onscroll = () => {
+      if (document.documentElement.scrollTop > 200) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+    };
+    btn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  </script>
+</body>
+</html>
