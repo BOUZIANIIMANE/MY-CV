@@ -17,9 +17,19 @@
       color: #444;
       transition: background 0.3s, color 0.3s;
     }
-    body.dark {
+    body.dark-mode {
       background-color: #1e1e1e;
-      color: #f0f0f0;
+      color: #ddd;
+    }
+    body.dark-mode nav {
+      background: #2c2c2c;
+    }
+    body.dark-mode section {
+      background: #2c2c2c;
+      color: #ddd;
+    }
+    body.dark-mode footer {
+      background: linear-gradient(120deg, #333 0%, #444 100%);
     }
     header {
       background: linear-gradient(270deg, #fbc2eb, #a6c1ee, #fbc2eb);
@@ -80,11 +90,7 @@
       border-radius: 20px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       animation: fadeIn 1s ease;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    body.dark section {
-      background: #2b2b2b;
-      box-shadow: 0 5px 15px rgba(255,255,255,0.05);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
     }
     section:hover {
       transform: translateY(-5px);
@@ -133,6 +139,7 @@
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
       animation: fadeIn 1.5s ease-in;
+      transition: background 0.3s;
     }
     #topBtn {
       display: none;
@@ -155,31 +162,33 @@
       font-size: 1.2em;
       font-weight: 600;
     }
-    .dark-toggle {
+    #darkModeBtn {
       position: fixed;
       top: 20px;
       right: 20px;
-      background: #a6c1ee;
+      background: #444;
       color: white;
       border: none;
+      padding: 10px 15px;
       border-radius: 30px;
-      padding: 10px 20px;
       cursor: pointer;
-      font-weight: 600;
       z-index: 1000;
       transition: background 0.3s;
     }
-    .dark-toggle:hover { background: #fbc2eb; }
+    #darkModeBtn:hover {
+      background: #a6c1ee;
+    }
   </style>
 </head>
 <body>
-  <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-
   <header>
     <h1>Bouziani Imane</h1>
     <p id="typing"></p>
     <p>| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |</p>
   </header>
+
+  <!-- Dark Mode Button -->
+  <button id="darkModeBtn">🌙 Dark Mode</button>
 
   <nav>
     <a href="#education"><i class="fa-solid fa-graduation-cap"></i> Education</a>
@@ -190,38 +199,7 @@
     <a href="#qualities"><i class="fa-solid fa-heart"></i> Qualities</a>
   </nav>
 
-  <!-- your existing sections (education, experience, skills, languages, activities, qualities, cv) stay here -->
-
-  <!-- Testimonials Section -->
-  <section id="testimonials" data-aos="fade-up">
-    <h2><i class="fa-solid fa-quote-left"></i> Testimonials</h2>
-    <div class="illustration"><img src="images/Collaboration-bro.svg" alt="Testimonials"></div>
-    <blockquote>"Imane is a dedicated professional with a passion for AI and innovation." – Colleague</blockquote>
-    <blockquote>"Her creativity and technical skills make her an outstanding engineer." – Professor</blockquote>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" data-aos="fade-up">
-    <h2><i class="fa-solid fa-envelope"></i> Contact Me</h2>
-    <div class="illustration"><img src="images/college project-bro.svg" alt="Contact"></div>
-    <form onsubmit="sendMessage(event)" style="text-align:center;">
-      <input type="text" id="name" placeholder="Your Name" required style="padding:10px; width:80%; margin:10px 0; border-radius:10px;">
-      <input type="email" id="email" placeholder="Your Email" required style="padding:10px; width:80%; margin:10px 0; border-radius:10px;">
-      <textarea id="message" placeholder="Your Message" required style="padding:10px; width:80%; margin:10px 0; border-radius:10px;"></textarea>
-      <button type="submit" style="background:#a6c1ee; color:white; padding:12px 25px; border-radius:30px; border:none; font-weight:600; cursor:pointer;">Send</button>
-    </form>
-    <p id="status" style="text-align:center; font-weight:600; margin-top:10px;"></p>
-  </section>
-
-  <footer>
-    <h3 style="margin-top:20px; color:white; font-weight:600;">Acknowledgments</h3>
-    <p style="font-size: 0.9em; margin-top: 8px; opacity: 0.9;">
-      Thanks to my mom and dad for their endless love and support 🤍
-    </p>
-  </footer>
-  <footer>
-    <p>@ Bouziani Imane.com - 2025</p>
-  </footer>
+  <!-- rest of your code remains the same -->
 
   <button id="topBtn"><i class="fa-solid fa-arrow-up"></i></button>
 
@@ -253,16 +231,12 @@
     };
     btn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-    // Dark Mode
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark");
-    }
-
-    // Contact form (demo only)
-    function sendMessage(e) {
-      e.preventDefault();
-      document.getElementById("status").innerText = "✅ Message sent successfully!";
-    }
+    // Dark mode toggle
+    const darkBtn = document.getElementById("darkModeBtn");
+    darkBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      darkBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
+    });
   </script>
 </body>
 </html>
