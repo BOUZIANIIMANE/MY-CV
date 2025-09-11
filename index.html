@@ -70,7 +70,13 @@
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
-    section h2 { color: #a6c1ee; display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    section h2 {
+      color: #a6c1ee;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     ul { list-style: none; padding: 0; }
     ul li::before { content: ' | '; margin-right: 10px; }
@@ -106,13 +112,11 @@
     }
     #topBtn:hover { background: #fbc2eb; }
     #typing { margin-top: 10px; font-size: 1.2em; font-weight: 600; }
-
     body.dark-mode { background-color: #1e1e1e; color: #f5f5f5; }
     body.dark-mode nav { background: #2c2c2c; }
     body.dark-mode nav a { color: #ddd; }
     body.dark-mode section { background: #2c2c2c; color: #f5f5f5; }
     body.dark-mode footer { background: linear-gradient(120deg, #3a3a3a 0%, #1e1e1e 100%); }
-
     #darkBtn {
       position: fixed;
       top: 20px;
@@ -128,38 +132,10 @@
       z-index: 1000;
     }
     #darkBtn:hover { background: #a6c1ee; }
-
-    /* Contact Form Styles */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .contact-form input, .contact-form textarea {
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 1em;
-      transition: border 0.3s;
-    }
-    .contact-form input:focus, .contact-form textarea:focus {
-      border-color: #a6c1ee;
-      outline: none;
-    }
-    .contact-form button {
-      padding: 12px 20px;
-      border: none;
-      border-radius: 30px;
-      background: #a6c1ee;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .contact-form button:hover { background: #fbc2eb; }
+    form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+    form input, form textarea { padding: 12px; border-radius: 15px; border: 1px solid #ccc; width: 100%; }
+    form button { padding: 12px; border-radius: 30px; border: none; background: #a6c1ee; color: white; font-weight: 600; cursor: pointer; transition: background 0.3s; }
+    form button:hover { background: #fbc2eb; }
   </style>
 </head>
 <body>
@@ -182,6 +158,7 @@
     <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
   </nav>
 
+  <!-- Education -->
   <section id="education" data-aos="fade-up">
     <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
     <div class="illustration"><img src="images/college project-bro.svg" alt="Education"></div>
@@ -193,6 +170,7 @@
     </ul>
   </section>
 
+  <!-- Experience -->
   <section id="experience" data-aos="fade-up">
     <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
     <div class="illustration"><img src="images/Pair programming-bro.svg" alt="Work"></div>
@@ -207,6 +185,7 @@
     </ul>
   </section>
 
+  <!-- Skills -->
   <section id="skills" data-aos="fade-up">
     <h2><i class="fa-solid fa-laptop-code"></i> Technical Skills</h2>
     <div class="illustration"><img src="images/Data extraction-amico.svg" alt="Skills"></div>
@@ -219,6 +198,7 @@
     </ul>
   </section>
 
+  <!-- Languages -->
   <section id="languages" data-aos="fade-up">
     <h2><i class="fa-solid fa-language"></i> Languages</h2>
     <div class="illustration"><img src="images/Collaboration-bro.svg" alt="Languages"></div>
@@ -229,6 +209,7 @@
     </ul>
   </section>
 
+  <!-- Activities -->
   <section id="activities" data-aos="fade-up">
     <h2><i class="fa-solid fa-star"></i> Activities & Achievements</h2>
     <div class="illustration">
@@ -245,6 +226,7 @@
     </ul>
   </section>
 
+  <!-- Qualities -->
   <section id="qualities" data-aos="fade-up">
     <h2><i class="fa-solid fa-heart"></i> Professional Qualities</h2>
     <div class="illustration"><img src="images/Blog post-bro.svg" alt="Qualities"></div>
@@ -253,11 +235,10 @@
     </ul>
   </section>
 
+  <!-- CV -->
   <section id="cv" data-aos="fade-up">
     <h2><i class="fa-solid fa-file-pdf"></i> My CV</h2>
-    <div class="illustration">
-      <img src="Resume folder-bro.svg" alt="CV Illustration">
-    </div>
+    <div class="illustration"><img src="Resume folder-bro.svg" alt="CV Illustration"></div>
     <p style="text-align:center;">
       <a href="My_c .pdf" target="_blank" 
          style="background:#a6c1ee; color:white; padding:12px 25px; 
@@ -268,22 +249,20 @@
     </p>
   </section>
 
-  <!-- Contact Form Section -->
+  <!-- Contact Form -->
   <section id="contact" data-aos="fade-up">
-  <h2><i class="fa-solid fa-envelope"></i> Contact Me</h2>
-  <div class="illustration">
-    <img src="images/contact-bro.svg" alt="Contact">
-  </div>
-  <form class="contact-form" action="https://formsubmit.co/bouzianiimane1@gmail.com" method="POST">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://bouzianiimane.github.io/">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-    <button type="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
-  </form>
+    <h2><i class="fa-solid fa-envelope"></i> Contact Me</h2>
+    <div class="illustration"><img src="images/Contact-bro.svg" alt="Contact"></div>
+    <form action="https://formspree.io/f/mayvndqw" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="_replyto" placeholder="Your Email" required>
+      <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+      <input type="hidden" name="_next" value="https://bouzianiimane.github.io/">
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
+  <!-- Footer -->
   <footer>
     <h3 style="margin-top:20px; color:white; font-weight:600;">Acknowledgments</h3>
     <p style="font-size: 0.9em; margin-top: 8px; opacity: 0.9;">
@@ -300,7 +279,6 @@
   <script>
     AOS.init({ duration: 1000, once: true });
 
-    // Typing effect
     const text = " Artificial Intelligence Engineer ";
     let i = 0;
     function typeWriter() {
@@ -312,29 +290,19 @@
     }
     typeWriter();
 
-    // Back to top button
     const btn = document.getElementById("topBtn");
     window.onscroll = () => {
-      if (document.documentElement.scrollTop > 200) {
-        btn.style.display = "block";
-      } else {
-        btn.style.display = "none";
-      }
+      if (document.documentElement.scrollTop > 200) btn.style.display = "block";
+      else btn.style.display = "none";
     };
     btn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-    // Dark mode toggle
     const darkBtn = document.getElementById("darkBtn");
     darkBtn.onclick = () => {
       document.body.classList.toggle("dark-mode");
-      if (document.body.classList.contains("dark-mode")) {
-        darkBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
-      } else {
-        darkBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
-      }
+      if (document.body.classList.contains("dark-mode")) darkBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
+      else darkBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
     };
   </script>
 </body>
 </html>
-
-
