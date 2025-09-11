@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,6 @@
       padding: 0;
       color: #444;
     }
-    html { scroll-behavior: smooth; }
     header {
       background: linear-gradient(270deg, #fbc2eb, #a6c1ee, #fbc2eb);
       background-size: 600% 600%;
@@ -115,38 +115,6 @@
       50%  { transform: translateY(-15px); }
       100% { transform: translateY(0px); }
     }
-    /* Skill bars */
-    .skill { margin: 10px 0; }
-    .progress {
-      background: #eee;
-      border-radius: 30px;
-      overflow: hidden;
-      height: 12px;
-      margin: 5px 0 15px;
-    }
-    .progress-bar {
-      background: linear-gradient(90deg, #a6c1ee, #fbc2eb);
-      height: 100%;
-      border-radius: 30px;
-      transition: width 1.5s ease-in-out;
-    }
-    /* Projects grid */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      padding: 20px;
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 25px rgba(0,0,0,0.1);
-    }
     footer {
       text-align: center;
       padding: 20px;
@@ -179,30 +147,6 @@
       font-size: 1.2em;
       font-weight: 600;
     }
-    /* Contact form */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    form input, form textarea {
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-family: inherit;
-    }
-    form button {
-      background: #a6c1ee;
-      border: none;
-      color: white;
-      padding: 12px;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    form button:hover {
-      background: #fbc2eb;
-    }
   </style>
 </head>
 <body>
@@ -219,20 +163,38 @@
     <a href="#languages"><i class="fa-solid fa-language"></i> Languages</a>
     <a href="#activities"><i class="fa-solid fa-star"></i> Activities</a>
     <a href="#qualities"><i class="fa-solid fa-heart"></i> Qualities</a>
-    <a href="#projects"><i class="fa-solid fa-folder-open"></i> Projects</a>
-    <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
   </nav>
 
-  <!-- Your original sections kept as is ... -->
+  <section id="education" data-aos="fade-up">
+    <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+    <div class="illustration"><img src="images/college project-bro.svg" alt="Education"></div>
+    <ul>
+      <li>Master in Artificial Intelligence – With Distinction -2025</li>
+      <li>Bachelor in Computer Science – Information Systems -2023</li>
+      <li>Startup Label Certificate – AI Project on the Development of a Mobile and Web Application for Intelligent and Smart Vehicles -2023</li>
+      <li>STEAM Certification – Designing Creative Educational Programs for Learners-2023</li>
+    </ul>
+  </section>
+
+  <section id="experience" data-aos="fade-up">
+    <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
+    <div class="illustration"><img src="images/Pair programming-bro.svg" alt="Work"></div>
+    <ul>
+      <li>IT Specialist – ZHONGMA International Construction (2023 – 2025)</li>
+      <li>IT Specialist – Private Neurology Clinic (2024 – 2025)</li>
+      <li>Internship in Medical Imaging – Private Radiology Clinic (2025)</li>
+      <li>STEAM & Programming Lecturer – University (2022 – 2023)</li>
+      <li>Founder & President – Auto Tech Scientific Club (2022 – 2024)</li>
+      <li>Medical equipment operator specialized in neurology for 03 years </li>
+      <li>Pharmacy Assistant and Operations Manager </li>
+    </ul>
+  </section>
 
   <section id="skills" data-aos="fade-up">
     <h2><i class="fa-solid fa-laptop-code"></i> Technical Skills</h2>
     <div class="illustration"><img src="images/Data extraction-amico.svg" alt="Skills"></div>
     <ul>
       <li>Languages: Python, Java, C/C++, Dart, Swift, R, MATLAB, SQL, HTML, CSS, JavaScript</li>
-      <div class="skill"><p>Python</p><div class="progress"><div class="progress-bar" style="width:90%"></div></div></div>
-      <div class="skill"><p>Java</p><div class="progress"><div class="progress-bar" style="width:80%"></div></div></div>
-      <div class="skill"><p>Web Dev</p><div class="progress"><div class="progress-bar" style="width:85%"></div></div></div>
       <li>AI & Data Science: TensorFlow, PyTorch, Keras, Scikit-Learn, OpenCV...</li>
       <li>Databases: MySQL, Oracle, SQL Server</li>
       <li>3D Tools & Simulation: Unity, Unreal Engine, Blender, MATLAB Simulink</li>
@@ -240,32 +202,60 @@
     </ul>
   </section>
 
-  <!-- New Projects Section -->
-  <section id="projects" data-aos="fade-up">
-    <h2><i class="fa-solid fa-folder-open"></i> Projects</h2>
-    <div class="projects-grid">
-      <div class="card"><h3>AI Diagnostic System</h3><p>Deep learning for medical imaging classification.</p></div>
-      <div class="card"><h3>3D Educational Game</h3><p>Interactive learning with Unity and Unreal Engine.</p></div>
-      <div class="card"><h3>Smart Vehicle App</h3><p>Mobile & web app for intelligent transport systems.</p></div>
+  <section id="languages" data-aos="fade-up">
+    <h2><i class="fa-solid fa-language"></i> Languages</h2>
+    <div class="illustration"><img src="images/Collaboration-bro.svg" alt="Languages"></div>
+    <ul>
+      <li>Arabic: Native</li>
+      <li>English: Advanced</li>
+      <li>French: Professional</li>
+    </ul>
+  </section>
+
+  <section id="activities" data-aos="fade-up">
+    <h2><i class="fa-solid fa-star"></i> Activities & Achievements</h2>
+    <div class="illustration">
+      <img src="images/people creating robot-bro.svg" alt="Activity 1">
+      <img src="images/Kids Studying from Home-bro.svg" alt="Activity 2">
+      <img src="images/Doctor-bro.svg" alt="Activity 3">
     </div>
+    <ul>
+      <li>Participation in international hackathons (AI, Robotics, Data Science)</li>
+      <li>Organization of AI & Programming workshops for different proficiency levels</li>
+      <li>Development and creation of educational 3D games using Unreal Engine and Unity 3D</li>
+      <li>Design of AI-powered diagnostic systems using medical imaging </li>
+      <li>Development of professional websites, web pages, and inventory management softwares </li>
+    </ul>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" data-aos="fade-up">
-    <h2><i class="fa-solid fa-envelope"></i> Contact Me</h2>
-    <form action="https://formspree.io/f/yourformid" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+  <section id="qualities" data-aos="fade-up">
+    <h2><i class="fa-solid fa-heart"></i> Professional Qualities</h2>
+    <div class="illustration"><img src="images/Blog post-bro.svg" alt="Qualities"></div>
+    <ul>
+      <li>Independent │ Creative │ Rigorous │ Dynamic │ Team Spirit │ Analytical</li>
+    </ul>
   </section>
-
+<section id="cv" data-aos="fade-up">
+  <h2><i class="fa-solid fa-file-pdf"></i> My CV</h2>
+  <div class="illustration">
+    <img src="Resume folder-bro.svg" alt="CV Illustration">
+  </div>
+  <p style="text-align:center;">
+    <a href="My_c .pdf" target="_blank" 
+       style="background:#a6c1ee; color:white; padding:12px 25px; 
+              border-radius:30px; text-decoration:none; font-weight:600; 
+              box-shadow:0 4px 10px rgba(0,0,0,0.2); transition:0.3s;">
+      📄 View / Download My CV
+    </a>
+  </p>
+</section>
   <footer>
     <h3 style="margin-top:20px; color:white; font-weight:600;">Acknowledgments</h3>
     <p style="font-size: 0.9em; margin-top: 8px; opacity: 0.9;">
       Thanks to my mom and dad for their endless love and support 🤍
     </p>
+  </footer>
+  <footer>
     <p>@ Bouziani Imane.com - 2025</p>
   </footer>
 
@@ -301,3 +291,9 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
