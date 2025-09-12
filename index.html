@@ -411,26 +411,33 @@
     };
     topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-    // AOS Animation
-    AOS.init({ duration: 1200 });
+      // AOS Animation
+  AOS.init({ duration: 1200 });
 
-    // Animate progress bars when skills section is visible
-    const skillSection = document.querySelector("#skills");
-    const progressBars = document.querySelectorAll(".progress");
+  // Animate progress bars every time skills section is visible
+  const skillSection = document.querySelector("#skills");
+  const progressBars = document.querySelectorAll(".progress");
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          progressBars.forEach(bar => {
-            bar.style.transition = "width 2s ease-in-out";
-            bar.style.width = bar.getAttribute("data-width");
-          });
-          observer.unobserve(skillSection); // Run only once
-        }
-      });
-    }, { threshold: 0.5 });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Fill the bars
+        progressBars.forEach(bar => {
+          bar.style.transition = "width 2s ease-in-out";
+          bar.style.width = bar.getAttribute("data-width");
+        });
+      } else {
+        // Reset when not visible
+        progressBars.forEach(bar => {
+          bar.style.transition = "none";
+          bar.style.width = "0";
+        });
+      }
+    });
+  }, { threshold: 0.5 });
 
-    observer.observe(skillSection);
-  </script>
+  observer.observe(skillSection);
+</script>
 </body>
 </html>
+
