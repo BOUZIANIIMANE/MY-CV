@@ -184,9 +184,9 @@
     }
     .progress {
       height: 10px; background: linear-gradient(90deg, #a6c1ee, #fbc2eb);
-      border-radius: 10px; animation: grow 2s ease forwards;
+      border-radius: 10px; width: 0; /* Start at 0 */
+      transition: width 2s ease;
     }
-    @keyframes grow { from { width: 0; } }
 
     /* Hire me button */
     #hireBtn {
@@ -314,11 +314,11 @@
     <!-- Progress bars -->
     <div class="skill-bar">
       <p>Python</p>
-      <div class="bar"><div class="progress" style="width:90%"></div></div>
+      <div class="bar"><div class="progress" data-width="90%"></div></div>
       <p>JavaScript</p>
-      <div class="bar"><div class="progress" style="width:80%"></div></div>
+      <div class="bar"><div class="progress" data-width="80%"></div></div>
       <p>Machine Learning</p>
-      <div class="bar"><div class="progress" style="width:85%"></div></div>
+      <div class="bar"><div class="progress" data-width="85%"></div></div>
     </div>
   </section>
 
@@ -370,86 +370,97 @@
       </a>
     </p>
   </section>
-<!-- Contact Form Section -->
+
+  <!-- Contact Form Section -->
   <section id="contact" data-aos="fade-up">
     <h2><i class="fa-solid fa-envelope"></i> Contact Me</h2>
 
-    <!-- Added contact information block (keeps everything else intact) -->
+    <!-- Added contact information block -->
     <div class="contact-info">
       <p><i class="fa-solid fa-envelope"></i><strong>Email:</strong> <a href="mailto:bouzianiimane1@gmail.com">bouzianiimane1@gmail.com</a></p>
       <p><i class="fa-solid fa-phone"></i><strong>Phone:</strong> +213 664 64 77 79</p>
       <p><i class="fa-brands fa-whatsapp"></i><strong>WhatsApp:</strong> 0673945830</p>
       <p><i class="fa-solid fa-location-dot"></i><strong>Location:</strong> Oran, Algeria</p>
-      <p><i class="fa-brands fa-linkedin"></i><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/bouzianiimane" target="_blank">linkedin.com/in/bouzianiimane</a></p>
-      <p><i class="fa-brands fa-github"></i><strong>GitHub:</strong> <a href="https://github.com/bouzianiimane" target="_blank">github.com/bouzianiimane</a></p>
     </div>
 
-    <div class="illustration"><img src="Contact us-bro.svg" alt="Contact"></div>
-    <form class="contact-form" action="https://formsubmit.co/bouzianiimane1@gmail.com" method="POST">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://bouzianiimane.github.io/MY-CV">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <!-- changed the textarea name to 'inquiry' as requested -->
-      <textarea name="inquiry" rows="5" placeholder="Your Inquiry" required></textarea>
-      <button type="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+    <form class="contact-form" action="https://formspree.io/f/manylvwj" method="POST">
+      <input type="text" name="full_name" placeholder="Your Full Name" required>
+      <input type="email" name="email_address" placeholder="Your Email Address" required>
+      <textarea name="message_text" rows="5" placeholder="Your Message Here..." required></textarea>
+      <button type="submit">Send Message</button>
     </form>
   </section>
 
   <footer>
-    <p>© 2025 Bouziani Imane | All Rights Reserved</p>
-    <div>
-      <a href="https://linkedin.com" target="_blank" style="color:white; margin:0 10px;"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com" target="_blank" style="color:white; margin:0 10px;"><i class="fab fa-github"></i></a>
-      <a href="https://twitter.com" target="_blank" style="color:white; margin:0 10px;"><i class="fab fa-twitter"></i></a>
-    </div>
+    <p>Made with 💖 by Bouziani Imane</p>
+    <p>Special thanks to my mom and dad for their endless support.</p>
+    <p>© 2025 Bouziani Imane. All rights reserved.</p>
   </footer>
 
-  <button id="topBtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
-  <a href="#contact" id="hireBtn">💼 Hire Me</a>
+  <button id="topBtn"><i class="fa-solid fa-arrow-up"></i></button>
+  <a id="hireBtn" href="#contact"><i class="fa-solid fa-handshake"></i> Hire Me</a>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    AOS.init({ once: true });
+
     // Preloader
-    window.addEventListener("load", function() {
-      document.getElementById("preloader").style.display = "none";
+    window.addEventListener('load', () => {
+      document.getElementById('preloader').style.display = 'none';
     });
 
     // Typing effect
-    const typingElement = document.getElementById("typing");
-    const text = "AI Engineer │ Computer Scientist │ Innovator │ Educator";
+    const text = "Artificial Intelligence Engineer │ Computer Science │ Innovator │ Educator";
     let i = 0;
-    function typing() {
+    function typingEffect() {
       if (i < text.length) {
-        typingElement.innerHTML += text.charAt(i);
+        document.getElementById("typing").innerHTML += text.charAt(i);
         i++;
-        setTimeout(typing, 80);
+        setTimeout(typingEffect, 100);
       }
     }
-    typing();
+    typingEffect();
 
-    // Dark mode toggle
+    // Dark Mode toggle
     const darkBtn = document.getElementById("darkBtn");
     darkBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
-      darkBtn.innerHTML = document.body.classList.contains("dark-mode") 
-        ? '<i class="fa-solid fa-sun"></i> Light Mode' 
-        : '<i class="fa-solid fa-moon"></i> Dark Mode';
     });
 
     // Scroll to top button
     const topBtn = document.getElementById("topBtn");
-    window.onscroll = function() {
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
         topBtn.style.display = "block";
       } else {
         topBtn.style.display = "none";
       }
-    };
-    topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    });
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
 
-    // AOS Animation
-    AOS.init({ duration: 1200 });
+    // Animate progress bars when skills section is visible
+    const skillSection = document.getElementById("skills");
+    const progressBars = document.querySelectorAll(".progress");
+
+    function animateBars() {
+      progressBars.forEach(bar => {
+        const targetWidth = bar.getAttribute("data-width");
+        bar.style.width = targetWidth;
+      });
+    }
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateBars();
+          observer.unobserve(entry.target); // Run once
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(skillSection);
   </script>
 </body>
 </html>
