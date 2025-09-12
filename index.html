@@ -176,6 +176,18 @@
     }
     .contact-form button:hover { background: #fbc2eb; }
 
+    /* Contact info styles (added - does not remove anything) */
+    .contact-info {
+      text-align: center;
+      margin: 10px auto 20px;
+      font-size: 1em;
+      line-height: 1.6;
+      max-width: 800px;
+      color: #444;
+    }
+    .contact-info p { margin: 6px 0; }
+    .contact-info a { color: #a6c1ee; text-decoration: none; font-weight: 600; }
+
     /* Skills progress bars */
     .skill-bar { margin-top: 20px; }
     .bar {
@@ -346,16 +358,32 @@
     </p>
   </section>
 
-  <!-- Contact Form Section -->
+  <!-- Contact Form Section (updated to include contact info + rename message -> inquiry) -->
   <section id="contact" data-aos="fade-up">
     <h2><i class="fa-solid fa-envelope"></i> Contact Me</h2>
+
+    <!-- Added contact info (keeps everything else intact) -->
+    <div class="contact-info">
+      <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:bouzianiimane1@gmail.com">bouzianiimane1@gmail.com</a></p>
+      <p><i class="fa-solid fa-phone"></i> Phone: +213 664 64 77 79</p>
+      <p><i class="fa-brands fa-whatsapp"></i> WhatsApp: 0673945830</p>
+      <p><i class="fa-solid fa-location-dot"></i> Location: Oran, Algeria</p>
+      <p>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        &nbsp; | &nbsp;
+        <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i> GitHub</a>
+      </p>
+    </div>
+
     <div class="illustration"><img src="Contact us-bro.svg" alt="Contact"></div>
+
     <form class="contact-form" action="https://formsubmit.co/bouzianiimane1@gmail.com" method="POST">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_next" value="https://bouzianiimane.github.io/MY-CV">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <!-- renamed the textarea name from 'message' to 'inquiry' as requested -->
+      <textarea name="inquiry" rows="5" placeholder="Your Inquiry" required></textarea>
       <button type="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
     </form>
   </section>
