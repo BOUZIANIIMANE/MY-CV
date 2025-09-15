@@ -254,6 +254,65 @@
       text-align: center;
       color: #a6c1ee;
     }
+    /* Smooth reveal for AOS */
+[data-aos] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stats / Counters styling */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 20px 0;
+}
+.stat {
+  text-align: center;
+}
+.stat h3 {
+  font-size: 2em;
+  color: #a6c1ee;
+  margin: 0;
+}
+.stat p {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Floating social sidebar */
+.social-sidebar {
+  position: fixed;
+  top: 40%;
+  left: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1000;
+}
+.social-sidebar a {
+  background: #a6c1ee;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  text-align: center;
+  transition: transform 0.3s, background 0.3s;
+}
+.social-sidebar a:hover {
+  transform: scale(1.2);
+  background: #fbc2eb;
+}
+
+/* Smooth theme transitions */
+* {
+  transition: background 0.4s ease, color 0.4s ease, border 0.4s ease;
+}
+
   </style>
 </head>
 <body>
@@ -265,7 +324,9 @@
 
   <header>
     <h1>Bouziani Imane</h1>
-    <p id="typing"></p>
+<p id="greeting"></p> <!-- Dynamic greeting will show here -->
+<p id="typing"></p>
+
     <p>| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |</p>
   </header>
 
@@ -346,6 +407,22 @@
       <img src="images/Kids Studying from Home-bro.svg" alt="Activity 2">
       <img src="images/Doctor-bro.svg" alt="Activity 3">
     </div>
+
+    <div class="stats">
+  <div class="stat">
+    <h3 class="counter" data-target="15">0</h3>
+    <p>Projects Completed</p>
+  </div>
+  <div class="stat">
+    <h3 class="counter" data-target="10">0</h3>
+    <p>Workshops Led</p>
+  </div>
+  <div class="stat">
+    <h3 class="counter" data-target="5">0</h3>
+    <p>Hackathons Won</p>
+  </div>
+</div>
+
     <ul>
       <li>Participation in international hackathons (AI, Robotics, Data Science)</li>
       <li>Organization of AI & Programming workshops for different proficiency levels</li>
@@ -494,9 +571,17 @@
     resetProgressBars();
     setTimeout(fillProgressBars, 600); // after scroll
   });
+  
+
 </script>
 
+<div class="social-sidebar">
+  <a href="https://linkedin.com/in/bouzianiimane" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <a href="https://github.com/bouzianiimane" target="_blank"><i class="fab fa-github"></i></a>
+  <a href="mailto:bouzianiimane1@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+</div>
 
 </body>
 </html>
+
 
