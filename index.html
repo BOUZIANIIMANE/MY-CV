@@ -184,9 +184,13 @@
       overflow: hidden; margin: 8px 0;
     }
     .progress {
-      height: 10px; background: linear-gradient(90deg, #a6c1ee, #fbc2eb);
-      border-radius: 10px; animation: grow 2s ease forwards;
-    }
+  height: 10px;
+  width: 0; /* start empty */
+  background: linear-gradient(90deg, #a6c1ee, #fbc2eb);
+  border-radius: 10px;
+  transition: width 2s ease; /* smooth filling */
+}
+
     @keyframes grow { from { width: 0; } }
 
     /* Hire me button */
@@ -313,14 +317,15 @@
       <li>Systems & Networks: Windows, Linux, Wireshark, Cybersecurity</li>
     </ul>
     <!-- Progress bars -->
-    <div class="skill-bar">
-      <p>Python</p>
-      <div class="bar"><div class="progress" style="width:90%"></div></div>
-      <p>JavaScript</p>
-      <div class="bar"><div class="progress" style="width:80%"></div></div>
-      <p>Machine Learning</p>
-      <div class="bar"><div class="progress" style="width:85%"></div></div>
-    </div>
+  <div class="skill-bar">
+  <p>Python</p>
+  <div class="bar"><div class="progress" data-width="90%"></div></div>
+  <p>JavaScript</p>
+  <div class="bar"><div class="progress" data-width="80%"></div></div>
+  <p>Machine Learning</p>
+  <div class="bar"><div class="progress" data-width="85%"></div></div>
+</div>
+
   </section>
 
   <section id="languages" data-aos="fade-up">
@@ -452,5 +457,37 @@
     // AOS Animation
     AOS.init({ duration: 1200 });
   </script>
+  <script>
+  // Animate progress bars when Skills section is visible
+  const skillSection = document.getElementById("skills");
+  const progressBars = skillSection.querySelectorAll(".progress");
+  let animated = false; // only once
+
+  function fillProgressBars() {
+    progressBars.forEach(bar => {
+      const target = bar.getAttribute("data-width");
+      bar.style.width = target;
+    });
+    animated = true;
+  }
+
+  // Observer to detect when skills section is visible
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animated) {
+        fillProgressBars();
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(skillSection);
+
+  // Also trigger when clicking nav "Skills"
+  document.querySelector('a[href="#skills"]').addEventListener("click", () => {
+    setTimeout(fillProgressBars, 600); // after scroll
+  });
+</script>
+
 </body>
 </html>
+
