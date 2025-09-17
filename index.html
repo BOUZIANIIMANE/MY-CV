@@ -687,7 +687,7 @@
   });
 </script>
 <script>
-  // Translation dictionary
+  // ✅ Translation dictionary
   const translations = {
     en: {
       education: "Education",
@@ -717,27 +717,35 @@
     }
   };
 
-  // Function to switch language
+  // ✅ Switch function
   function switchLanguage(lang) {
-    document.querySelector('#education h2').innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${translations[lang].education}`;
-    document.querySelector('#experience h2').innerHTML = `<i class="fa-solid fa-briefcase"></i> ${translations[lang].experience}`;
-    document.querySelector('#skills h2').innerHTML = `<i class="fa-solid fa-laptop-code"></i> ${translations[lang].skills}`;
-    document.querySelector('#languages h2').innerHTML = `<i class="fa-solid fa-language"></i> ${translations[lang].languages}`;
-    document.querySelector('#activities h2').innerHTML = `<i class="fa-solid fa-star"></i> ${translations[lang].activities}`;
-    document.querySelector('#qualities h2').innerHTML = `<i class="fa-solid fa-heart"></i> ${translations[lang].qualities}`;
-    document.querySelector('#cv h2').innerHTML = `<i class="fa-solid fa-file-pdf"></i> ${translations[lang].cv}`;
-    document.querySelector('#contact h2').innerHTML = `<i class="fa-solid fa-envelope"></i> ${translations[lang].contact}`;
+    document.querySelector('#education h2').innerHTML =
+      `<i class="fa-solid fa-graduation-cap"></i> ${translations[lang].education}`;
+    document.querySelector('#experience h2').innerHTML =
+      `<i class="fa-solid fa-briefcase"></i> ${translations[lang].experience}`;
+    document.querySelector('#skills h2').innerHTML =
+      `<i class="fa-solid fa-laptop-code"></i> ${translations[lang].skills}`;
+    document.querySelector('#languages h2').innerHTML =
+      `<i class="fa-solid fa-language"></i> ${translations[lang].languages}`;
+    document.querySelector('#activities h2').innerHTML =
+      `<i class="fa-solid fa-star"></i> ${translations[lang].activities}`;
+    document.querySelector('#qualities h2').innerHTML =
+      `<i class="fa-solid fa-heart"></i> ${translations[lang].qualities}`;
+    document.querySelector('#cv h2').innerHTML =
+      `<i class="fa-solid fa-file-pdf"></i> ${translations[lang].cv}`;
+    document.querySelector('#contact h2').innerHTML =
+      `<i class="fa-solid fa-envelope"></i> ${translations[lang].contact}`;
 
-    // Update greeting
+    // ✅ Greeting update
     const hour = new Date().getHours();
-    let greet = "";
-    if (hour < 12) greet = translations[lang].greetingMorning;
-    else if (hour < 18) greet = translations[lang].greetingAfternoon;
-    else greet = translations[lang].greetingEvening;
+    let greetingKey = "";
+    if (hour < 12) greetingKey = "greetingMorning";
+    else if (hour < 18) greetingKey = "greetingAfternoon";
+    else greetingKey = "greetingEvening";
 
-    document.getElementById("greeting").innerHTML = greet;
+    document.getElementById("greeting").innerText = translations[lang][greetingKey];
 
-    // Switch text direction for Arabic
+    // ✅ Direction (RTL for Arabic, LTR for English)
     if (lang === "ar") {
       document.body.setAttribute("dir", "rtl");
       document.body.style.textAlign = "right";
@@ -747,13 +755,15 @@
     }
   }
 
-  // Button actions
+  // ✅ Event listeners for language switcher
   document.getElementById("lang-en").addEventListener("click", () => switchLanguage("en"));
   document.getElementById("lang-ar").addEventListener("click", () => switchLanguage("ar"));
 </script>
 
+
 </body>
 </html>
+
 
 
 
