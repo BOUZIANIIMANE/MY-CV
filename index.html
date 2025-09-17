@@ -568,8 +568,21 @@
   <a href="mailto:bouzianiimane1@gmail.com"><i class="fa-solid fa-envelope"></i></a>
 </div>
 
+<!-- 🔹 VanillaTilt library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+<script>
+  // Apply tilt to all images inside .illustration sections
+  VanillaTilt.init(document.querySelectorAll(".illustration img"), {
+    max: 15,       // how much it tilts
+    speed: 300,    // speed of the effect
+    glare: true,   // adds light reflection
+    "max-glare": 0.3
+  });
+</script>
+
 </body>
 </html>
+
 
 
 
