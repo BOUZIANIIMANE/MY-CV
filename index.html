@@ -319,10 +319,32 @@
 * {
   transition: background 0.4s ease, color 0.4s ease, border 0.4s ease;
 }
+/* Floating Blob Gradient Background */
+.blob {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle at center, #fbc2eb 0%, #a6c1ee 100%);
+  border-radius: 50%;
+  filter: blur(180px);
+  opacity: 0.5;
+  transform: translate(-50%, -50%);
+  animation: blobMove 20s ease-in-out infinite;
+  z-index: -1; /* stays behind all content */
+}
+
+@keyframes blobMove {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-45%, -55%) scale(1.2); }
+}
 
   </style>
 </head>
 <body>
+<!-- 🔹 Floating Blob Background -->
+<div class="blob"></div>
 
   <!-- Preloader -->
   <div id="preloader">
@@ -505,6 +527,31 @@
       }
     }
     typing();
+  // Dynamic greeting based on time of day
+  const greetingElement = document.getElementById("greeting");
+  const hour = new Date().getHours();
+  let greetingText = "";
+
+  if (hour < 12) {
+    greetingText = "Good Morning 🌞";
+  } else if (hour < 18) {
+    greetingText = "Good Afternoon 🌤️";
+  } else {
+    greetingText = "Good Evening 🌙";
+  }
+
+  // Add fade-in effect
+  greetingElement.innerHTML = `<span style="opacity:0; display:inline-block; animation:fadeInGreeting 2s forwards;">${greetingText}</span>`;
+
+  // Add animation keyframes
+  const style = document.createElement("style");
+  style.innerHTML = `
+    @keyframes fadeInGreeting {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  `;
+  document.head.appendChild(style);
 
     // Dark mode toggle
     const darkBtn = document.getElementById("darkBtn");
@@ -611,6 +658,7 @@
 
 </body>
 </html>
+
 
 
 
