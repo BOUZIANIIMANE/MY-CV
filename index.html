@@ -339,6 +339,31 @@
   0%, 100% { transform: translate(-50%, -50%) scale(1); }
   50% { transform: translate(-45%, -55%) scale(1.2); }
 }
+/* Language switcher */
+.language-switcher {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.language-switcher button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.3s;
+}
+
+.language-switcher button img {
+  width: 25px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.language-switcher button:hover {
+  transform: scale(1.2);
+}
 
   </style>
 </head>
@@ -370,6 +395,12 @@
     <a href="#qualities"><i class="fa-solid fa-heart"></i> Qualities</a>
     <a href="#cv"><i class="fa-solid fa-file-pdf"></i> CV</a>
     <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+      <div class="language-switcher">
+    <button id="lang-en"><img src="https://flagcdn.com/w20/gb.png" alt="English"></button>
+    <button id="lang-ar"><img src="https://flagcdn.com/w20/sa.png" alt="Arabic"></button>
+  </div>
+
+
   </nav>
 
   <section id="education" data-aos="fade-up">
@@ -655,9 +686,75 @@
     });
   });
 </script>
+<script>
+  // Translation dictionary
+  const translations = {
+    en: {
+      education: "Education",
+      experience: "Professional Experience",
+      skills: "Technical Skills",
+      languages: "Languages",
+      activities: "Activities & Achievements",
+      qualities: "Professional Qualities",
+      cv: "My CV",
+      contact: "Contact Me",
+      greetingMorning: "Good Morning 🌞",
+      greetingAfternoon: "Good Afternoon 🌤️",
+      greetingEvening: "Good Evening 🌙",
+    },
+    ar: {
+      education: "التعليم",
+      experience: "الخبرات المهنية",
+      skills: "المهارات التقنية",
+      languages: "اللغات",
+      activities: "الأنشطة والإنجازات",
+      qualities: "الصفات المهنية",
+      cv: "سيرتي الذاتية",
+      contact: "اتصل بي",
+      greetingMorning: "صباح الخير 🌞",
+      greetingAfternoon: "مساء الخير 🌤️",
+      greetingEvening: "مساء الخير 🌙",
+    }
+  };
+
+  // Function to switch language
+  function switchLanguage(lang) {
+    document.querySelector('#education h2').innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${translations[lang].education}`;
+    document.querySelector('#experience h2').innerHTML = `<i class="fa-solid fa-briefcase"></i> ${translations[lang].experience}`;
+    document.querySelector('#skills h2').innerHTML = `<i class="fa-solid fa-laptop-code"></i> ${translations[lang].skills}`;
+    document.querySelector('#languages h2').innerHTML = `<i class="fa-solid fa-language"></i> ${translations[lang].languages}`;
+    document.querySelector('#activities h2').innerHTML = `<i class="fa-solid fa-star"></i> ${translations[lang].activities}`;
+    document.querySelector('#qualities h2').innerHTML = `<i class="fa-solid fa-heart"></i> ${translations[lang].qualities}`;
+    document.querySelector('#cv h2').innerHTML = `<i class="fa-solid fa-file-pdf"></i> ${translations[lang].cv}`;
+    document.querySelector('#contact h2').innerHTML = `<i class="fa-solid fa-envelope"></i> ${translations[lang].contact}`;
+
+    // Update greeting
+    const hour = new Date().getHours();
+    let greet = "";
+    if (hour < 12) greet = translations[lang].greetingMorning;
+    else if (hour < 18) greet = translations[lang].greetingAfternoon;
+    else greet = translations[lang].greetingEvening;
+
+    document.getElementById("greeting").innerHTML = greet;
+
+    // Switch text direction for Arabic
+    if (lang === "ar") {
+      document.body.setAttribute("dir", "rtl");
+      document.body.style.textAlign = "right";
+    } else {
+      document.body.setAttribute("dir", "ltr");
+      document.body.style.textAlign = "left";
+    }
+  }
+
+  // Button actions
+  document.getElementById("lang-en").addEventListener("click", () => switchLanguage("en"));
+  document.getElementById("lang-ar").addEventListener("click", () => switchLanguage("ar"));
+</script>
 
 </body>
 </html>
+
 
 
 
