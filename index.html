@@ -14,6 +14,7 @@
       scroll-behavior: smooth;
     }
     body {
+      
       font-family: 'Quicksand', sans-serif;
       background-color: #fafafa;
       margin: 0;
@@ -82,6 +83,12 @@
       animation: fadeIn 1s ease;
       transition: transform 0.3s, box-shadow 0.3s, background 0.5s, color 0.5s;
     }
+    nav a.active {
+  border-bottom: 2px solid #a6c1ee; /* accent color underline */
+  padding-bottom: 2px;
+  color: #a6c1ee;
+}
+
     section:hover {
       transform: translateY(-5px) scale(1.01);
       box-shadow: 0 12px 30px rgba(166, 193, 238, 0.3);
@@ -579,9 +586,32 @@
     "max-glare": 0.3
   });
 </script>
+<script>
+  // Highlight active nav link while scrolling
+  const navLinks = document.querySelectorAll("nav a");
+  const sectionsNav = document.querySelectorAll("section");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sectionsNav.forEach(section => {
+      const sectionTop = section.offsetTop - 150; // adjust offset for sticky nav
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href").includes(current)) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
+
 
 
 
