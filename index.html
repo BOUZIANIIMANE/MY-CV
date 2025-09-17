@@ -1072,10 +1072,44 @@
   window.switchLanguage = switchLanguage;
 })();
 </script>
+<script>
+  const moreBtn = document.getElementById('moreBtn');
+  const langDropdown = document.getElementById('langDropdown');
+
+  moreBtn.addEventListener('click', () => {
+    langDropdown.classList.toggle('show');
+    // Update ARIA attributes for accessibility
+    const expanded = moreBtn.getAttribute('aria-expanded') === 'true';
+    moreBtn.setAttribute('aria-expanded', !expanded);
+    langDropdown.setAttribute('aria-hidden', expanded);
+  });
+
+  // Optional: close dropdown if clicked outside
+  document.addEventListener('click', (e) => {
+    if (!moreBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.classList.remove('show');
+      moreBtn.setAttribute('aria-expanded', 'false');
+      langDropdown.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // Handle language selection from dropdown
+  const langButtons = langDropdown.querySelectorAll('.lang-btn');
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang');
+      switchLanguage(lang); // your existing function
+      langDropdown.classList.remove('show');
+      moreBtn.setAttribute('aria-expanded', 'false');
+      langDropdown.setAttribute('aria-hidden', 'true');
+    });
+  });
+</script>
 
 
 </body>
 </html>
+
 
 
 
