@@ -442,30 +442,7 @@
   </header>
 
   <button id="darkBtn"><i class="fa-solid fa-moon"></i> Dark Mode</button>
-<!-- MORE button + language dropdown (paste immediately AFTER the darkBtn button) -->
-<button id="moreBtn" aria-haspopup="true" aria-expanded="false">MORE ▾</button>
 
-<div id="langDropdown" aria-hidden="true">
-  <!-- English variants -->
-  <button class="lang-btn" data-lang="en">
-    <img class="flag" src="https://flagcdn.com/w20/gb.png" alt="English (GB)">
-    English (GB)
-  </button>
-  <button class="lang-btn" data-lang="en">
-    <img class="flag" src="https://flagcdn.com/w20/us.png" alt="English (US)">
-    English (US)
-  </button>
-
-  <!-- Arabic variants (both use Arabic translations) -->
-  <button class="lang-btn" data-lang="ar">
-    <img class="flag" src="https://flagcdn.com/w20/sa.png" alt="Arabic (SA)">
-    العربية (SA)
-  </button>
-  <button class="lang-btn" data-lang="ar">
-    <img class="flag" src="https://flagcdn.com/w20/dz.png" alt="العربية (DZ)">
-    العربية (DZ)
-  </button>
-</div>
 
   <nav>
     <a href="#education"><i class="fa-solid fa-graduation-cap"></i> Education</a>
@@ -476,10 +453,23 @@
     <a href="#qualities"><i class="fa-solid fa-heart"></i> Qualities</a>
     <a href="#cv"><i class="fa-solid fa-file-pdf"></i> CV</a>
     <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
-      <div class="language-switcher">
-    <button id="lang-en"><img src="https://flagcdn.com/w20/gb.png" alt="English"></button>
-    <button id="lang-ar"><img src="https://flagcdn.com/w20/sa.png" alt="Arabic"></button>
-  </div>
+     
+<!-- MORE button + dropdown -->
+<button id="moreBtn" aria-haspopup="true" aria-expanded="false">MORE ▾</button>
+
+<div id="langDropdown" aria-hidden="true" style="display:none;">
+  <!-- English -->
+  <button class="lang-btn" data-lang="en">
+    <img class="flag" src="https://flagcdn.com/w20/gb.png" alt="English">
+    English
+  </button>
+
+  <!-- Arabic -->
+  <button class="lang-btn" data-lang="ar">
+    <img class="flag" src="https://flagcdn.com/w20/sa.png" alt="Arabic">
+    العربية
+  </button>
+</div>
 
 
   </nav>
@@ -1150,10 +1140,54 @@
     });
   }
 </script>
+<script>
+  const moreBtn = document.getElementById("moreBtn");
+  const langDropdown = document.getElementById("langDropdown");
+
+  // Show/hide dropdown
+  moreBtn.addEventListener("click", () => {
+    if (langDropdown.style.display === "block") {
+      langDropdown.style.display = "none";
+    } else {
+      langDropdown.style.display = "block";
+    }
+  });
+
+  // Close dropdown on outside click
+  document.addEventListener("click", (e) => {
+    if (!moreBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.style.display = "none";
+    }
+  });
+
+  // Language switching
+  const langButtons = document.querySelectorAll(".lang-btn");
+  langButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const selectedLang = btn.getAttribute("data-lang");
+      langDropdown.style.display = "none";
+
+      if (selectedLang === "ar") {
+        document.documentElement.lang = "ar";
+        document.body.dir = "rtl";
+        document.querySelector("header h1").textContent = "بوزياني إيمان";
+        document.querySelector("#education h2").innerHTML = '<i class="fa-solid fa-graduation-cap"></i> التعليم';
+        document.querySelector("#experience h2").innerHTML = '<i class="fa-solid fa-briefcase"></i> الخبرة المهنية';
+      } else {
+        document.documentElement.lang = "en";
+        document.body.dir = "ltr";
+        document.querySelector("header h1").textContent = "Bouziani Imane";
+        document.querySelector("#education h2").innerHTML = '<i class="fa-solid fa-graduation-cap"></i> Education';
+        document.querySelector("#experience h2").innerHTML = '<i class="fa-solid fa-briefcase"></i> Professional Experience';
+      }
+    });
+  });
+</script>
 
 
 </body>
 </html>
+
 
 
 
