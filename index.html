@@ -1105,10 +1105,37 @@
     });
   });
 </script>
+<script>
+  // Toggle dropdown visibility
+  const moreBtn = document.getElementById("moreBtn");
+  const langDropdown = document.getElementById("langDropdown");
+
+  moreBtn.addEventListener("click", () => {
+    langDropdown.classList.toggle("show");
+  });
+
+  // Close dropdown if clicking outside
+  window.addEventListener("click", (e) => {
+    if (!moreBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.classList.remove("show");
+    }
+  });
+
+  // Make the flags clickable to switch language
+  const langButtons = document.querySelectorAll("#langDropdown .lang-btn");
+  langButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang");
+      switchLanguage(lang);
+      langDropdown.classList.remove("show"); // close dropdown after selection
+    });
+  });
+</script>
 
 
 </body>
 </html>
+
 
 
 
