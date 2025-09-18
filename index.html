@@ -1131,10 +1131,30 @@
     });
   });
 </script>
+<script>
+  // Example: toggle a language menu (use your own IDs)
+  const languageBtn = document.getElementById('language-btn'); // button to open menu
+  const languageMenu = document.getElementById('language-menu'); // dropdown menu
+
+  if (languageBtn && languageMenu) {
+    // Open/close menu
+    languageBtn.addEventListener('click', () => {
+      languageMenu.classList.toggle('show');
+    });
+
+    // Close menu if clicking outside
+    document.addEventListener('click', (e) => {
+      if (!languageBtn.contains(e.target) && !languageMenu.contains(e.target)) {
+        languageMenu.classList.remove('show');
+      }
+    });
+  }
+</script>
 
 
 </body>
 </html>
+
 
 
 
