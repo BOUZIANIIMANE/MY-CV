@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,7 +124,8 @@
       border-radius: 50%;
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: background 极速3s;
+      transition: background 0.3s;
+      z-index: 999;
     }
     #topBtn:hover { background: #fbc2eb; }
     #typing { margin-top: 10px; font-size: 1.2em; font-weight: 600; }
@@ -131,7 +133,7 @@
     body.dark-mode { background-color: #1e1e1e; color: #f5f5f5; }
     body.dark-mode nav { background: #2c2c2c; }
     body.dark-mode nav a { color: #ddd; }
-    body.dark-mode section { background: #2c2c极速2c; color: #f5f5f5; }
+    body.dark-mode section { background: #2c2c2c; color: #f5f5f5; }
     body.dark-mode footer { background: linear-gradient(120deg, #3a3a3a 0%, #1e1e1e 100%); }
 
     #darkBtn {
@@ -141,7 +143,7 @@
       background: #444;
       color: white;
       border: none;
-      padding: 10极速 15px;
+      padding: 10px 15px;
       border-radius: 30px;
       cursor: pointer;
       font-weight: 600;
@@ -174,7 +176,7 @@
       padding: 12px 20px;
       border: none;
       border-radius: 30px;
-      background: #a6极速1ee;
+      background: #a6c1ee;
       color: white;
       font-weight: 600;
       cursor: pointer;
@@ -218,7 +220,7 @@
     /* Preloader */
     #preloader {
       position: fixed;
-      top: 0; left: 0; width: 极速00%; height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       background: #fafafa;
       display: flex; align-items: center; justify-content: center;
       z-index: 2000;
@@ -264,7 +266,7 @@
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
-[极速aos].aos-animate {
+[data-aos].aos-animate {
   opacity: 1;
   transform: translateY(0);
 }
@@ -280,12 +282,12 @@
   text-align: center;
 }
 .stat h3 {
-  font-size: 2极速m;
+  font-size: 2em;
   color: #a6c1ee;
   margin: 0;
 }
 .stat p {
- 极速 font-size: 0.9em;
+  font-size: 0.9em;
   color: #666;
 }
 
@@ -355,7 +357,7 @@
 .language-switcher button img {
   width: 25px;
   height: auto;
-  border-radius极速: 5px;
+  border-radius: 5px;
 }
 
 .language-switcher button:hover {
@@ -427,7 +429,7 @@
 
   <!-- Preloader -->
   <div id="preloader">
-    <div class极速.spinner"></div>
+    <div class="spinner"></div>
   </div>
 
   <header>
@@ -444,10 +446,10 @@
   <nav>
     <a href="#education"><i class="fa-solid fa-graduation-cap"></i> Education</a>
     <a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a>
-    <a href="#skills"><极速 class="fa-solid fa-laptop-code"></i> Skills</a>
+    <a href="#skills"><i class="fa-solid fa-laptop-code"></i> Skills</a>
     <a href="#languages"><i class="fa-solid fa-language"></i> Languages</a>
     <a href="#activities"><i class="fa-solid fa-star"></i> Activities</a>
-    <a href="#qualities"><i class="fa-solid fa-heart"></极速> Qualities</a>
+    <a href="#qualities"><i class="fa-solid fa-heart"></i> Qualities</a>
     <a href="#cv"><i class="fa-solid fa-file-pdf"></i> CV</a>
     <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
      
@@ -478,7 +480,7 @@
 
   <section id="experience" data-aos="fade-up">
     <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
-    <div class="illustration"><img src="images/Pair programming-bro.svg" alt极速"Work"></div>
+    <div class="illustration"><img src="images/Pair programming-bro.svg" alt="Work"></div>
     <ul>
       <li>IT Specialist – ZHONGMA International Construction (2023 – 2025)</li>
       <li>IT Specialist – Private Neurology Clinic (2024 – 2025)</li>
@@ -495,8 +497,8 @@
     <div class="illustration"><img src="images/Data extraction-amico.svg" alt="Skills"></div>
     <ul>
       <li>Languages: Python, Java, C/C++, Dart, Swift, R, MATLAB, SQL, HTML, CSS, JavaScript</li>
-      <li>AI & Data Science: TensorFlow, PyTorch, Keras, Scikit-Learn, OpenCV...</极速>
-      <极速li>Databases: MySQL, Oracle, SQL Server</li>
+      <li>AI & Data Science: TensorFlow, PyTorch, Keras, Scikit-Learn, OpenCV...</li>
+      <li>Databases: MySQL, Oracle, SQL Server</li>
       <li>3D Tools & Simulation: Unity, Unreal Engine, Blender, MATLAB Simulink</li>
       <li>Systems & Networks: Windows, Linux, Wireshark, Cybersecurity</li>
     </ul>
@@ -514,7 +516,7 @@
 
   <section id="languages" data-aos="fade-up">
     <h2><i class="fa-solid fa-language"></i> Languages</h2>
-    <div class="illustration"><img src="images/Collaboration-bro.svg" alt="Languages"></极速div>
+    <div class="illustration"><img src="images/Collaboration-bro.svg" alt="Languages"></div>
     <ul>
       <li>Arabic: Native</li>
       <li>English: Advanced</li>
@@ -549,8 +551,8 @@
     </ul>
   </section>
 
-  <section id="cv极速" data-aos="fade-up">
-    <h2><i class="fa-solid极速fa-file-pdf"></i> My CV</h2>
+  <section id="cv" data-aos="fade-up">
+    <h2><i class="fa-solid fa-file-pdf"></i> My CV</h2>
     <div class="illustration">
       <img src="Resume folder-bro.svg" alt="CV Illustration">
     </div>
@@ -571,7 +573,7 @@
     <div class="contact-info">
       <p><i class="fa-solid fa-envelope"></i><strong>Email:</strong> <a href="mailto:bouzianiimane1@gmail.com">bouzianiimane1@gmail.com</a></p>
       <p><i class="fa-solid fa-phone"></i><strong>Phone:</strong> +213 664 64 77 79</p>
-      <p><i class="fa-brands fa-whatsapp"></i><strong>WhatsApp:</strong> 0673945830</极速p>
+      <p><i class="fa-brands fa-whatsapp"></i><strong>WhatsApp:</strong> 0673945830</p>
       <p><i class="fa-solid fa-location-dot"></i><strong>Location:</strong> Oran, Algeria</p>
       <p><i class="fa-brands fa-linkedin"></i><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/bouzianiimane" target="_blank">linkedin.com/in/bouzianiimane</a></p>
       <p><i class="fa-brands fa-github"></i><strong>GitHub:</strong> <a href="https://github.com/bouzianiimane" target="_blank">github.com/bouzianiimane</a></p>
@@ -593,7 +595,7 @@
     <p>© 2025 Bouziani Imane | All Rights Reserved</p>
     <div>
       <a href="https://linkedin.com" target="_blank" style="color:white; margin:0 10px;"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com" target="_blank" style="color:white; margin:0 10px;"><i class="fab fa-github"></极速></a>
+      <a href="https://github.com" target="_blank" style="color:white; margin:0 10px;"><i class="fab fa-github"></i></a>
       <a href="https://twitter.com" target="_blank" style="color:white; margin:0 10px;"><i class="fab fa-twitter"></i></a>
     </div>
   </footer>
@@ -651,7 +653,7 @@
     darkBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
       darkBtn.innerHTML = document.body.classList.contains("dark-mode") 
-        ? '<i class="fa-solid fa-s极速n"></i> Light Mode' 
+        ? '<i class="fa-solid fa-sun"></i> Light Mode' 
         : '<i class="fa-solid fa-moon"></i> Dark Mode';
     });
 
@@ -716,7 +718,7 @@
 </div>
 
 <!-- 🔹 VanillaTilt library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/极速.7.2/vanilla-tilt.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
 <script>
   // Apply tilt to all images inside .illustration sections
   VanillaTilt.init(document.querySelectorAll(".illustration img"), {
@@ -767,7 +769,7 @@
       contactLine: "| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |",
       educationList: [
         "Master in Artificial Intelligence – With Distinction -2025",
-        "Bachelor in Computer Science – Information Systems -极速23",
+        "Bachelor in Computer Science – Information Systems -2023",
         "Startup Label Certificate – AI Project on the Development of a Mobile and Web Application for Intelligent and Smart Vehicles -2023",
         "STEAM Certification – Designing Creative Educational Programs for Learners-2023"
       ],
@@ -781,7 +783,7 @@
         "Pharmacy Assistant and Operations Manager"
       ],
       skillsList: [
-        "Languages极速 Python, Java, C/C++, Dart, Swift, R, MATLAB, SQL, HTML, CSS, JavaScript",
+        "Languages: Python, Java, C/C++, Dart, Swift, R, MATLAB, SQL, HTML, CSS, JavaScript",
         "AI & Data Science: TensorFlow, PyTorch, Keras, Scikit-Learn, OpenCV...",
         "Databases: MySQL, Oracle, SQL Server",
         "3D Tools & Simulation: Unity, Unreal Engine, Blender, MATLAB Simulink",
@@ -829,7 +831,7 @@
         languages: "اللغات",
         activities: "الأنشطة والإنجازات",
         qualities: "الصفات المهنية",
-        cv极速 "سيرتي الذاتية",
+        cv: "سيرتي الذاتية",
         contact: "اتصل بي"
       },
       contactLine: "| bouzianiimane1@gmail.com | +213 664 64 77 79 | واتساب: 0673945830 | وهران، الجزائر |",
@@ -897,8 +899,8 @@
 
     // 1) NAV links (order assumed same as your nav)
     const navKeys = ['education','experience','skills','languages','activities','qualities','cv','contact'];
-    const navIcons = ['fa-graduation-cap','fa-briefcase','fa-laptop-code','fa-language','极速tar','fa-heart','fa-file-pdf','fa-envelope'];
-    const navAnch极速 = Array.from(document.querySelectorAll('nav > a'));
+    const navIcons = ['fa-graduation-cap','fa-briefcase','fa-laptop-code','fa-language','fa-star','fa-heart','fa-file-pdf','fa-envelope'];
+    const navAnchors = Array.from(document.querySelectorAll('nav > a'));
     navAnchors.forEach((a, idx) => {
       if (!navKeys[idx]) return;
       a.innerHTML = `<i class="fa-solid ${navIcons[idx]}"></i> ${t.nav[navKeys[idx]]}`;
@@ -906,13 +908,13 @@
 
     // 2) Section headers (safe to set these again)
     document.querySelector('#education h2')?.innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${t.nav.education}`;
-    document.querySelector('#experience h2')?.innerHTML = `<极速 class="fa-solid fa-briefcase"></i> ${t.nav.experience}`;
+    document.querySelector('#experience h2')?.innerHTML = `<i class="fa-solid fa-briefcase"></i> ${t.nav.experience}`;
     document.querySelector('#skills h2')?.innerHTML = `<i class="fa-solid fa-laptop-code"></i> ${t.nav.skills}`;
     document.querySelector('#languages h2')?.innerHTML = `<i class="fa-solid fa-language"></i> ${t.nav.languages}`;
     document.querySelector('#activities h2')?.innerHTML = `<i class="fa-solid fa-star"></i> ${t.nav.activities}`;
     document.querySelector('#qualities h2')?.innerHTML = `<i class="fa-solid fa-heart"></i> ${t.nav.qualities}`;
     document.querySelector('#cv h2')?.innerHTML = `<i class="fa-solid fa-file-pdf"></i> ${t.nav.cv}`;
-    document.querySelector('#contact h2')?.innerHTML = `<i class="fa-solid fa-envelope"></极速 ${t.nav.contact}`;
+    document.querySelector('#contact h2')?.innerHTML = `<i class="fa-solid fa-envelope"></i> ${t.nav.contact}`;
 
     // 3) Header contact line (the last <p> inside header)
     const headerContactP = document.querySelector('header p:last-of-type');
@@ -932,7 +934,7 @@
 
     // 5) Skill bar labels (the <p> elements before the bars)
     const skillLabelPs = document.querySelectorAll('.skill-bar p');
-    t.skillLabels.forEach((s, i极速 { if (skillLabelPs[i]) skillLabelPs[i].innerText = s; });
+    t.skillLabels.forEach((s, i) => { if (skillLabelPs[i]) skillLabelPs[i].innerText = s; });
 
     // 6) CV button
     const cvAnchor = document.querySelector('#cv a');
@@ -985,7 +987,7 @@
       const dd = document.getElementById('langDropdown');
       if (dd) { dd.style.left = ''; dd.style.right = '16px'; }
     } else {
-      document.documentElement.lang = '极速n';
+      document.documentElement.lang = 'en';
       document.body.setAttribute('dir', 'ltr');
       document.body.style.textAlign = 'left';
       const dd = document.getElementById('langDropdown');
@@ -1041,7 +1043,7 @@
         const lang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
         const t = translations[lang];
         const isDark = document.body.classList.contains('dark-mode');
-        darkBtn.innerHTML = isDark ? `<i class="fa-solid fa-sun"></i> ${极速.lightMode}` : `<i class="fa-solid fa-moon"></i> ${t.darkMode}`;
+        darkBtn.innerHTML = isDark ? `<i class="fa-solid fa-sun"></i> ${t.lightMode}` : `<i class="fa-solid fa-moon"></i> ${t.darkMode}`;
       }, 10);
     });
   }
@@ -1167,7 +1169,7 @@
       } else {
         document.documentElement.lang = "en";
         document.body.dir = "ltr";
-        document.querySelector("header h极速").textContent = "Bouziani Imane";
+        document.querySelector("header h1").textContent = "Bouziani Imane";
         document.querySelector("#education h2").innerHTML = '<i class="fa-solid fa-graduation-cap"></i> Education';
         document.querySelector("#experience h2").innerHTML = '<i class="fa-solid fa-briefcase"></i> Professional Experience';
       }
@@ -1193,7 +1195,7 @@ const sectionsNav = document.querySelectorAll("section");
     langDropdown.classList.toggle("show");
   });
 
-  document.addEventListener("click", (极速) => {
+  document.addEventListener("click", (e) => {
     if (!moreBtn.contains(e.target) && !langDropdown.contains(e.target)) {
       langDropdown.classList.remove("show");
       moreBtn.setAttribute("aria-expanded", "false");
