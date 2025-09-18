@@ -46,10 +46,10 @@
       100% { background-position: 100%; }
     }
     header p { margin: 10px 0 0; font-size: 1.1em; }
-    nav {
+    .nav-container {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      align-items: center;
       background: #fff;
       padding: 15px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -57,8 +57,15 @@
       top: 0;
       z-index: 100;
       transition: background 0.5s;
+      font-family: 'Quicksand', sans-serif;
     }
-    nav a {
+    
+    .nav-main {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .nav-main a {
       text-decoration: none;
       color: #666;
       font-weight: 600;
@@ -66,10 +73,11 @@
       align-items: center;
       gap: 8px;
       transition: color 0.3s;
+      font-family: 'Quicksand', sans-serif;
     }
-    nav a i { transition: transform 0.3s, color 0.3s; }
-    nav a:hover { color: #a6c1ee; }
-    nav a:hover i { transform: rotate(10deg) scale(1.2); color: #fbc2eb; }
+    .nav-main a i { transition: transform 0.3s, color 0.3s; }
+    .nav-main a:hover { color: #a6c1ee; }
+    .nav-main a:hover i { transform: rotate(10deg) scale(1.2); color: #fbc2eb; }
     section {
       max-width: 900px;
       margin: 50px auto;
@@ -80,8 +88,8 @@
       animation: fadeIn 1s ease;
       transition: transform 0.3s, box-shadow 0.3s, background 0.5s, color 0.5s;
     }
-    nav a.active {
-      border-bottom: 2px solid #a6c1ee; /* accent color underline */
+    .nav-main a.active {
+      border-bottom: 2px solid #a6c1ee;
       padding-bottom: 2px;
       color: #a6c1ee;
     }
@@ -129,8 +137,8 @@
     #typing { margin-top: 10px; font-size: 1.2em; font-weight: 600; }
 
     body.dark-mode { background-color: #1e1e1e; color: #f5f5f5; }
-    body.dark-mode nav { background: #2c2c2c; }
-    body.dark-mode nav a { color: #ddd; }
+    body.dark-mode .nav-container { background: #2c2c2c; }
+    body.dark-mode .nav-main a { color: #ddd; }
     body.dark-mode section { background: #2c2c2c; color: #f5f5f5; }
     body.dark-mode footer { background: linear-gradient(120deg, #3a3a3a 0%, #1e1e1e 100%); }
 
@@ -147,6 +155,7 @@
       font-weight: 600;
       transition: background 0.3s;
       z-index: 1000;
+      font-family: 'Quicksand', sans-serif;
     }
     #darkBtn:hover { background: #a6c1ee; }
 
@@ -179,6 +188,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.3s;
+      font-family: 'Quicksand', sans-serif;
     }
     .contact-form button:hover { background: #fbc2eb; }
 
@@ -212,6 +222,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       transition: transform 0.3s;
       z-index: 999;
+      font-family: 'Quicksand', sans-serif;
     }
     #hireBtn:hover { transform: scale(1.1); background: #a6c1ee; }
 
@@ -336,31 +347,6 @@
       0%, 100% { transform: translate(-50%, -50%) scale(1); }
       50% { transform: translate(-45%, -55%) scale(1.2); }
     }
-    /* Language switcher */
-    .language-switcher {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      margin-left: 20px;
-    }
-
-    .language-switcher button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 5px;
-      transition: transform 0.3s;
-    }
-
-    .language-switcher button img {
-      width: 25px;
-      height: auto;
-      border-radius: 5px;
-    }
-
-    .language-switcher button:hover {
-      transform: scale(1.2);
-    }
     
     /* MORE button styling */
     #moreBtn {
@@ -377,6 +363,7 @@
       transition: all 0.3s;
       position: relative;
       margin-left: 10px;
+      font-family: 'Quicksand', sans-serif;
     }
     
     #moreBtn:hover {
@@ -422,6 +409,7 @@
       font-weight: 600;
       border-radius: 8px;
       width: 100%;
+      font-family: 'Quicksand', sans-serif;
     }
 
     #langDropdown .lang-btn:hover {
@@ -436,24 +424,6 @@
     }
     
     /* Navigation container with MORE button */
-    .nav-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #fff;
-      padding: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      transition: background 0.5s;
-    }
-    
-    .nav-main {
-      display: flex;
-      gap: 20px;
-    }
-    
     .more-container {
       position: relative;
       display: flex;
@@ -810,7 +780,7 @@
     });
     
     // Highlight active nav link while scrolling
-    const navLinks = document.querySelectorAll("nav a, .nav-main a");
+    const navLinks = document.querySelectorAll(".nav-main a");
     const sectionsNav = document.querySelectorAll("section");
 
     window.addEventListener("scroll", () => {
@@ -1091,7 +1061,8 @@
         if (lang === 'ar') {
           document.documentElement.lang = 'ar';
           document.body.setAttribute('dir', 'rtl');
-          document.body.style.fontFamily = "Tahoma, Arial, sans-serif";
+          document.body.style.fontFamily = "'Quicksand', Tahoma, Arial, sans-serif";
+          document.body.style.textAlign = 'right';
           // place dropdown on the right when RTL
           const dd = document.getElementById('langDropdown');
           if (dd) { dd.style.left = ''; dd.style.right = '0'; }
@@ -1099,6 +1070,7 @@
           document.documentElement.lang = 'en';
           document.body.setAttribute('dir', 'ltr');
           document.body.style.fontFamily = "'Quicksand', sans-serif";
+          document.body.style.textAlign = 'left';
           const dd = document.getElementById('langDropdown');
           if (dd) { dd.style.right = ''; dd.style.left = '0'; }
         }
