@@ -1183,10 +1183,83 @@
     });
   });
 </script>
+<script>
+// Highlight active nav link while scrolling
+const navLinks = document.querySelectorAll("nav a");
+const sectionsNav = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+  ...
+});
+</script>
+
+<script>
+  const moreBtn = document.getElementById("moreBtn");
+  const langDropdown = document.getElementById("langDropdown");
+
+  moreBtn.addEventListener("click", () => {
+    const expanded = moreBtn.getAttribute("aria-expanded") === "true";
+    moreBtn.setAttribute("aria-expanded", !expanded);
+    langDropdown.setAttribute("aria-hidden", expanded);
+    langDropdown.classList.toggle("show");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!moreBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.classList.remove("show");
+      moreBtn.setAttribute("aria-expanded", "false");
+      langDropdown.setAttribute("aria-hidden", "true");
+    }
+  });
+</script>
+</body>
+<script>
+  const moreBtn = document.getElementById("moreBtn");
+  const langDropdown = document.getElementById("langDropdown");
+
+  moreBtn.addEventListener("click", () => {
+    langDropdown.classList.toggle("show");
+
+    // Update accessibility attributes
+    const expanded = moreBtn.getAttribute("aria-expanded") === "true";
+    moreBtn.setAttribute("aria-expanded", !expanded);
+    langDropdown.setAttribute("aria-hidden", expanded);
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!moreBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.classList.remove("show");
+      moreBtn.setAttribute("aria-expanded", "false");
+      langDropdown.setAttribute("aria-hidden", "true");
+    }
+  });
+
+  // Handle language switching
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const lang = btn.dataset.lang;
+
+      if (lang === "ar") {
+        document.body.setAttribute("dir", "rtl");
+        document.body.style.fontFamily = "Tahoma, Arial, sans-serif";
+      } else {
+        document.body.setAttribute("dir", "ltr");
+        document.body.style.fontFamily = "'Quicksand', sans-serif";
+      }
+
+      // Optional: auto-close dropdown
+      langDropdown.classList.remove("show");
+      moreBtn.setAttribute("aria-expanded", "false");
+      langDropdown.setAttribute("aria-hidden", "true");
+    });
+  });
+</script>
 
 
 </body>
 </html>
+
 
 
 
