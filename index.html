@@ -1,3 +1,4 @@
+WHY  THE MORE BUTTON IN MY CODE IS NOT CLICKBLE ,  FIX THE CODE CORRECTLY AND FULLY :
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,7 @@
       scroll-behavior: smooth;
     }
     body {
+      
       font-family: 'Quicksand', sans-serif;
       background-color: #fafafa;
       margin: 0;
@@ -81,10 +83,10 @@
       transition: transform 0.3s, box-shadow 0.3s, background 0.5s, color 0.5s;
     }
     nav a.active {
-      border-bottom: 2px solid #a6c1ee;
-      padding-bottom: 2px;
-      color: #a6c1ee;
-    }
+  border-bottom: 2px solid #a6c1ee; /* accent color underline */
+  padding-bottom: 2px;
+  color: #a6c1ee;
+}
 
     section:hover {
       transform: translateY(-5px) scale(1.01);
@@ -189,12 +191,12 @@
       overflow: hidden; margin: 8px 0;
     }
     .progress {
-      height: 10px;
-      width: 0;
-      background: linear-gradient(90deg, #a6c1ee, #fbc2eb);
-      border-radius: 10px;
-      transition: width 2s ease;
-    }
+  height: 10px;
+  width: 0; /* start empty */
+  background: linear-gradient(90deg, #a6c1ee, #fbc2eb);
+  border-radius: 10px;
+  transition: width 2s ease; /* smooth filling */
+}
 
     @keyframes grow { from { width: 0; } }
 
@@ -234,7 +236,7 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Contact info styles */
+    /* Contact info styles (added) */
     .contact-info {
       max-width: 700px;
       margin: 0 auto 20px;
@@ -258,186 +260,167 @@
       text-align: center;
       color: #a6c1ee;
     }
-    
     /* Smooth reveal for AOS */
-    [data-aos] {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    [data-aos].aos-animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
+[data-aos] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    /* Stats / Counters styling */
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin: 20px 0;
-    }
-    .stat {
-      text-align: center;
-    }
-    .stat h3 {
-      font-size: 2em;
-      color: #a6c1ee;
-      margin: 0;
-    }
-    .stat p {
-      font-size: 0.9em;
-      color: #666;
-    }
+/* Stats / Counters styling */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 20px 0;
+}
+.stat {
+  text-align: center;
+}
+.stat h3 {
+  font-size: 2em;
+  color: #a6c1ee;
+  margin: 0;
+}
+.stat p {
+  font-size: 0.9em;
+  color: #666;
+}
 
-    /* Floating social sidebar */
-    .social-sidebar {
-      position: fixed;
-      top: 40%;
-      left: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 1000;
-    }
-    .social-sidebar a {
-      background: #a6c1ee;
-      color: white;
-      padding: 10px;
-      border-radius: 50%;
-      text-align: center;
-      transition: transform 0.3s, background 0.3s;
-    }
-    .social-sidebar a:hover {
-      transform: scale(1.2);
-      background: #fbc2eb;
-    }
+/* Floating social sidebar */
+.social-sidebar {
+  position: fixed;
+  top: 40%;
+  left: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1000;
+}
+.social-sidebar a {
+  background: #a6c1ee;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  text-align: center;
+  transition: transform 0.3s, background 0.3s;
+}
+.social-sidebar a:hover {
+  transform: scale(1.2);
+  background: #fbc2eb;
+}
 
-    /* Smooth theme transitions */
-    * {
-      transition: background 0.4s ease, color 0.4s ease, border 0.4s ease;
-    }
-    
-    /* Floating Blob Gradient Background */
-    .blob {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle at center, #fbc2eb 0%, #a6c1ee 100%);
-      border-radius: 50%;
-      filter: blur(180px);
-      opacity: 0.5;
-      transform: translate(-50%, -50%);
-      animation: blobMove 20s ease-in-out infinite;
-      z-index: -1;
-    }
+/* Smooth theme transitions */
+* {
+  transition: background 0.4s ease, color 0.4s ease, border 0.4s ease;
+}
+/* Floating Blob Gradient Background */
+.blob {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle at center, #fbc2eb 0%, #a6c1ee 100%);
+  border-radius: 50%;
+  filter: blur(180px);
+  opacity: 0.5;
+  transform: translate(-50%, -50%);
+  animation: blobMove 20s ease-in-out infinite;
+  z-index: -1; /* stays behind all content */
+}
 
-    @keyframes blobMove {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); }
-      50% { transform: translate(-45%, -55%) scale(1.2); }
-    }
-    
-    /* Language switcher */
-    .language-switcher {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      margin-left: 20px;
-    }
+@keyframes blobMove {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-45%, -55%) scale(1.2); }
+}
+/* Language switcher */
+.language-switcher {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-left: 20px;
+}
 
-    .language-switcher button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 5px;
-      transition: transform 0.3s;
-    }
+.language-switcher button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.3s;
+}
 
-    .language-switcher button img {
-      width: 25px;
-      height: auto;
-      border-radius: 5px;
-    }
+.language-switcher button img {
+  width: 25px;
+  height: auto;
+  border-radius: 5px;
+}
 
-    .language-switcher button:hover {
-      transform: scale(1.2);
-    }
-    
-    /* MORE button + language dropdown */
-    #moreBtn {
-      position: fixed;
-      top: 16px;
-      left: 16px;
-      background: #ffffff;
-      color: #333;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 24px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      cursor: pointer;
-      font-weight: 700;
-      z-index: 1001;
-    }
+.language-switcher button:hover {
+  transform: scale(1.2);
+}
+/* --- START: MORE button + language dropdown (paste at end of your existing <style>) --- */
+#moreBtn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  background: #ffffff;
+  color: #333;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 24px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  cursor: pointer;
+  font-weight: 700;
+  z-index: 1001;
+}
 
-    #langDropdown {
-      position: fixed;
-      top: 56px;
-      left: 16px;
-      background: #fff;
-      padding: 10px;
-      border-radius: 10px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-      display: none;
-      flex-direction: column;
-      gap: 8px;
-      z-index: 1001;
-      min-width: 180px;
-    }
+#langDropdown {
+  position: fixed;
+  top: 56px;
+  left: 16px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 1001;
+  min-width: 180px;
+}
 
-    #langDropdown.show { 
-      display: flex; 
-    }
+#langDropdown.show { display: flex; }
 
-    #langDropdown .lang-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: none;
-      background: none;
-      padding: 6px;
-      text-align: left;
-      cursor: pointer;
-      font-weight: 600;
-      border-radius: 8px;
-    }
+#langDropdown .lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  background: none;
+  padding: 6px;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 8px;
+}
 
-    #langDropdown .lang-btn:hover {
-      background: rgba(166,193,238,0.12);
-    }
+#langDropdown .lang-btn:hover {
+  background: rgba(166,193,238,0.12);
+}
 
-    #langDropdown img.flag {
-      width: 26px;
-      height: auto;
-      border-radius: 4px;
-      display:block;
-    }
-    
-    /* Dark mode styles for dropdown */
-    body.dark-mode #moreBtn {
-      background: #2c2c2c;
-      color: #ddd;
-    }
-    
-    body.dark-mode #langDropdown {
-      background: #2c2c2c;
-      color: #f5f5f5;
-    }
-    
-    body.dark-mode #langDropdown .lang-btn:hover {
-      background: rgba(166,193,238,0.2);
-    }
+#langDropdown img.flag {
+  width: 26px;
+  height: auto;
+  border-radius: 4px;
+  display:block;
+}
+/* adjust dropdown when page becomes RTL (we switch position in JS) */
+
   </style>
 </head>
 <body>
@@ -451,13 +434,14 @@
 
   <header>
     <h1>Bouziani Imane</h1>
-    <p id="greeting"></p> <!-- Dynamic greeting will show here -->
-    <p id="typing"></p>
+<p id="greeting"></p> <!-- Dynamic greeting will show here -->
+<p id="typing"></p>
 
     <p>| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |</p>
   </header>
 
   <button id="darkBtn"><i class="fa-solid fa-moon"></i> Dark Mode</button>
+
 
   <nav>
     <a href="#education"><i class="fa-solid fa-graduation-cap"></i> Education</a>
@@ -468,19 +452,21 @@
     <a href="#qualities"><i class="fa-solid fa-heart"></i> Qualities</a>
     <a href="#cv"><i class="fa-solid fa-file-pdf"></i> CV</a>
     <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
-  </nav>
-  
-  <!-- Place MORE button separately -->
-  <button id="moreBtn" aria-haspopup="true" aria-expanded="false">MORE ▾</button>
-  <div id="langDropdown" aria-hidden="true">
-    <button class="lang-btn" data-lang="en">
-      <img class="flag" src="https://flagcdn.com/w20/gb.png" alt="English"> English
-    </button>
-    <button class="lang-btn" data-lang="ar">
-      <img class="flag" src="https://flagcdn.com/w20/sa.png" alt="Arabic"> العربية
-    </button>
-  </div>
+     
 
+
+
+  </nav>
+<!-- Place MORE button separately -->
+<button id="moreBtn" aria-haspopup="true" aria-expanded="false">MORE ▾</button>
+<div id="langDropdown" aria-hidden="true">
+  <button class="lang-btn" data-lang="en">
+    <img class="flag" src="https://flagcdn.com/w20/gb.png" alt="English"> English
+  </button>
+  <button class="lang-btn" data-lang="ar">
+    <img class="flag" src="https://flagcdn.com/w20/sa.png" alt="Arabic"> العربية
+  </button>
+</div>
   <section id="education" data-aos="fade-up">
     <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
     <div class="illustration"><img src="images/college project-bro.svg" alt="Education"></div>
@@ -517,14 +503,15 @@
       <li>Systems & Networks: Windows, Linux, Wireshark, Cybersecurity</li>
     </ul>
     <!-- Progress bars -->
-    <div class="skill-bar">
-      <p>Python</p>
-      <div class="bar"><div class="progress" data-width="90%"></div></div>
-      <p>Deep learning </p>
-      <div class="bar"><div class="progress" data-width="90%"></div></div>
-      <p>Machine Learning</p>
-      <div class="bar"><div class="progress" data-width="90%"></div></div>
-    </div>
+  <div class="skill-bar">
+  <p>Python</p>
+  <div class="bar"><div class="progress" data-width="90%"></div></div>
+  <p>Deep learning </p>
+  <div class="bar"><div class="progress" data-width="90%"></div></div>
+  <p>Machine Learning</p>
+  <div class="bar"><div class="progress" data-width="90%"></div></div>
+</div>
+
   </section>
 
   <section id="languages" data-aos="fade-up">
@@ -544,6 +531,8 @@
       <img src="images/Kids Studying from Home-bro.svg" alt="Activity 2">
       <img src="images/Doctor-bro.svg" alt="Activity 3">
     </div>
+
+</div>
 
     <ul>
       <li>Participation in international hackathons (AI, Robotics, Data Science)</li>
@@ -576,8 +565,7 @@
       </a>
     </p>
   </section>
-  
-  <!-- Contact Form Section -->
+<!-- Contact Form Section -->
   <section id="contact" data-aos="fade-up">
     <h2><i class="fa-solid fa-envelope"></i> Contact Me</h2>
 
@@ -615,14 +603,7 @@
   <button id="topBtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
   <a href="#contact" id="hireBtn">💼 Hire Me</a>
 
-  <div class="social-sidebar">
-    <a href="https://linkedin.com/in/bouzianiimane" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/bouzianiimane" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="mailto:bouzianiimane1@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-  </div>
-
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
   <script>
     // Preloader
     window.addEventListener("load", function() {
@@ -640,34 +621,32 @@
         setTimeout(typing, 80);
       }
     }
-    
-    // Dynamic greeting based on time of day
-    function setGreeting() {
-      const greetingElement = document.getElementById("greeting");
-      const hour = new Date().getHours();
-      let greetingText = "";
+    typing();
+  // Dynamic greeting based on time of day
+  const greetingElement = document.getElementById("greeting");
+  const hour = new Date().getHours();
+  let greetingText = "";
 
-      if (hour < 12) {
-        greetingText = "Good Morning 🌞";
-      } else if (hour < 18) {
-        greetingText = "Good Afternoon 🌤️";
-      } else {
-        greetingText = "Good Evening 🌙";
-      }
+  if (hour < 12) {
+    greetingText = "Good Morning 🌞";
+  } else if (hour < 18) {
+    greetingText = "Good Afternoon 🌤️";
+  } else {
+    greetingText = "Good Evening 🌙";
+  }
 
-      // Add fade-in effect
-      greetingElement.innerHTML = `<span style="opacity:0; display:inline-block; animation:fadeInGreeting 2s forwards;">${greetingText}</span>`;
+  // Add fade-in effect
+  greetingElement.innerHTML = `<span style="opacity:0; display:inline-block; animation:fadeInGreeting 2s forwards;">${greetingText}</span>`;
 
-      // Add animation keyframes
-      const style = document.createElement("style");
-      style.innerHTML = `
-        @keyframes fadeInGreeting {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `;
-      document.head.appendChild(style);
+  // Add animation keyframes
+  const style = document.createElement("style");
+  style.innerHTML = `
+    @keyframes fadeInGreeting {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
+  `;
+  document.head.appendChild(style);
 
     // Dark mode toggle
     const darkBtn = document.getElementById("darkBtn");
@@ -691,363 +670,599 @@
 
     // AOS Animation
     AOS.init({ duration: 1200 });
-
-    // Animate progress bars when Skills section is visible
-    const skillSection = document.getElementById("skills");
-    const progressBars = skillSection.querySelectorAll(".progress");
-
-    function fillProgressBars() {
-      progressBars.forEach(bar => {
-        const target = bar.getAttribute("data-width");
-        bar.style.width = target;
-      });
-    }
-
-    function resetProgressBars() {
-      progressBars.forEach(bar => {
-        bar.style.width = "0";
-      });
-    }
-
-    // Observer to detect when skills section is visible
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          fillProgressBars();
-        } else {
-          resetProgressBars(); // reset when leaving section
-        }
-      });
-    }, { threshold: 0.4 });
-
-    observer.observe(skillSection);
-
-    // Also trigger when clicking nav "Skills"
-    document.querySelector('a[href="#skills"]').addEventListener("click", () => {
-      resetProgressBars();
-      setTimeout(fillProgressBars, 600); // after scroll
-    });
-
-    // Apply tilt to all images inside .illustration sections
-    if (typeof VanillaTilt !== 'undefined') {
-      VanillaTilt.init(document.querySelectorAll(".illustration img"), {
-        max: 15,       // how much it tilts
-        speed: 300,    // speed of the effect
-        glare: true,   // adds light reflection
-        "max-glare": 0.3
-      });
-    }
-
-    // Highlight active nav link while scrolling
-    const navLinks = document.querySelectorAll("nav a");
-    const sectionsNav = document.querySelectorAll("section");
-
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sectionsNav.forEach(section => {
-        const sectionTop = section.offsetTop - 150; // adjust offset for sticky nav
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute("id");
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href").includes(current)) {
-          link.classList.add("active");
-        }
-      });
-    });
-
-    // MORE button functionality
-    const moreBtn = document.getElementById("moreBtn");
-    const langDropdown = document.getElementById("langDropdown");
-
-    if (moreBtn && langDropdown) {
-      moreBtn.addEventListener("click", function(e) {
-        e.stopPropagation();
-        const isExpanded = moreBtn.getAttribute("aria-expanded") === "true";
-        moreBtn.setAttribute("aria-expanded", !isExpanded);
-        langDropdown.setAttribute("aria-hidden", isExpanded);
-        langDropdown.classList.toggle("show");
-      });
-
-      // Close dropdown when clicking outside
-      document.addEventListener("click", function(e) {
-        if (!moreBtn.contains(e.target) && !langDropdown.contains(e.target)) {
-          langDropdown.classList.remove("show");
-          moreBtn.setAttribute("aria-expanded", "false");
-          langDropdown.setAttribute("aria-hidden", "true");
-        }
-      });
-
-      // Language buttons inside dropdown
-      const langButtons = langDropdown.querySelectorAll(".lang-btn");
-      langButtons.forEach(btn => {
-        btn.addEventListener("click", function(e) {
-          e.stopPropagation();
-          const lang = btn.getAttribute("data-lang");
-          if (lang) {
-            switchLanguage(lang);
-          }
-          // close dropdown
-          langDropdown.classList.remove("show");
-          langDropdown.setAttribute("aria-hidden", "true");
-          moreBtn.setAttribute("aria-expanded", "false");
-        });
-      });
-    }
-
-    // Full translation dictionary
-    const translations = {
-      en: {
-        nav: {
-          education: "Education",
-          experience: "Professional Experience",
-          skills: "Technical Skills",
-          languages: "Languages",
-          activities: "Activities & Achievements",
-          qualities: "Professional Qualities",
-          cv: "My CV",
-          contact: "Contact"
-        },
-        contactLine: "| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |",
-        educationList: [
-          "Master in Artificial Intelligence – With Distinction -2025",
-          "Bachelor in Computer Science – Information Systems -2023",
-          "Startup Label Certificate – AI Project on the Development of a Mobile and Web Application for Intelligent and Smart Vehicles -2023",
-          "STEAM Certification – Designing Creative Educational Programs for Learners-2023"
-        ],
-        experienceList: [
-          "IT Specialist – ZHONGMA International Construction (2023 – 2025)",
-          "IT Specialist – Private Neurology Clinic (2024 – 2025)",
-          "Internship in Medical Imaging – Private Radiology Clinic (2025)",
-          "STEAM & Programming Lecturer – University (2022 – 2023)",
-          "Founder & President – Auto Tech Scientific Club (2022 – 2024)",
-          "Medical equipment operator specialized in neurology for 03 years",
-          "Pharmacy Assistant and Operations Manager"
-        ],
-        skillsList: [
-          "Languages: Python, Java, C/C++, Dart, Swift, R, MATLAB, SQL, HTML, CSS, JavaScript",
-          "AI & Data Science: TensorFlow, PyTorch, Keras, Scikit-Learn, OpenCV...",
-          "Databases: MySQL, Oracle, SQL Server",
-          "3D Tools & Simulation: Unity, Unreal Engine, Blender, MATLAB Simulink",
-          "Systems & Networks: Windows, Linux, Wireshark, Cybersecurity"
-        ],
-        skillLabels: ["Python","Deep learning","Machine Learning"],
-        languagesList: ["Arabic: Native","English: Advanced","French: Professional"],
-        activitiesList: [
-          "Participation in international hackathons (AI, Robotics, Data Science)",
-          "Organization of AI & Programming workshops for different proficiency levels",
-          "Development and creation of educational 3D games using Unreal Engine and Unity 3D",
-          "Design of AI-powered diagnostic systems using medical imaging",
-          "Development of professional websites, web pages, and inventory management softwares"
-        ],
-        qualitiesList: ["Independent │ Creative │ Rigorous │ Dynamic │ Team Spirit │ Analytical"],
-        cvButton: "📄 View / Download My CV",
-        contactInfo: {
-          emailLabel: "Email:",
-          phoneLabel: "Phone:",
-          whatsappLabel: "WhatsApp:",
-          locationLabel: "Location:",
-          linkedinLabel: "LinkedIn:",
-          githubLabel: "GitHub:"
-        },
-        placeholders: {
-          name: "Your Name",
-          email: "Your Email",
-          inquiry: "Your Inquiry"
-        },
-        sendButton: "Send Message",
-        footer: "© 2025 Bouziani Imane | All Rights Reserved",
-        hire: "💼 Hire Me",
-        topBtnTitle: "Go to top",
-        darkMode: "Dark Mode",
-        lightMode: "Light Mode",
-        greetingMorning: "Good Morning 🌞",
-        greetingAfternoon: "Good Afternoon 🌤️",
-        greetingEvening: "Good Evening 🌙"
-      },
-      ar: {
-        nav: {
-          education: "التعليم",
-          experience: "الخبرات المهنية",
-          skills: "المهارات التقنية",
-          languages: "اللغات",
-          activities: "الأنشطة والإنجازات",
-          qualities: "الصفات المهنية",
-          cv: "سيرتي الذاتية",
-          contact: "اتصل بي"
-        },
-        contactLine: "| bouzianiimane1@gmail.com | +213 664 64 77 79 | واتساب: 0673945830 | وهران، الجزائر |",
-        educationList: [
-          "ماجستير في الذكاء الاصطناعي – بتقدير امتياز -2025",
-          "بكالوريوس في علوم الحاسوب – نظم المعلومات -2023",
-          "شهادة تصنيف الشركات الناشئة – مشروع ذكاء اصطناعي لتطوير تطبيق جوال وموقع للسيارات الذكية -2023",
-          "شهادة STEAM – تصميم برامج تعليمية مبتكرة للمتعلمين -2023"
-        ],
-        experienceList: [
-          "أخصائية تقنية معلومات – ZHONGMA International Construction (2023 – 2025)",
-          "أخصائية تقنية معلومات – عيادة خاصة للأمراض العصبية (2024 – 2025)",
-          "تدريب في التصوير الطبي – عيادة أشعة خاصة (2025)",
-          "محاضرة STEAM والبرمجة – الجامعة (2022 – 2023)",
-          "المؤسسة ورئيسة – نادي Auto Tech العلمي (2022 – 2024)",
-          "مشغلة أجهزة طبية متخصصة في علم الأعصاب لمدة 03 سنوات",
-          "مساعدة صيدلية ومديرة عمليات"
-        ],
-        skillsList: [
-          "لغات: Python, Java, C/C++, Dart, Swift, R, MATLAB, SQL, HTML, CSS, JavaScript",
-          "الذكاء الاصطناعي وعلوم البيانات: TensorFlow, PyTorch, Keras, Scikit-Learn, OpenCV...",
-          "قواعد البيانات: MySQL, Oracle, SQL Server",
-          "أدوات ثلاثية الأبعاد والمحاكاة: Unity, Unreal Engine, Blender, MATLAB Simulink",
-          "أنظمة وشبكات: Windows, Linux, Wireshark, Cybersecurity"
-        ],
-        skillLabels: ["بايثون","التعلم العميق","تعلم الآلة"],
-        languagesList: ["العربية: الأم","الإنجليزية: متقدم","الفرنسية: احترافي"],
-        activitiesList: [
-          "المشاركة في هاكاثونات دولية (الذكاء الاصطناعي، الروبوتات، علوم البيانات)",
-          "تنظيم ورش عمل في الذكاء الاصطناعي والبرمجة لمختلف المستويات",
-          "تطوير وإنشاء ألعاب تعليمية ثلاثية الأبعاد باستخدام Unreal Engine وUnity 3D",
-          "تصميم أنظمة تشخيصية مدعومة بالذكاء الاصطناعي باستخدام التصوير الطبي",
-          "تطوير مواقع ويب احترافية وبرامج إدارة المخزون"
-        ],
-        qualitiesList: ["مستقلة │ مبدعة │ دقيقة │ ديناميكية │ روح الفريق │ تحليلية"],
-        cvButton: "📄 عرض / تنزيل السيرة الذاتية",
-        contactInfo: {
-          emailLabel: "البريد الإلكتروني:",
-          phoneLabel: "الهاتف:",
-          whatsappLabel: "واتساب:",
-          locationLabel: "الموقع:",
-          linkedinLabel: "لينكدإن:",
-          githubLabel: "جيت هاب:"
-        },
-        placeholders: {
-          name: "الاسم",
-          email: "البريد الإلكتروني",
-          inquiry: "رسالتك"
-        },
-        sendButton: "إرسال الرسالة",
-        footer: "© 2025 بوزياني إيمان | جميع الحقوق محفوظة",
-        hire: "💼 تواصل للتوظيف",
-        topBtnTitle: "الذهاب للأعلى",
-        darkMode: "الوضع الداكن",
-        lightMode: "الوضع الفاتح",
-        greetingMorning: "صباح الخير 🌞",
-        greetingAfternoon: "مساء الخير 🌤️",
-        greetingEvening: "مساء الخير 🌙"
-      }
-    };
-
-    // Core function that updates all page text
-    function switchLanguage(lang) {
-      const t = translations[lang];
-
-      // 1) NAV links (order assumed same as your nav)
-      const navKeys = ['education','experience','skills','languages','activities','qualities','cv','contact'];
-      const navIcons = ['fa-graduation-cap','fa-briefcase','fa-laptop-code','fa-language','fa-star','fa-heart','fa-file-pdf','fa-envelope'];
-      const navAnchors = Array.from(document.querySelectorAll('nav > a'));
-      navAnchors.forEach((a, idx) => {
-        if (!navKeys[idx]) return;
-        a.innerHTML = `<i class="fa-solid ${navIcons[idx]}"></i> ${t.nav[navKeys[idx]]}`;
-      });
-
-      // 2) Section headers (safe to set these again)
-      document.querySelector('#education h2')?.innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${t.nav.education}`;
-      document.querySelector('#experience h2')?.innerHTML = `<i class="fa-solid fa-briefcase"></i> ${t.nav.experience}`;
-      document.querySelector('#skills h2')?.innerHTML = `<i class="fa-solid fa-laptop-code"></i> ${t.nav.skills}`;
-      document.querySelector('#languages h2')?.innerHTML = `<i class="fa-solid fa-language"></i> ${t.nav.languages}`;
-      document.querySelector('#activities h2')?.innerHTML = `<i class="fa-solid fa-star"></i> ${t.nav.activities}`;
-      document.querySelector('#qualities h2')?.innerHTML = `<i class="fa-solid fa-heart"></i> ${t.nav.qualities}`;
-      document.querySelector('#cv h2')?.innerHTML = `<i class="fa-solid fa-file-pdf"></i> ${t.nav.cv}`;
-      document.querySelector('#contact h2')?.innerHTML = `<i class="fa-solid fa-envelope"></i> ${t.nav.contact}`;
-
-      // 3) Header contact line (the last <p> inside header)
-      const headerContactP = document.querySelector('header p:last-of-type');
-      if (headerContactP) headerContactP.innerText = t.contactLine;
-
-      // 4) Lists (education, experience, skills, languages, activities, qualities)
-      const setList = (selector, arr) => {
-        const items = document.querySelectorAll(selector);
-        arr.forEach((text, i) => { if (items[i]) items[i].innerText = text; });
-      };
-      setList('#education ul li', t.educationList);
-      setList('#experience ul li', t.experienceList);
-      setList('#skills ul li', t.skillsList);
-      setList('#languages ul li', t.languagesList);
-      setList('#activities ul li', t.activitiesList);
-      setList('#qualities ul li', t.qualitiesList);
-
-      // 5) Skill bar labels (the <p> elements before the bars)
-      const skillLabelPs = document.querySelectorAll('.skill-bar p');
-      t.skillLabels.forEach((s, i) => { if (skillLabelPs[i]) skillLabelPs[i].innerText = s; });
-
-      // 6) CV button
-      const cvAnchor = document.querySelector('#cv a');
-      if (cvAnchor) cvAnchor.innerHTML = t.cvButton;
-
-      // 7) Contact info block (keeps icons and contact values)
-      const ci = document.querySelectorAll('.contact-info p');
-      if (ci[0]) ci[0].innerHTML = `<i class="fa-solid fa-envelope"></i><strong>${t.contactInfo.emailLabel}</strong> <a href="mailto:bouzianiimane1@gmail.com">bouzianiimane1@gmail.com</a>`;
-      if (ci[1]) ci[1].innerHTML = `<i class="fa-solid fa-phone"></i><strong>${t.contactInfo.phoneLabel}</strong> +213 664 64 77 79`;
-      if (ci[2]) ci[2].innerHTML = `<i class="fa-brands fa-whatsapp"></i><strong>${t.contactInfo.whatsappLabel}</strong> 0673945830`;
-      if (ci[3]) ci[3].innerHTML = `<i class="fa-solid fa-location-dot"></i><strong>${t.contactInfo.locationLabel}</strong> Oran, Algeria`;
-      if (ci[4]) ci[4].innerHTML = `<i class="fa-brands fa-linkedin"></i><strong>${t.contactInfo.linkedinLabel}</strong> <a href="https://linkedin.com/in/bouzianiimane" target="_blank">linkedin.com/in/bouzianiimane</a>`;
-      if (ci[5]) ci[5].innerHTML = `<i class="fa-brands fa-github"></i><strong>${t.contactInfo.githubLabel}</strong> <a href="https://github.com/bouzianiimane" target="_blank">github.com/bouzianiimane</a>`;
-
-      // 8) Contact form placeholders + send button
-      const nameInput = document.querySelector('input[name="name"]');
-      const emailInput = document.querySelector('input[name="email"]');
-      const inquiry = document.querySelector('textarea[name="inquiry"]');
-      if (nameInput) nameInput.placeholder = t.placeholders.name;
-      if (emailInput) emailInput.placeholder = t.placeholders.email;
-      if (inquiry) inquiry.placeholder = t.placeholders.inquiry;
-      const sendBtn = document.querySelector('.contact-form button');
-      if (sendBtn) sendBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> ${t.sendButton}`;
-
-      // 9) Footer, hire button and top button title
-      const footerP = document.querySelector('footer p');
-      if (footerP) footerP.innerText = t.footer;
-      const hireBtn = document.getElementById('hireBtn');
-      if (hireBtn) hireBtn.innerText = t.hire;
-      const topBtn = document.getElementById('topBtn');
-      if (topBtn) topBtn.title = t.topBtnTitle;
-
-      // 10) Dark mode button label (respect current theme)
-      const darkBtn = document.getElementById('darkBtn');
-      const isDark = document.body.classList.contains('dark-mode');
-      if (darkBtn) darkBtn.innerHTML = isDark ? `<i class="fa-solid fa-sun"></i> ${t.lightMode}` : `<i class="fa-solid fa-moon"></i> ${t.darkMode}`;
-
-      // 11) Greeting (based on time)
-      const hour = new Date().getHours();
-      let greet = (hour < 12) ? t.greetingMorning : (hour < 18) ? t.greetingAfternoon : t.greetingEvening;
-      const greetingElement = document.getElementById('greeting');
-      if (greetingElement) greetingElement.innerText = greet;
-
-      // 12) Direction / lang attribute
-      if (lang === 'ar') {
-        document.documentElement.lang = 'ar';
-        document.body.setAttribute('dir', 'rtl');
-        document.body.style.textAlign = 'right';
-        // place dropdown on the right when RTL
-        const dd = document.getElementById('langDropdown');
-        if (dd) { dd.style.left = ''; dd.style.right = '16px'; }
-      } else {
-        document.documentElement.lang = 'en';
-        document.body.setAttribute('dir', 'ltr');
-        document.body.style.textAlign = 'left';
-        const dd = document.getElementById('langDropdown');
-        if (dd) { dd.style.right = ''; dd.style.left = '16px'; }
-      }
-    } // end switchLanguage
-
-    // Initialize everything
-    document.addEventListener("DOMContentLoaded", function() {
-      setGreeting();
-      typing();
-      
-      // Initialize page in English by default
-      switchLanguage('en');
-    });
   </script>
+ <script>
+  // Animate progress bars when Skills section is visible
+  const skillSection = document.getElementById("skills");
+  const progressBars = skillSection.querySelectorAll(".progress");
+
+  function fillProgressBars() {
+    progressBars.forEach(bar => {
+      const target = bar.getAttribute("data-width");
+      bar.style.width = target;
+    });
+  }
+
+  function resetProgressBars() {
+    progressBars.forEach(bar => {
+      bar.style.width = "0";
+    });
+  }
+
+  // Observer to detect when skills section is visible
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        fillProgressBars();
+      } else {
+        resetProgressBars(); // reset when leaving section
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(skillSection);
+
+  // Also trigger when clicking nav "Skills"
+  document.querySelector('a[href="#skills"]').addEventListener("click", () => {
+    resetProgressBars();
+    setTimeout(fillProgressBars, 600); // after scroll
+  });
+  
+
+</script>
+
+<div class="social-sidebar">
+  <a href="https://linkedin.com/in/bouzianiimane" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <a href="https://github.com/bouzianiimane" target="_blank"><i class="fab fa-github"></i></a>
+  <a href="mailto:bouzianiimane1@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+</div>
+
+<!-- 🔹 VanillaTilt library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+<script>
+  // Apply tilt to all images inside .illustration sections
+  VanillaTilt.init(document.querySelectorAll(".illustration img"), {
+    max: 15,       // how much it tilts
+    speed: 300,    // speed of the effect
+    glare: true,   // adds light reflection
+    "max-glare": 0.3
+  });
+</script>
+<script>
+  // Highlight active nav link while scrolling
+  const navLinks = document.querySelectorAll("nav a");
+  const sectionsNav = document.querySelectorAll("section");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sectionsNav.forEach(section => {
+      const sectionTop = section.offsetTop - 150; // adjust offset for sticky nav
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href").includes(current)) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+<script>
+/* --- START: language dropdown + full-page translator (paste at end of body) --- */
+(function(){
+  // Full translation dictionary (add/adjust items as you like)
+  const translations = {
+    en: {
+      nav: {
+        education: "Education",
+        experience: "Professional Experience",
+        skills: "Technical Skills",
+        languages: "Languages",
+        activities: "Activities & Achievements",
+        qualities: "Professional Qualities",
+        cv: "My CV",
+        contact: "Contact"
+      },
+      contactLine: "| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |",
+      educationList: [
+        "Master in Artificial Intelligence – With Distinction -2025",
+        "Bachelor in Computer Science – Information Systems -2023",
+        "Startup Label Certificate – AI Project on the Development of a Mobile and Web Application for Intelligent and Smart Vehicles -2023",
+        "STEAM Certification – Designing Creative Educational Programs for Learners-2023"
+      ],
+      experienceList: [
+        "IT Specialist – ZHONGMA International Construction (2023 – 2025)",
+        "IT Specialist – Private Neurology Clinic (2024 – 2025)",
+        "Internship in Medical Imaging – Private Radiology Clinic (2025)",
+        "STEAM & Programming Lecturer – University (2022 – 2023)",
+        "Founder & President – Auto Tech Scientific Club (2022 – 2024)",
+        "Medical equipment operator specialized in neurology for 03 years",
+        "Pharmacy Assistant and Operations Manager"
+      ],
+      skillsList: [
+        "Languages: Python, Java, C/C++, Dart, Swift, R, MATLAB, SQL, HTML, CSS, JavaScript",
+        "AI & Data Science: TensorFlow, PyTorch, Keras, Scikit-Learn, OpenCV...",
+        "Databases: MySQL, Oracle, SQL Server",
+        "3D Tools & Simulation: Unity, Unreal Engine, Blender, MATLAB Simulink",
+        "Systems & Networks: Windows, Linux, Wireshark, Cybersecurity"
+      ],
+      skillLabels: ["Python","Deep learning","Machine Learning"],
+      languagesList: ["Arabic: Native","English: Advanced","French: Professional"],
+      activitiesList: [
+        "Participation in international hackathons (AI, Robotics, Data Science)",
+        "Organization of AI & Programming workshops for different proficiency levels",
+        "Development and creation of educational 3D games using Unreal Engine and Unity 3D",
+        "Design of AI-powered diagnostic systems using medical imaging",
+        "Development of professional websites, web pages, and inventory management softwares"
+      ],
+      qualitiesList: ["Independent │ Creative │ Rigorous │ Dynamic │ Team Spirit │ Analytical"],
+      cvButton: "📄 View / Download My CV",
+      contactInfo: {
+        emailLabel: "Email:",
+        phoneLabel: "Phone:",
+        whatsappLabel: "WhatsApp:",
+        locationLabel: "Location:",
+        linkedinLabel: "LinkedIn:",
+        githubLabel: "GitHub:"
+      },
+      placeholders: {
+        name: "Your Name",
+        email: "Your Email",
+        inquiry: "Your Inquiry"
+      },
+      sendButton: "Send Message",
+      footer: "© 2025 Bouziani Imane | All Rights Reserved",
+      hire: "💼 Hire Me",
+      topBtnTitle: "Go to top",
+      darkMode: "Dark Mode",
+      lightMode: "Light Mode",
+      greetingMorning: "Good Morning 🌞",
+      greetingAfternoon: "Good Afternoon 🌤️",
+      greetingEvening: "Good Evening 🌙"
+    },
+    ar: {
+      nav: {
+        education: "التعليم",
+        experience: "الخبرات المهنية",
+        skills: "المهارات التقنية",
+        languages: "اللغات",
+        activities: "الأنشطة والإنجازات",
+        qualities: "الصفات المهنية",
+        cv: "سيرتي الذاتية",
+        contact: "اتصل بي"
+      },
+      contactLine: "| bouzianiimane1@gmail.com | +213 664 64 77 79 | واتساب: 0673945830 | وهران، الجزائر |",
+      educationList: [
+        "ماجستير في الذكاء الاصطناعي – بتقدير امتياز -2025",
+        "بكالوريوس في علوم الحاسوب – نظم المعلومات -2023",
+        "شهادة تصنيف الشركات الناشئة – مشروع ذكاء اصطناعي لتطوير تطبيق جوال وموقع للسيارات الذكية -2023",
+        "شهادة STEAM – تصميم برامج تعليمية مبتكرة للمتعلمين -2023"
+      ],
+      experienceList: [
+        "أخصائية تقنية معلومات – ZHONGMA International Construction (2023 – 2025)",
+        "أخصائية تقنية معلومات – عيادة خاصة للأمراض العصبية (2024 – 2025)",
+        "تدريب في التصوير الطبي – عيادة أشعة خاصة (2025)",
+        "محاضرة STEAM والبرمجة – الجامعة (2022 – 2023)",
+        "المؤسسة ورئيسة – نادي Auto Tech العلمي (2022 – 2024)",
+        "مشغلة أجهزة طبية متخصصة في علم الأعصاب لمدة 03 سنوات",
+        "مساعدة صيدلية ومديرة عمليات"
+      ],
+      skillsList: [
+        "لغات: Python, Java, C/C++, Dart, Swift, R, MATLAB, SQL, HTML, CSS, JavaScript",
+        "الذكاء الاصطناعي وعلوم البيانات: TensorFlow, PyTorch, Keras, Scikit-Learn, OpenCV...",
+        "قواعد البيانات: MySQL, Oracle, SQL Server",
+        "أدوات ثلاثية الأبعاد والمحاكاة: Unity, Unreal Engine, Blender, MATLAB Simulink",
+        "أنظمة وشبكات: Windows, Linux, Wireshark, Cybersecurity"
+      ],
+      skillLabels: ["بايثون","التعلم العميق","تعلم الآلة"],
+      languagesList: ["العربية: الأم","الإنجليزية: متقدم","الفرنسية: احترافي"],
+      activitiesList: [
+        "المشاركة في هاكاثونات دولية (الذكاء الاصطناعي، الروبوتات، علوم البيانات)",
+        "تنظيم ورش عمل في الذكاء الاصطناعي والبرمجة لمختلف المستويات",
+        "تطوير وإنشاء ألعاب تعليمية ثلاثية الأبعاد باستخدام Unreal Engine وUnity 3D",
+        "تصميم أنظمة تشخيصية مدعومة بالذكاء الاصطناعي باستخدام التصوير الطبي",
+        "تطوير مواقع ويب احترافية وبرامج إدارة المخزون"
+      ],
+      qualitiesList: ["مستقلة │ مبدعة │ دقيقة │ ديناميكية │ روح الفريق │ تحليلية"],
+      cvButton: "📄 عرض / تنزيل السيرة الذاتية",
+      contactInfo: {
+        emailLabel: "البريد الإلكتروني:",
+        phoneLabel: "الهاتف:",
+        whatsappLabel: "واتساب:",
+        locationLabel: "الموقع:",
+        linkedinLabel: "لينكدإن:",
+        githubLabel: "جيت هاب:"
+      },
+      placeholders: {
+        name: "الاسم",
+        email: "البريد الإلكتروني",
+        inquiry: "رسالتك"
+      },
+      sendButton: "إرسال الرسالة",
+      footer: "© 2025 بوزياني إيمان | جميع الحقوق محفوظة",
+      hire: "💼 تواصل للتوظيف",
+      topBtnTitle: "الذهاب للأعلى",
+      darkMode: "الوضع الداكن",
+      lightMode: "الوضع الفاتح",
+      greetingMorning: "صباح الخير 🌞",
+      greetingAfternoon: "مساء الخير 🌤️",
+      greetingEvening: "مساء الخير 🌙"
+    }
+  };
+
+  // Core function that updates all page text
+  function switchLanguage(lang) {
+    const t = translations[lang];
+
+    // 1) NAV links (order assumed same as your nav)
+    const navKeys = ['education','experience','skills','languages','activities','qualities','cv','contact'];
+    const navIcons = ['fa-graduation-cap','fa-briefcase','fa-laptop-code','fa-language','fa-star','fa-heart','fa-file-pdf','fa-envelope'];
+    const navAnchors = Array.from(document.querySelectorAll('nav > a'));
+    navAnchors.forEach((a, idx) => {
+      if (!navKeys[idx]) return;
+      a.innerHTML = `<i class="fa-solid ${navIcons[idx]}"></i> ${t.nav[navKeys[idx]]}`;
+    });
+
+    // 2) Section headers (safe to set these again)
+    document.querySelector('#education h2')?.innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${t.nav.education}`;
+    document.querySelector('#experience h2')?.innerHTML = `<i class="fa-solid fa-briefcase"></i> ${t.nav.experience}`;
+    document.querySelector('#skills h2')?.innerHTML = `<i class="fa-solid fa-laptop-code"></i> ${t.nav.skills}`;
+    document.querySelector('#languages h2')?.innerHTML = `<i class="fa-solid fa-language"></i> ${t.nav.languages}`;
+    document.querySelector('#activities h2')?.innerHTML = `<i class="fa-solid fa-star"></i> ${t.nav.activities}`;
+    document.querySelector('#qualities h2')?.innerHTML = `<i class="fa-solid fa-heart"></i> ${t.nav.qualities}`;
+    document.querySelector('#cv h2')?.innerHTML = `<i class="fa-solid fa-file-pdf"></i> ${t.nav.cv}`;
+    document.querySelector('#contact h2')?.innerHTML = `<i class="fa-solid fa-envelope"></i> ${t.nav.contact}`;
+
+    // 3) Header contact line (the last <p> inside header)
+    const headerContactP = document.querySelector('header p:last-of-type');
+    if (headerContactP) headerContactP.innerText = t.contactLine;
+
+    // 4) Lists (education, experience, skills, languages, activities, qualities)
+    const setList = (selector, arr) => {
+      const items = document.querySelectorAll(selector);
+      arr.forEach((text, i) => { if (items[i]) items[i].innerText = text; });
+    };
+    setList('#education ul li', t.educationList);
+    setList('#experience ul li', t.experienceList);
+    setList('#skills ul li', t.skillsList);
+    setList('#languages ul li', t.languagesList);
+    setList('#activities ul li', t.activitiesList);
+    setList('#qualities ul li', t.qualitiesList);
+
+    // 5) Skill bar labels (the <p> elements before the bars)
+    const skillLabelPs = document.querySelectorAll('.skill-bar p');
+    t.skillLabels.forEach((s, i) => { if (skillLabelPs[i]) skillLabelPs[i].innerText = s; });
+
+    // 6) CV button
+    const cvAnchor = document.querySelector('#cv a');
+    if (cvAnchor) cvAnchor.innerHTML = t.cvButton;
+
+    // 7) Contact info block (keeps icons and contact values)
+    const ci = document.querySelectorAll('.contact-info p');
+    if (ci[0]) ci[0].innerHTML = `<i class="fa-solid fa-envelope"></i><strong>${t.contactInfo.emailLabel}</strong> <a href="mailto:bouzianiimane1@gmail.com">bouzianiimane1@gmail.com</a>`;
+    if (ci[1]) ci[1].innerHTML = `<i class="fa-solid fa-phone"></i><strong>${t.contactInfo.phoneLabel}</strong> +213 664 64 77 79`;
+    if (ci[2]) ci[2].innerHTML = `<i class="fa-brands fa-whatsapp"></i><strong>${t.contactInfo.whatsappLabel}</strong> 0673945830`;
+    if (ci[3]) ci[3].innerHTML = `<i class="fa-solid fa-location-dot"></i><strong>${t.contactInfo.locationLabel}</strong> Oran, Algeria`;
+    if (ci[4]) ci[4].innerHTML = `<i class="fa-brands fa-linkedin"></i><strong>${t.contactInfo.linkedinLabel}</strong> <a href="https://linkedin.com/in/bouzianiimane" target="_blank">linkedin.com/in/bouzianiimane</a>`;
+    if (ci[5]) ci[5].innerHTML = `<i class="fa-brands fa-github"></i><strong>${t.contactInfo.githubLabel}</strong> <a href="https://github.com/bouzianiimane" target="_blank">github.com/bouzianiimane</a>`;
+
+    // 8) Contact form placeholders + send button
+    const nameInput = document.querySelector('input[name="name"]');
+    const emailInput = document.querySelector('input[name="email"]');
+    const inquiry = document.querySelector('textarea[name="inquiry"]');
+    if (nameInput) nameInput.placeholder = t.placeholders.name;
+    if (emailInput) emailInput.placeholder = t.placeholders.email;
+    if (inquiry) inquiry.placeholder = t.placeholders.inquiry;
+    const sendBtn = document.querySelector('.contact-form button');
+    if (sendBtn) sendBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> ${t.sendButton}`;
+
+    // 9) Footer, hire button and top button title
+    const footerP = document.querySelector('footer p');
+    if (footerP) footerP.innerText = t.footer;
+    const hireBtn = document.getElementById('hireBtn');
+    if (hireBtn) hireBtn.innerText = t.hire;
+    const topBtn = document.getElementById('topBtn');
+    if (topBtn) topBtn.title = t.topBtnTitle;
+
+    // 10) Dark mode button label (respect current theme)
+    const darkBtn = document.getElementById('darkBtn');
+    const isDark = document.body.classList.contains('dark-mode');
+    if (darkBtn) darkBtn.innerHTML = isDark ? `<i class="fa-solid fa-sun"></i> ${t.lightMode}` : `<i class="fa-solid fa-moon"></i> ${t.darkMode}`;
+
+    // 11) Greeting (based on time)
+    const hour = new Date().getHours();
+    let greet = (hour < 12) ? t.greetingMorning : (hour < 18) ? t.greetingAfternoon : t.greetingEvening;
+    const greetingElement = document.getElementById('greeting');
+    if (greetingElement) greetingElement.innerText = greet;
+
+    // 12) Direction / lang attribute
+    if (lang === 'ar') {
+      document.documentElement.lang = 'ar';
+      document.body.setAttribute('dir', 'rtl');
+      document.body.style.textAlign = 'right';
+      // place dropdown on the right when RTL
+      const dd = document.getElementById('langDropdown');
+      if (dd) { dd.style.left = ''; dd.style.right = '16px'; }
+    } else {
+      document.documentElement.lang = 'en';
+      document.body.setAttribute('dir', 'ltr');
+      document.body.style.textAlign = 'left';
+      const dd = document.getElementById('langDropdown');
+      if (dd) { dd.style.right = ''; dd.style.left = '16px'; }
+    }
+  } // end switchLanguage
+
+  /* ----- DROPDOWN + button behavior ----- */
+  const moreBtn = document.getElementById('moreBtn');
+  const langDropdown = document.getElementById('langDropdown');
+
+  if (moreBtn && langDropdown) {
+    moreBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      const open = langDropdown.classList.toggle('show');
+      moreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      langDropdown.setAttribute('aria-hidden', open ? 'false' : 'true');
+    });
+
+    // language buttons inside dropdown
+    langDropdown.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        const lang = btn.getAttribute('data-lang');
+        if (lang) {
+          switchLanguage(lang);
+        }
+        // close dropdown
+        langDropdown.classList.remove('show');
+        langDropdown.setAttribute('aria-hidden', 'true');
+        moreBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // click outside to close
+    document.addEventListener('click', function(){
+      if (langDropdown.classList.contains('show')) {
+        langDropdown.classList.remove('show');
+        langDropdown.setAttribute('aria-hidden', 'true');
+        moreBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // prevent dropdown clicks from bubbling up (already handled using stopPropagation)
+  }
+
+  // Ensure the dark button label becomes localized *after* existing dark-mode toggle runs.
+  const darkBtn = document.getElementById('darkBtn');
+  if (darkBtn) {
+    darkBtn.addEventListener('click', function(){
+      // give the previous handler a moment and then set localized label
+      setTimeout(() => {
+        const lang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
+        const t = translations[lang];
+        const isDark = document.body.classList.contains('dark-mode');
+        darkBtn.innerHTML = isDark ? `<i class="fa-solid fa-sun"></i> ${t.lightMode}` : `<i class="fa-solid fa-moon"></i> ${t.darkMode}`;
+      }, 10);
+    });
+  }
+
+  // Initialize page in English by default (change to 'ar' if you want Arabic start)
+  switchLanguage('en');
+
+  // expose switchLanguage if other scripts call it
+  window.switchLanguage = switchLanguage;
+})();
+</script>
+<script>
+  const moreBtn = document.getElementById('moreBtn');
+  const langDropdown = document.getElementById('langDropdown');
+
+  moreBtn.addEventListener('click', () => {
+    langDropdown.classList.toggle('show');
+    // Update ARIA attributes for accessibility
+    const expanded = moreBtn.getAttribute('aria-expanded') === 'true';
+    moreBtn.setAttribute('aria-expanded', !expanded);
+    langDropdown.setAttribute('aria-hidden', expanded);
+  });
+
+  // Optional: close dropdown if clicked outside
+  document.addEventListener('click', (e) => {
+    if (!moreBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.classList.remove('show');
+      moreBtn.setAttribute('aria-expanded', 'false');
+      langDropdown.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // Handle language selection from dropdown
+  const langButtons = langDropdown.querySelectorAll('.lang-btn');
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang');
+      switchLanguage(lang); // your existing function
+      langDropdown.classList.remove('show');
+      moreBtn.setAttribute('aria-expanded', 'false');
+      langDropdown.setAttribute('aria-hidden', 'true');
+    });
+  });
+</script>
+<script>
+  // Toggle dropdown visibility
+  const moreBtn = document.getElementById("moreBtn");
+  const langDropdown = document.getElementById("langDropdown");
+
+  moreBtn.addEventListener("click", () => {
+    langDropdown.classList.toggle("show");
+  });
+
+  // Close dropdown if clicking outside
+  window.addEventListener("click", (e) => {
+    if (!moreBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.classList.remove("show");
+    }
+  });
+
+  // Make the flags clickable to switch language
+  const langButtons = document.querySelectorAll("#langDropdown .lang-btn");
+  langButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang");
+      switchLanguage(lang);
+      langDropdown.classList.remove("show"); // close dropdown after selection
+    });
+  });
+</script>
+<script>
+  // Example: toggle a language menu (use your own IDs)
+  const languageBtn = document.getElementById('language-btn'); // button to open menu
+  const languageMenu = document.getElementById('language-menu'); // dropdown menu
+
+  if (languageBtn && languageMenu) {
+    // Open/close menu
+    languageBtn.addEventListener('click', () => {
+      languageMenu.classList.toggle('show');
+    });
+
+    // Close menu if clicking outside
+    document.addEventListener('click', (e) => {
+      if (!languageBtn.contains(e.target) && !languageMenu.contains(e.target)) {
+        languageMenu.classList.remove('show');
+      }
+    });
+  }
+</script>
+<script>
+  const moreBtn = document.getElementById("moreBtn");
+  const langDropdown = document.getElementById("langDropdown");
+
+  // Show/hide dropdown
+  moreBtn.addEventListener("click", () => {
+    if (langDropdown.style.display === "block") {
+      langDropdown.style.display = "none";
+    } else {
+      langDropdown.style.display = "block";
+    }
+  });
+
+  // Close dropdown on outside click
+  document.addEventListener("click", (e) => {
+    if (!moreBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.style.display = "none";
+    }
+  });
+
+  // Language switching
+  const langButtons = document.querySelectorAll(".lang-btn");
+  langButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const selectedLang = btn.getAttribute("data-lang");
+      langDropdown.style.display = "none";
+
+      if (selectedLang === "ar") {
+        document.documentElement.lang = "ar";
+        document.body.dir = "rtl";
+        document.querySelector("header h1").textContent = "بوزياني إيمان";
+        document.querySelector("#education h2").innerHTML = '<i class="fa-solid fa-graduation-cap"></i> التعليم';
+        document.querySelector("#experience h2").innerHTML = '<i class="fa-solid fa-briefcase"></i> الخبرة المهنية';
+      } else {
+        document.documentElement.lang = "en";
+        document.body.dir = "ltr";
+        document.querySelector("header h1").textContent = "Bouziani Imane";
+        document.querySelector("#education h2").innerHTML = '<i class="fa-solid fa-graduation-cap"></i> Education';
+        document.querySelector("#experience h2").innerHTML = '<i class="fa-solid fa-briefcase"></i> Professional Experience';
+      }
+    });
+  });
+</script>
+<script>
+// Highlight active nav link while scrolling
+const navLinks = document.querySelectorAll("nav a");
+const sectionsNav = document.querySelectorAll("section");
+
+
+</script>
+
+<script>
+  const moreBtn = document.getElementById("moreBtn");
+  const langDropdown = document.getElementById("langDropdown");
+
+  moreBtn.addEventListener("click", () => {
+    const expanded = moreBtn.getAttribute("aria-expanded") === "true";
+    moreBtn.setAttribute("aria-expanded", !expanded);
+    langDropdown.setAttribute("aria-hidden", expanded);
+    langDropdown.classList.toggle("show");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!moreBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.classList.remove("show");
+      moreBtn.setAttribute("aria-expanded", "false");
+      langDropdown.setAttribute("aria-hidden", "true");
+    }
+  });
+</script>
+</body>
+<script>
+  const moreBtn = document.getElementById("moreBtn");
+  const langDropdown = document.getElementById("langDropdown");
+
+  moreBtn.addEventListener("click", () => {
+    langDropdown.classList.toggle("show");
+
+    // Update accessibility attributes
+    const expanded = moreBtn.getAttribute("aria-expanded") === "true";
+    moreBtn.setAttribute("aria-expanded", !expanded);
+    langDropdown.setAttribute("aria-hidden", expanded);
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!moreBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.classList.remove("show");
+      moreBtn.setAttribute("aria-expanded", "false");
+      langDropdown.setAttribute("aria-hidden", "true");
+    }
+  });
+
+  // Handle language switching
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const lang = btn.dataset.lang;
+
+      if (lang === "ar") {
+        document.body.setAttribute("dir", "rtl");
+        document.body.style.fontFamily = "Tahoma, Arial, sans-serif";
+      } else {
+        document.body.setAttribute("dir", "ltr");
+        document.body.style.fontFamily = "'Quicksand', sans-serif";
+      }
+
+      // Optional: auto-close dropdown
+      langDropdown.classList.remove("show");
+      moreBtn.setAttribute("aria-expanded", "false");
+      langDropdown.setAttribute("aria-hidden", "true");
+    });
+  });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const moreBtn = document.getElementById("moreBtn");
+  const langDropdown = document.getElementById("langDropdown");
+
+  moreBtn.addEventListener("click", () => {
+    langDropdown.classList.toggle("show");
+  });
+
+  // Optional: close dropdown if clicking outside
+  document.addEventListener("click", (e) => {
+    if (!moreBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.classList.remove("show");
+    }
+  });
+});
+</script>
 </body>
 </html>
