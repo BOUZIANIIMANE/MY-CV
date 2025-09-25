@@ -11,14 +11,25 @@
     html {
       scroll-behavior: smooth;
     }
-    body {
-      font-family: 'Quicksand', sans-serif;
-      background-color: #fafafa;
-      margin: 0;
-      padding: 0;
-      color: #444;
-      transition: background 0.5s, color 0.5s;
-    }
+   body {
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #444;
+  transition: background 0.5s, color 0.5s;
+
+  /* 🔹 Animated gradient background */
+  background: linear-gradient(270deg, #fbc2eb, #a6c1ee, #f9f586, #fbc2eb);
+  background-size: 600% 600%;
+  animation: animatedBackground 18s ease infinite;
+}
+
+@keyframes animatedBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
     header {
       background: linear-gradient(270deg, #fbc2eb, #a6c1ee, #fbc2eb);
       background-size: 600% 600%;
@@ -1040,4 +1051,5 @@
   </script>
 </body>
 </html>
+
 
