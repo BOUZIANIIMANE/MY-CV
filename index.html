@@ -757,7 +757,7 @@ class Shape {
 
 // Create shapes
 let shapes = [];
-const types = ["circle", "triangle", "square", "hexagon"];
+const types = ["circle", "hexagon"];
 for (let i = 0; i < 25; i++) {
   const type = types[Math.floor(Math.random() * types.length)];
   shapes.push(new Shape(type));
@@ -1177,6 +1177,7 @@ animate();
   </script>
 </body>
 </html>
+
 
 
 
