@@ -661,7 +661,7 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
 
-    // Floating triangles animation
+// Floating shapes animation (Triangles + Circles)
 const canvas = document.getElementById("trianglesCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -672,28 +672,42 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
-// Triangle class
-class Triangle {
-  constructor() {
+// Shape class
+class Shape {
+  constructor(type) {
+    this.type = type; // "triangle" or "circle"
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
-    this.size = 20 + Math.random() * 30;
+    this.size = 15 + Math.random() * 25;
     this.speedX = (Math.random() - 0.5) * 2;
     this.speedY = (Math.random() - 0.5) * 2;
-    this.color = `hsla(${Math.random() * 360}, 70%, 80%, 0.6)`;
+
+    // Pastel purples and baby blue shades
+    const colors = [
+      "rgba(186, 170, 255, 0.6)", // pastel purple
+      "rgba(204, 191, 255, 0.6)", // lavender
+      "rgba(221, 210, 255, 0.6)", // light lilac
+      "rgba(173, 216, 230, 0.6)", // baby blue
+      "rgba(200, 180, 255, 0.6)"  // soft violet
+    ];
+    this.color = colors[Math.floor(Math.random() * colors.length)];
   }
 
   draw() {
     ctx.beginPath();
-    ctx.moveTo(this.x, this.y - this.size / 2);
-    ctx.lineTo(this.x - this.size / 2, this.y + this.size / 2);
-    ctx.lineTo(this.x + this.size / 2, this.y + this.size / 2);
-    ctx.closePath();
+    if (this.type === "circle") {
+      ctx.arc(this.x, this.y, this.size / 2, 0, Math.PI * 2);
+    } else if (this.type === "triangle") {
+      ctx.moveTo(this.x, this.y - this.size / 2);
+      ctx.lineTo(this.x - this.size / 2, this.y + this.size / 2);
+      ctx.lineTo(this.x + this.size / 2, this.y + this.size / 2);
+      ctx.closePath();
+    }
     ctx.fillStyle = this.color;
     ctx.fill();
   }
 
-  update(triangles) {
+  update(shapes) {
     this.x += this.speedX;
     this.y += this.speedY;
 
@@ -701,13 +715,13 @@ class Triangle {
     if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
     if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
 
-    // Simple collision check with other triangles
-    for (let t of triangles) {
-      if (t !== this) {
-        const dx = this.x - t.x;
-        const dy = this.y - t.y;
+    // Simple collision
+    for (let s of shapes) {
+      if (s !== this) {
+        const dx = this.x - s.x;
+        const dy = this.y - s.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < (this.size + t.size) / 2) {
+        if (dist < (this.size + s.size) / 2) {
           this.speedX *= -1;
           this.speedY *= -1;
         }
@@ -718,19 +732,22 @@ class Triangle {
   }
 }
 
-let triangles = [];
-for (let i = 0; i < 15; i++) {
-  triangles.push(new Triangle());
+// Create shapes
+let shapes = [];
+for (let i = 0; i < 20; i++) {
+  const type = Math.random() > 0.5 ? "circle" : "triangle";
+  shapes.push(new Shape(type));
 }
 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let t of triangles) {
-    t.update(triangles);
+  for (let s of shapes) {
+    s.update(shapes);
   }
   requestAnimationFrame(animate);
 }
 animate();
+
 
     // Preloader
     window.addEventListener("load", function() {
@@ -1135,6 +1152,7 @@ animate();
   </script>
 </body>
 </html>
+
 
 
 
