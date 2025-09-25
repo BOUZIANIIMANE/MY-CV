@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,6 +88,24 @@
       transition: color 0.3s;
       font-family: 'Quicksand', sans-serif;
     }
+
+    /* Keep nav items centered in both LTR and RTL */
+.nav-main {
+  justify-content: center;   /* force center */
+  flex-wrap: wrap;           /* prevent breaking */
+  width: 100%; 
+  text-align: center;
+}
+
+/* Flip direction only when page is RTL */
+body[dir="rtl"] .nav-container {
+  direction: rtl;
+}
+
+body[dir="ltr"] .nav-container {
+  direction: ltr;
+}
+
     .nav-main a i { transition: transform 0.3s, color 0.3s; }
     .nav-main a:hover { color: #a6c1ee; }
     .nav-main a:hover i { transform: rotate(10deg) scale(1.2); color: #fbc2eb; }
@@ -478,7 +497,19 @@
     body.dark-mode #moreBtn:hover {
       background: #a6c1ee;
     }
+ body[dir="ltr"] p,
+    body[dir="ltr"] ul,
+    body[dir="ltr"] .contact-info,
+    body[dir="ltr"] section {
+      text-align: left;
+    }
 
+    body[dir="rtl"] p,
+    body[dir="rtl"] ul,
+    body[dir="rtl"] .contact-info,
+    body[dir="rtl"] section {
+      text-align: right;
+    }
   </style>
 </head>
 <body>
@@ -1167,7 +1198,14 @@ animate();
         document.body.style.textAlign = 'left';
         document.querySelector('.nav-container').style.justifyContent = 'center';
       }
-      
+      // When switching to Arabic
+document.body.setAttribute("dir", "rtl");
+document.documentElement.lang = "ar";
+
+// When switching back to English
+document.body.setAttribute("dir", "ltr");
+document.documentElement.lang = "en";
+
       // Update HTML lang attribute
       document.documentElement.setAttribute('lang', lang);
     }
@@ -1177,6 +1215,7 @@ animate();
   </script>
 </body>
 </html>
+
 
 
 
