@@ -661,7 +661,7 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
 
-// Floating shapes animation (Triangles + Circles)
+// Floating shapes animation (Circles + Triangles + Squares + Hexagons)
 const canvas = document.getElementById("trianglesCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -675,14 +675,14 @@ window.addEventListener("resize", resizeCanvas);
 // Shape class
 class Shape {
   constructor(type) {
-    this.type = type; // "triangle" or "circle"
+    this.type = type; // "circle", "triangle", "square", "hexagon"
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
     this.size = 15 + Math.random() * 25;
     this.speedX = (Math.random() - 0.5) * 2;
     this.speedY = (Math.random() - 0.5) * 2;
 
-    // Pastel purples and baby blue shades
+    // Pastel purples and baby blues
     const colors = [
       "rgba(186, 170, 255, 0.6)", // pastel purple
       "rgba(204, 191, 255, 0.6)", // lavender
@@ -695,15 +695,33 @@ class Shape {
 
   draw() {
     ctx.beginPath();
+    ctx.fillStyle = this.color;
+
     if (this.type === "circle") {
       ctx.arc(this.x, this.y, this.size / 2, 0, Math.PI * 2);
-    } else if (this.type === "triangle") {
+    } 
+    else if (this.type === "triangle") {
       ctx.moveTo(this.x, this.y - this.size / 2);
       ctx.lineTo(this.x - this.size / 2, this.y + this.size / 2);
       ctx.lineTo(this.x + this.size / 2, this.y + this.size / 2);
       ctx.closePath();
+    } 
+    else if (this.type === "square") {
+      ctx.rect(this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
     }
-    ctx.fillStyle = this.color;
+    else if (this.type === "hexagon") {
+      const sides = 6;
+      const step = (Math.PI * 2) / sides;
+      const shift = Math.PI / 6;
+      for (let i = 0; i < sides; i++) {
+        const curX = this.x + this.size * Math.cos(i * step + shift);
+        const curY = this.y + this.size * Math.sin(i * step + shift);
+        if (i === 0) ctx.moveTo(curX, curY);
+        else ctx.lineTo(curX, curY);
+      }
+      ctx.closePath();
+    }
+
     ctx.fill();
   }
 
@@ -734,8 +752,9 @@ class Shape {
 
 // Create shapes
 let shapes = [];
-for (let i = 0; i < 20; i++) {
-  const type = Math.random() > 0.5 ? "circle" : "triangle";
+const types = ["circle", "triangle", "square", "hexagon"];
+for (let i = 0; i < 25; i++) {
+  const type = types[Math.floor(Math.random() * types.length)];
   shapes.push(new Shape(type));
 }
 
@@ -747,6 +766,7 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
+
 
 
     // Preloader
@@ -1152,6 +1172,7 @@ animate();
   </script>
 </body>
 </html>
+
 
 
 
