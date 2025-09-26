@@ -1182,7 +1182,9 @@ animate();
       }
     };
 
-    function switchLanguage(lang) {
+ let typingTimeout; // global timeout for typing effect
+
+function switchLanguage(lang) {
   // Update all elements with data-key attributes
   document.querySelectorAll('[data-key]').forEach(element => {
     const key = element.getAttribute('data-key');
@@ -1191,7 +1193,7 @@ animate();
     }
   });
 
-  // Update placeholders for inputs and textareas
+  // Update placeholders
   document.querySelectorAll('input[data-key], textarea[data-key]').forEach(element => {
     const key = element.getAttribute('data-key');
     if (translations[lang][key]) {
@@ -1199,41 +1201,43 @@ animate();
     }
   });
 
-  // Update text direction and alignment
+  // Update direction and alignment
   if (lang === 'ar') {
     document.body.setAttribute('dir', 'rtl');
     document.body.style.textAlign = 'right';
-    document.querySelector('.nav-container').style.justifyContent = 'flex-end';
+    const nav = document.querySelector('.nav-container');
+    if(nav) nav.style.justifyContent = 'flex-end';
   } else {
     document.body.setAttribute('dir', 'ltr');
     document.body.style.textAlign = 'left';
-    document.querySelector('.nav-container').style.justifyContent = 'center';
+    const nav = document.querySelector('.nav-container');
+    if(nav) nav.style.justifyContent = 'center';
   }
 
-  // Dynamic greeting based on time
-  const hour = new Date().getHours();
-  let greetingText = '';
-  if (hour < 12) greetingText = lang === 'ar' ? 'صباح الخير !' : 'Good Morning !';
-  else if (hour < 18) greetingText = lang === 'ar' ? 'مساء الخير !' : 'Good Afternoon !';
-  else greetingText = lang === 'ar' ? 'مساء الخير !' : 'Good Evening !';
-  const greetingElement = document.querySelector('[data-key="greeting"]');
-  if (greetingElement) greetingElement.textContent = greetingText;
+  // Update HTML lang attribute
+  document.documentElement.setAttribute('lang', lang);
 
-  // Optional: Restart typing effect for title
+  // Typing effect for your title
   const typingElement = document.getElementById('typing');
   if (typingElement) {
-    const title = translations[lang]['title'];
-    typingElement.textContent = '';
+    const title = translations[lang]['title'] || '';
+    typingElement.textContent = ''; // clear old text
     let i = 0;
+
+    // Clear previous timeout if switching quickly
+    if (typingTimeout) clearTimeout(typingTimeout);
+
     function typing() {
       if (i < title.length) {
         typingElement.innerHTML += title.charAt(i);
         i++;
-        setTimeout(typing, 80);
+        typingTimeout = setTimeout(typing, 80); // adjust speed here
       }
     }
-    typing();
+
+    typing(); // start typing
   }
+}
 
   // Update HTML lang attribute
   document.documentElement.setAttribute('lang', lang);
@@ -1244,6 +1248,7 @@ animate();
   </script>
 </body>
 </html>
+
 
 
 
