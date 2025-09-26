@@ -497,19 +497,18 @@ body[dir="ltr"] .nav-container {
     body.dark-mode #moreBtn:hover {
       background: #a6c1ee;
     }
- body[dir="ltr"] p,
-    body[dir="ltr"] ul,
-    body[dir="ltr"] .contact-info,
-    body[dir="ltr"] section {
-      text-align: left;
-    }
+/* Header content alignment */
+.header-content {
+  max-width: 900px;      /* optional, keeps content from stretching too far */
+  margin: 0 auto;        /* center horizontally for LTR */
+  text-align: center;    /* center text by default */
+}
 
-    body[dir="rtl"] p,
-    body[dir="rtl"] ul,
-    body[dir="rtl"] .contact-info,
-    body[dir="rtl"] section {
-      text-align: right;
-    }
+/* When page is RTL (Arabic) */
+body[dir="rtl"] .header-content {
+  text-align: right;     /* align everything to the right */
+}
+
   </style>
 </head>
 <body>
@@ -1216,6 +1215,7 @@ document.documentElement.lang = "en";
   </script>
 </body>
 </html>
+
 
 
 
