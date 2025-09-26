@@ -1182,49 +1182,68 @@ animate();
     };
 
     function switchLanguage(lang) {
-      // Update all elements with data-key attributes
-      document.querySelectorAll('[data-key]').forEach(element => {
-        const key = element.getAttribute('data-key');
-        if (translations[lang][key]) {
-          element.textContent = translations[lang][key];
-        }
-      });
-      
-      // Update placeholders
-      document.querySelectorAll('input[data-key], textarea[data-key]').forEach(element => {
-        const key = element.getAttribute('data-key');
-        if (translations[lang][key]) {
-          element.setAttribute('placeholder', translations[lang][key]);
-        }
-      });
-      
-      // Update direction and alignment
-      if (lang === 'ar') {
-        document.body.setAttribute('dir', 'rtl');
-        document.body.style.textAlign = 'right';
-        document.querySelector('.nav-container').style.justifyContent = 'flex-end';
-      } else {
-        document.body.setAttribute('dir', 'ltr');
-        document.body.style.textAlign = 'left';
-        document.querySelector('.nav-container').style.justifyContent = 'center';
-      }
-      // When switching to Arabic
-document.body.setAttribute("dir", "rtl");
-document.documentElement.lang = "ar";
-
-// When switching back to English
-document.body.setAttribute("dir", "ltr");
-document.documentElement.lang = "en";
-
-      // Update HTML lang attribute
-      document.documentElement.setAttribute('lang', lang);
+  // Update all elements with data-key attributes
+  document.querySelectorAll('[data-key]').forEach(element => {
+    const key = element.getAttribute('data-key');
+    if (translations[lang][key]) {
+      element.textContent = translations[lang][key];
     }
+  });
+
+  // Update placeholders for inputs and textareas
+  document.querySelectorAll('input[data-key], textarea[data-key]').forEach(element => {
+    const key = element.getAttribute('data-key');
+    if (translations[lang][key]) {
+      element.setAttribute('placeholder', translations[lang][key]);
+    }
+  });
+
+  // Update text direction and alignment
+  if (lang === 'ar') {
+    document.body.setAttribute('dir', 'rtl');
+    document.body.style.textAlign = 'right';
+    document.querySelector('.nav-container').style.justifyContent = 'flex-end';
+  } else {
+    document.body.setAttribute('dir', 'ltr');
+    document.body.style.textAlign = 'left';
+    document.querySelector('.nav-container').style.justifyContent = 'center';
+  }
+
+  // Dynamic greeting based on time
+  const hour = new Date().getHours();
+  let greetingText = '';
+  if (hour < 12) greetingText = lang === 'ar' ? 'صباح الخير !' : 'Good Morning !';
+  else if (hour < 18) greetingText = lang === 'ar' ? 'مساء الخير !' : 'Good Afternoon !';
+  else greetingText = lang === 'ar' ? 'مساء الخير !' : 'Good Evening !';
+  const greetingElement = document.querySelector('[data-key="greeting"]');
+  if (greetingElement) greetingElement.textContent = greetingText;
+
+  // Optional: Restart typing effect for title
+  const typingElement = document.getElementById('typing');
+  if (typingElement) {
+    const title = translations[lang]['title'];
+    typingElement.textContent = '';
+    let i = 0;
+    function typing() {
+      if (i < title.length) {
+        typingElement.innerHTML += title.charAt(i);
+        i++;
+        setTimeout(typing, 80);
+      }
+    }
+    typing();
+  }
+
+  // Update HTML lang attribute
+  document.documentElement.setAttribute('lang', lang);
+}
 
     // Initialize with English
     switchLanguage('en');
   </script>
 </body>
 </html>
+
 
 
 
