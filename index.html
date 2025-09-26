@@ -525,12 +525,13 @@ body[dir="rtl"] .header-content {
 
   <header>
   <div class="header-content">
-    <h1>Bouziani Imane</h1>
-    <p id="greeting"></p> <!-- Dynamic greeting -->
-    <p id="typing"></p>   <!-- Typing effect -->
-    <p>| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |</p>
+    <h1 data-key="name">Bouziani Imane</h1>
+    <p id="greeting" data-key="greeting"></p> <!-- Dynamic greeting -->
+    <p id="typing" data-key="title"></p>      <!-- Typing effect -->
+    <p data-key="contactInfo">| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |</p>
   </div>
 </header>
+
 
   <button id="darkBtn"><i class="fa-solid fa-moon"></i> Dark Mode</button>
 
@@ -993,6 +994,10 @@ animate();
     const translations = {
       en: {
         // Navigation
+        name: "Bouziani Imane",
+    greeting: "", // will be dynamically filled by JS
+    title: "AI Engineer │ Computer Scientist │ Innovator │ Educator",
+    contactInfo: "| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |",
         education: "Education",
         experience: "Experience",
         skills: "Skills",
@@ -1082,6 +1087,10 @@ animate();
       },
       ar: {
         // Navigation
+        name: "بوزياني إيمان",
+    greeting: "", // will be dynamically filled by JS
+title: "مهندسة ذكاء اصطناعي │ عالمة حاسوب │ مبتكرة │ مُدَرسة",
+    contactInfo: "| bouzianiimane1@gmail.com | +213 664 64 77 79 | واتساب: 0673945830 | وهران، الجزائر |",
         education: "التعليم",
         experience: "الخبرة",
         skills: "المهارات",
@@ -1216,6 +1225,7 @@ document.documentElement.lang = "en";
   </script>
 </body>
 </html>
+
 
 
 
