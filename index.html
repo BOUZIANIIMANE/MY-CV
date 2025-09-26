@@ -1,5 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
   <meta charset="UTF-8">
@@ -497,18 +499,19 @@ body[dir="ltr"] .nav-container {
     body.dark-mode #moreBtn:hover {
       background: #a6c1ee;
     }
-/* Header content alignment */
-.header-content {
-  max-width: 900px;      /* optional, keeps content from stretching too far */
-  margin: 0 auto;        /* center horizontally for LTR */
-  text-align: center;    /* center text by default */
-}
+ body[dir="ltr"] p,
+    body[dir="ltr"] ul,
+    body[dir="ltr"] .contact-info,
+    body[dir="ltr"] section {
+      text-align: left;
+    }
 
-/* When page is RTL (Arabic) */
-body[dir="rtl"] .header-content {
-  text-align: right;     /* align everything to the right */
-}
-
+    body[dir="rtl"] p,
+    body[dir="rtl"] ul,
+    body[dir="rtl"] .contact-info,
+    body[dir="rtl"] section {
+      text-align: right;
+    }
   </style>
 </head>
 <body>
@@ -523,13 +526,12 @@ body[dir="rtl"] .header-content {
   </div>
 
   <header>
-  <div class="header-content">
     <h1>Bouziani Imane</h1>
-    <p id="greeting"></p> <!-- Dynamic greeting -->
-    <p id="typing"></p>   <!-- Typing effect -->
+    <p id="greeting"></p> <!-- Dynamic greeting will show here -->
+    <p id="typing"></p>
+
     <p>| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |</p>
-  </div>
-</header>
+  </header>
 
   <button id="darkBtn"><i class="fa-solid fa-moon"></i> Dark Mode</button>
 
@@ -992,11 +994,6 @@ animate();
     const translations = {
       en: {
         // Navigation
-
-        name: "Bouziani Imane",
-    greeting: "", // will be dynamically filled by JS
-    title: "AI Engineer │ Computer Scientist │ Innovator │ Educator",
-    contactInfo: "| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |",
         education: "Education",
         experience: "Experience",
         skills: "Skills",
@@ -1085,12 +1082,6 @@ animate();
         moreBtn: "MORE"
       },
       ar: {
-
-        name: "بوزياني إيمان",
-    greeting: "", // will be dynamically filled by JS
-  title: "مهندسة ذكاء اصطناعي │ عالمة حاسوب │ مبتكرة │ مُدَرسة",
-
-    contactInfo: "| bouzianiimane1@gmail.com | +213 664 64 77 79 | واتساب: 0673945830 | وهران، الجزائر |",
         // Navigation
         education: "التعليم",
         experience: "الخبرة",
@@ -1136,20 +1127,20 @@ animate();
         
         // Skill labels
         pythonSkill: "بايثون",
-        deepLearningSkill: "التعلم العميق|",
-        machineLearningSkill: "التعلم الآلي|",
+        deepLearningSkill: "التعلم العميق",
+        machineLearningSkill: "التعلم الآلي",
         
         // Languages section
-        language1: "العربية: اللغة الأم|",
-        language2: "الإنجليزية: مستوى احترافي متقدم|",
-        language3: "العربية: مستوى احترافي متقدم|",
+        language1: "العربية: اللغة الأم",
+        language2: "الإنجليزية: مستوى احترافي متقدم",
+        language3: "العربية: احترافي متقدم",
         
         // Activities section
-        activity1: "المشاركة في هاكاثونات دولية (الذكاء الاصطناعي، الروبوتات، علوم البيانات)|",
-        activity2: "تنظيم ورشات عمل في الذكاء الاصطناعي والبرمجة لمختلف المستويات|",
-        activity3: "تطوير وإنشاء ألعاب تعليمية ثنائية - ثلاثية الأبعاد باستخدام| Unreal Engine و Unity 3D",
-        activity4: "تصميم أنظمة تشخيصية مدعومة بالذكاء الاصطناعي باستخدام التصوير الطبي|",
-        activity5: "تطوير مواقع ويب احترافية وبرامج إدارة المخزون|",
+        activity1: "المشاركة في هاكاثونات دولية (الذكاء الاصطناعي، الروبوتات، علوم البيانات)",
+        activity2: "تنظيم ورشات عمل في الذكاء الاصطناعي والبرمجة لمختلف المستويات",
+        activity3: "تطوير وإنشاء ألعاب تعليمية ثنائية - ثلاثية الأبعاد باستخدام Unreal Engine و Unity 3D",
+        activity4: "تصميم أنظمة تشخيصية مدعومة بالذكاء الاصطناعي باستخدام التصوير الطبي",
+        activity5: "تطوير مواقع ويب احترافية وبرامج إدارة المخزون",
         
         // Qualities section
         qualities1: "مستقلة │ مبدعة │ دقيقة │ ديناميكية │ روح الفريق │ تحليلية",
@@ -1182,83 +1173,50 @@ animate();
       }
     };
 
- let typingTimeout; // global timeout for typing effect
-
-function switchLanguage(lang) {
-  // Update all elements with data-key attributes
-  document.querySelectorAll('[data-key]').forEach(element => {
-    const key = element.getAttribute('data-key');
-    if (translations[lang][key]) {
-      element.textContent = translations[lang][key];
-    }
-  });
-
-  // Update placeholders for inputs and textareas
-  document.querySelectorAll('input[data-key], textarea[data-key]').forEach(element => {
-    const key = element.getAttribute('data-key');
-    if (translations[lang][key]) {
-      element.setAttribute('placeholder', translations[lang][key]);
-    }
-  });
-
-  // Update text direction and alignment
-  if (lang === 'ar') {
-    document.body.setAttribute('dir', 'rtl');
-    document.body.style.textAlign = 'right';
-    document.querySelector('.nav-container').style.justifyContent = 'flex-end';
-  } else {
-    document.body.setAttribute('dir', 'ltr');
-    document.body.style.textAlign = 'left';
-    document.querySelector('.nav-container').style.justifyContent = 'center';
-  }
-
-  // Dynamic greeting based on time
-  const hour = new Date().getHours();
-  let greetingText = '';
-  if (hour < 12) greetingText = lang === 'ar' ? 'صباح الخير !' : 'Good Morning !';
-  else if (hour < 18) greetingText = lang === 'ar' ? 'مساء الخير !' : 'Good Afternoon !';
-  else greetingText = lang === 'ar' ? 'مساء الخير !' : 'Good Evening !';
-  const greetingElement = document.querySelector('[data-key="greeting"]');
-  if (greetingElement) greetingElement.textContent = greetingText;
-
-  // Optional: Restart typing effect for title
-  const typingElement = document.getElementById('typing');
-  if (typingElement) {
-    const title = translations[lang]['title'];
-    typingElement.textContent = '';
-    let i = 0;
-    function typing() {
-      if (i < title.length) {
-        typingElement.innerHTML += title.charAt(i);
-        i++;
-        setTimeout(typing, 80);
+    function switchLanguage(lang) {
+      // Update all elements with data-key attributes
+      document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update placeholders
+      document.querySelectorAll('input[data-key], textarea[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[lang][key]) {
+          element.setAttribute('placeholder', translations[lang][key]);
+        }
+      });
+      
+      // Update direction and alignment
+      if (lang === 'ar') {
+        document.body.setAttribute('dir', 'rtl');
+        document.body.style.textAlign = 'right';
+        document.querySelector('.nav-container').style.justifyContent = 'flex-end';
+      } else {
+        document.body.setAttribute('dir', 'ltr');
+        document.body.style.textAlign = 'left';
+        document.querySelector('.nav-container').style.justifyContent = 'center';
       }
+      // When switching to Arabic
+document.body.setAttribute("dir", "rtl");
+document.documentElement.lang = "ar";
+
+// When switching back to English
+document.body.setAttribute("dir", "ltr");
+document.documentElement.lang = "en";
+
+      // Update HTML lang attribute
+      document.documentElement.setAttribute('lang', lang);
     }
-    typing();
-  }
-
-  // Update HTML lang attribute
-  document.documentElement.setAttribute('lang', lang);
-}
-
-  // Update HTML lang attribute
-  document.documentElement.setAttribute('lang', lang);
-}
 
     // Initialize with English
     switchLanguage('en');
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
 
