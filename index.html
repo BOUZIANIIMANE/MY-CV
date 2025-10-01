@@ -1018,8 +1018,7 @@ animate();
   <!-- 🔹 VanillaTilt library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
 
- <script>
-  // Translation dictionary
+<script>
   const translations = {
     en: {
       greeting: "Welcome to my portfolio!",
@@ -1076,43 +1075,41 @@ animate();
     }
   };
 
-  // Function to switch language
   function setLanguage(lang) {
     document.querySelectorAll("[data-key]").forEach(el => {
       const key = el.getAttribute("data-key");
       if (translations[lang][key]) {
-        el.textContent = translations[lang][key];
-      }
-      if (el.placeholder !== undefined && translations[lang][key]) {
-        el.placeholder = translations[lang][key];
+        if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+          el.placeholder = translations[lang][key];
+        } else {
+          el.textContent = translations[lang][key];
+        }
       }
     });
-
-    // Switch direction
     document.body.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
   }
 
-  // Event listeners for language buttons
   document.querySelectorAll(".lang-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       const lang = btn.getAttribute("data-lang");
       setLanguage(lang);
-      document.getElementById("langDropdown").classList.remove("show");
+      document.getElementById("langDropdown")?.classList.remove("show");
     });
   });
 
-  // Dropdown toggle
-  document.getElementById("moreBtn").addEventListener("click", () => {
-    document.getElementById("langDropdown").classList.toggle("show");
+  document.getElementById("moreBtn")?.addEventListener("click", () => {
+    document.getElementById("langDropdown")?.classList.toggle("show");
   });
 
-  // Default: English
+  // default
   setLanguage("en");
 </script>
 
 
+
 </body>
 </html>
+
 
 
 
