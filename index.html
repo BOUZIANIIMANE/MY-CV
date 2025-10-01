@@ -513,6 +513,48 @@ body[dir="ltr"] .nav-container {
 body[dir="rtl"] .header-content {
   text-align: right;     /* align everything to the right */
 }
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 80vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f9f9f9, #f3f3ff);
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.hero .btn {
+  display: inline-block;
+  background: #6c63ff;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.hero .btn:hover {
+  background: #4a42d4;
+}
 
   </style>
 </head>
@@ -535,6 +577,24 @@ body[dir="rtl"] .header-content {
     <p data-key="contactInfo">| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |</p>
   </div>
 </header>
+<!-- Hero / About Me Section -->
+<section id="about" class="hero">
+  <div class="hero-content">
+    <h1>Hi, I'm Bouziani Imane 👋</h1>
+    <p>
+      I’m an <strong>AI Engineer and Computer Scientist</strong> passionate about 
+      building intelligent systems that combine deep learning, optimization, and 
+      creative solutions. My mission is to make cutting-edge AI more 
+      <em>accessible, practical, and impactful</em> in real-world applications.
+    </p>
+    <p>
+      With a strong background in research and development, I specialize in 
+      <strong>machine learning, computer vision, and hybrid AI frameworks</strong>. 
+      I thrive on solving complex problems and collaborating on innovative projects.
+    </p>
+    <a href="hire-me.html" class="btn">Hire Me</a>
+  </div>
+</section>
 
 
   <button id="darkBtn"><i class="fa-solid fa-moon"></i> Dark Mode</button>
@@ -1229,6 +1289,7 @@ document.documentElement.lang = "en";
   </script>
 </body>
 </html>
+
 
 
 
