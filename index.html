@@ -1019,246 +1019,101 @@ animate();
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
 
  <script>
-  /* --- Language switching functionality --- */
+  // Translation dictionary
   const translations = {
     en: {
-      // Navigation
-      name: "Bouziani Imane",
-      greeting: "", // will be dynamically filled by JS
-      title: "",
+      greeting: "Welcome to my portfolio!",
+      title: "AI Engineer & Computer Scientist",
       contactInfo: "| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |",
-
-      // Navigation labels
+      aboutTitle: "About Me",
+      aboutMe: `I’m an AI Engineer and Computer Scientist passionate about building intelligent systems 
+                that combine deep learning, optimization, and creative solutions. My mission is to make 
+                cutting-edge AI more accessible, practical, and impactful in real-world applications.
+                With a strong background in research and development, I specialize in machine learning, 
+                computer vision, and hybrid AI frameworks. I thrive on solving complex problems and collaborating 
+                on innovative projects.`,
       education: "Education",
-      experience: "Experience",
-      skills: "Skills",
+      experience: "Professional Experience",
+      skills: "Technical Skills",
       languages: "Languages",
-      activities: "Activities",
-      qualities: "Qualities",
-      cv: "CV",
-      contact: "Contact",
-
-      // Section titles
-      educationTitle: "Education",
-      experienceTitle: "Professional Experience",
-      skillsTitle: "Technical Skills",
-      languagesTitle: "Languages",
-      activitiesTitle: "Activities & Achievements",
-      qualitiesTitle: "Professional Qualities",
-      cvTitle: "My CV",
-      contactTitle: "Contact Me",
-
-      // About Me
-       aboutTitle: "About Me",
-    aboutMe: "I’m an AI Engineer and Computer Scientist passionate about building intelligent systems that combine deep learning, optimization, and creative solutions. My mission is to make cutting-edge AI more accessible, practical, and impactful in real-world applications.\n\nWith a strong background in research and development, I specialize in machine learning, computer vision, and hybrid AI frameworks. I thrive on solving complex problems and collaborating on innovative projects.",
-
-      // Education section
-      education1: "Master in Artificial Intelligence – With Distinction -2025",
-      education2: "Bachelor in Computer Science – Information Systems -2023",
-      education3: "Startup Label Certificate – AI Project on the Development of a Mobile and Web Application for Intelligent and Smart Vehicles -2023",
-      education4: "STEAM Certification – Designing Creative Educational Programs for Learners-2023",
-
-      // Experience section
-      experience1: "IT Specialist – ZHONGMA International Construction (2023 – 2025)",
-      experience2: "IT Specialist – Private Neurology Clinic (2024 – 2025)",
-      experience3: "Internship in Medical Imaging – Private Radiology Clinic (2025)",
-      experience4: "STEAM & Programming Lecturer – University (2022 – 2023)",
-      experience5: "Founder & President – Auto Tech Scientific Club (2022 – 2024)",
-      experience6: "Medical equipment operator specialized in neurology for 03 years",
-      experience7: "Pharmacy Assistant and Operations Manager",
-
-      // Skills section
-      skills1: "Languages: Python, Java, C/C++, Dart, Swift, R, MATLAB, SQL, HTML, CSS, JavaScript",
-      skills2: "AI & Data Science: TensorFlow, PyTorch, Keras, Scikit-Learn, OpenCV...",
-      skills3: "Databases: MySQL, Oracle, SQL Server",
-      skills4: "3D Tools & Simulation: Unity, Unreal Engine, Blender, MATLAB Simulink",
-      skills5: "Systems & Networks: Windows, Linux, Wireshark, Cybersecurity",
-
-      // Skill labels
-      pythonSkill: "Python",
-      deepLearningSkill: "Deep learning",
-      machineLearningSkill: "Machine Learning",
-
-      // Languages section
-      language1: "Arabic: Native",
-      language2: "English: Advanced",
-      language3: "French: Professional",
-
-      // Activities section
-      activity1: "Participation in international hackathons (AI, Robotics, Data Science)",
-      activity2: "Organization of AI & Programming workshops for different proficiency levels",
-      activity3: "Development and creation of educational 3D games using Unreal Engine and Unity 3D",
-      activity4: "Design of AI-powered diagnostic systems using medical imaging",
-      activity5: "Development of professional websites, web pages, and inventory management softwares",
-
-      // Qualities section
-      qualities1: "Independent │ Creative │ Rigorous │ Dynamic │ Team Spirit │ Analytical",
-
-      // CV section
+      activities: "Activities & Achievements",
+      qualities: "Professional Qualities",
+      cv: "My CV",
+      contact: "Contact Me",
       cvButton: "View / Download My CV",
-
-      // Contact section
-      emailLabel: "Email:",
-      phoneLabel: "Phone:",
-      whatsappLabel: "WhatsApp:",
-      locationLabel: "Location:",
-      linkedinLabel: "LinkedIn:",
-      githubLabel: "GitHub:",
-
-      // Form placeholders
+      hireBtn: "Hire Me",
+      sendButton: "Send Message",
       namePlaceholder: "Your Name",
       emailPlaceholder: "Your Email",
       inquiryPlaceholder: "Your Inquiry",
-      sendButton: "Send Message",
-
-      // Footer
-      footerRights: "All Rights Reserved",
-
-      // Hire button
-      hireBtn: "Hire Me",
-
-      // More button
-      moreBtn: "MORE"
+      footerRights: "All Rights Reserved"
     },
-
     ar: {
-      // Navigation
-      name: "بوزياني إيمان",
-      greeting: "",
+      greeting: "مرحبًا بكم في ملفي الشخصي!",
+      title: "مهندسة ذكاء اصطناعي وعالمة حاسوب",
       contactInfo: "| bouzianiimane1@gmail.com | +213 664 64 77 79 | واتساب: 0673945830 | وهران، الجزائر |",
-      title: "مهندسة ذكاء اصطناعي │ عالمة حاسوب │ مبتكرة │ مُدَرسة",
-
-      // Navigation labels
+      aboutTitle: "من أنا",
+      aboutMe: `أنا مهندسة ذكاء اصطناعي وعالمة حاسوب شغوفة ببناء أنظمة ذكية تجمع بين التعلم العميق 
+                والتحسين والحلول الإبداعية. مهمتي هي جعل تقنيات الذكاء الاصطناعي المتقدمة أكثر سهولة 
+                وواقعية وذات تأثير في التطبيقات العملية.
+                بفضل خبرة قوية في البحث والتطوير، أختص في تعلم الآلة ورؤية الحاسوب والأطر الهجينة للذكاء الاصطناعي. 
+                أستمتع بحل المشكلات المعقدة والعمل التعاوني في مشاريع مبتكرة.`,
       education: "التعليم",
-      experience: "الخبرة",
-      skills: "المهارات",
+      experience: "الخبرة المهنية",
+      skills: "المهارات التقنية",
       languages: "اللغات",
-      activities: "الأنشطة",
-      qualities: "الصفات",
-      cv: "السيرة الذاتية",
-      contact: "اتصل",
-
-      // Section titles
-      educationTitle: "التعليم",
-      experienceTitle: "الخبرة المهنية",
-      skillsTitle: "المهارات التقنية",
-      languagesTitle: "اللغات",
-      activitiesTitle: "الأنشطة والإنجازات",
-      qualitiesTitle: "الصفات المهنية",
-      cvTitle: "سيرتي الذاتية",
-      contactTitle: "اتصل بي",
-
-      // About Me
-         aboutTitle: "نبذة عني",
-    aboutMe: "أنا مهندسة ذكاء اصطناعي وعالمة حاسوب شغوفة ببناء أنظمة ذكية تجمع بين التعلم العميق، والتحسين، والحلول الإبداعية. مهمتي هي جعل الذكاء الاصطناعي المتطور أكثر سهولة وواقعية وذا أثر فعّال في التطبيقات العملية.\n\nبفضل خبرة قوية في البحث والتطوير، أتخصص في التعلم الآلي، ورؤية الحاسوب، والأطر الهجينة للذكاء الاصطناعي. أزدهر في حل المشكلات المعقدة والتعاون في المشاريع المبتكرة."
-      // Education section
-      education1: "ماجستير في الذكاء الاصطناعي – بتقدير امتياز -2025",
-      education2: "بكالوريوس في علوم الحاسوب – نظم المعلومات -2023",
-      education3: "شهادة تصنيف الشركات الناشئة – مشروع ذكاء اصطناعي لتطوير تطبيق جوال وموقع للسيارات الذكية -2023",
-      education4: "شهادة STEAM – تصميم برامج تعليمية مبتكرة للمتعلمين -2023",
-
-      // Experience section
-      experience1: "أخصائية تقنية معلومات – شركة ZHONGMA للبناء (2023 – 2025)",
-      experience2: "أخصائية تقنية معلومات – عيادة خاصة للأمراض العصبية (2024 – 2025)",
-      experience3: "تدريب في التصوير الطبي – عيادة أشعة خاصة (2025)",
-      experience4: "محاضِرة في برامج التعلّم الأمريكي الممنهج (STEAM) والبرمجة – الجامعة (2022 – 2023)",
-      experience5: "المؤسسة ورئيسة – نادي Auto Tech العلمي (2022 – 2024)",
-      experience6: "مشغلة أجهزة طبية متخصصة في علم الأعصاب لمدة 03 سنوات",
-      experience7: "إدارة عمليات الصيدلية والإشراف على شؤونها التشغيلية",
-
-      // Skills section
-      skills1: "لغات البرمجة: Python, Java, C/C++, Dart, Swift, R, MATLAB, SQL, HTML, CSS, JavaScript",
-      skills2: "الذكاء الاصطناعي وعلوم البيانات: TensorFlow, PyTorch, Keras, Scikit-Learn, OpenCV...",
-      skills3: "قواعد البيانات: MySQL, Oracle, SQL Server",
-      skills4: "أدوات ثلاثية الأبعاد والمحاكاة: Unity, Unreal Engine, Blender, MATLAB Simulink",
-      skills5: "أنظمة وشبكات: Windows, Linux, Wireshark, Cybersecurity",
-
-      // Skill labels
-      pythonSkill: "بايثون",
-      deepLearningSkill: "التعلم العميق",
-      machineLearningSkill: "التعلم الآلي",
-
-      // Languages section
-      language1: "العربية: اللغة الأم",
-      language2: "الإنجليزية: مستوى احترافي متقدم",
-      language3: "الفرنسية: مستوى احترافي",
-
-      // Activities section
-      activity1: "المشاركة في هاكاثونات دولية (الذكاء الاصطناعي، الروبوتات، علوم البيانات)",
-      activity2: "تنظيم ورشات عمل في الذكاء الاصطناعي والبرمجة لمختلف المستويات",
-      activity3: "تطوير وإنشاء ألعاب تعليمية ثلاثية الأبعاد باستخدام Unreal Engine و Unity 3D",
-      activity4: "تصميم أنظمة تشخيصية مدعومة بالذكاء الاصطناعي باستخدام التصوير الطبي",
-      activity5: "تطوير مواقع ويب احترافية وبرامج إدارة المخزون",
-
-      // Qualities section
-      qualities1: "مستقلة │ مبدعة │ دقيقة │ ديناميكية │ روح الفريق │ تحليلية",
-
-      // CV section
-      cvButton: "عرض / تنزيل السيرة الذاتية",
-
-      // Contact section
-      emailLabel: "البريد الإلكتروني:",
-      phoneLabel: "الهاتف:",
-      whatsappLabel: "واتساب:",
-      locationLabel: "الموقع:",
-      linkedinLabel: "لينكدإن:",
-      githubLabel: "جيت هاب:",
-
-      // Form placeholders
-      namePlaceholder: "الاسم",
-      emailPlaceholder: "البريد الإلكتروني",
-      inquiryPlaceholder: "رسالتك",
-      sendButton: "إرسال الرسالة",
-
-      // Footer
-      footerRights: "جميع الحقوق محفوظة",
-
-      // Hire button
+      activities: "الأنشطة والإنجازات",
+      qualities: "الصفات المهنية",
+      cv: "سيرتي الذاتية",
+      contact: "اتصل بي",
+      cvButton: "عرض / تحميل سيرتي الذاتية",
       hireBtn: "وظفني",
-
-      // More button
-      moreBtn: "المزيد"
+      sendButton: "إرسال",
+      namePlaceholder: "اسمك",
+      emailPlaceholder: "بريدك الإلكتروني",
+      inquiryPlaceholder: "استفسارك",
+      footerRights: "جميع الحقوق محفوظة"
     }
   };
 
-  function switchLanguage(lang) {
-    // Update all elements with data-key attributes
-    document.querySelectorAll("[data-key]").forEach(element => {
-      const key = element.getAttribute("data-key");
+  // Function to switch language
+  function setLanguage(lang) {
+    document.querySelectorAll("[data-key]").forEach(el => {
+      const key = el.getAttribute("data-key");
       if (translations[lang][key]) {
-        element.textContent = translations[lang][key];
+        el.textContent = translations[lang][key];
+      }
+      if (el.placeholder !== undefined && translations[lang][key]) {
+        el.placeholder = translations[lang][key];
       }
     });
 
-    // Update placeholders
-    document.querySelectorAll("input[data-key], textarea[data-key]").forEach(element => {
-      const key = element.getAttribute("data-key");
-      if (translations[lang][key]) {
-        element.setAttribute("placeholder", translations[lang][key]);
-      }
-    });
-
-    // Update direction and alignment
-    if (lang === "ar") {
-      document.body.setAttribute("dir", "rtl");
-      document.body.style.textAlign = "right";
-      document.querySelector(".nav-container").style.justifyContent = "flex-end";
-    } else {
-      document.body.setAttribute("dir", "ltr");
-      document.body.style.textAlign = "left";
-      document.querySelector(".nav-container").style.justifyContent = "center";
-    }
-
-    // Update HTML lang attribute
-    document.documentElement.setAttribute("lang", lang);
+    // Switch direction
+    document.body.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
   }
 
-  // Initialize with English
-  switchLanguage("en");
+  // Event listeners for language buttons
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang");
+      setLanguage(lang);
+      document.getElementById("langDropdown").classList.remove("show");
+    });
+  });
+
+  // Dropdown toggle
+  document.getElementById("moreBtn").addEventListener("click", () => {
+    document.getElementById("langDropdown").classList.toggle("show");
+  });
+
+  // Default: English
+  setLanguage("en");
 </script>
+
 
 </body>
 </html>
+
 
 
 
