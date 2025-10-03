@@ -1407,13 +1407,12 @@ body.dark-mode .theme-btn {
     <a href="https://github.com/bouzianiimane" target="_blank"><i class="fab fa-github"></i></a>
     <a href="mailto:bouzianiimane1@gmail.com"><i class="fa-solid fa-envelope"></i></a>
   </div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+<!-- Three.js for 3D elements -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-  <!-- Three.js for 3D elements -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  
-  <script>
+<script>
     // ===== YOUR EXISTING JAVASCRIPT CODE =====
     
     // Floating shapes animation (Circles + Triangles + Squares + Hexagons)
@@ -1564,27 +1563,6 @@ body.dark-mode .theme-btn {
       }
     `;
     document.head.appendChild(style);
-    
-    // Dark mode toggle
-    const darkBtn = document.getElementById("darkBtn");
-    darkBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      darkBtn.innerHTML = document.body.classList.contains("dark-mode") 
-        ? '<i class="fa-solid fa-sun"></i> Light Mode' 
-        : '<i class="fa-solid fa-moon"></i> Dark Mode';
-    });
-    
-    // Scroll to top button
-    const topBtn = document.getElementById("topBtn");
-    window.onscroll = function() {
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        topBtn.style.display = "block";
-      } else {
-        topBtn.style.display = "none";
-      }
-    };
-    
-    topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
     
     // AOS Animation
     AOS.init({ duration: 1200 });
@@ -1742,43 +1720,6 @@ body.dark-mode .theme-btn {
       });
     });
     
-    // Theme Personalization
-    const themeButtons = document.querySelectorAll('.theme-btn');
-    
-    themeButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const theme = this.getAttribute('data-theme');
-        document.body.className = ''; // Remove existing theme classes
-        document.body.classList.add(`theme-${theme}`);
-        
-        // Update CSS variables for theme
-        updateTheme(theme);
-      });
-    });
-    
-    function updateTheme(theme) {
-      const root = document.documentElement;
-      
-      switch(theme) {
-        case 'lavender':
-          root.style.setProperty('--primary-color', '#a6c1ee');
-          root.style.setProperty('--secondary-color', '#fbc2eb');
-          break;
-        case 'mint':
-          root.style.setProperty('--primary-color', '#96ceb4');
-          root.style.setProperty('--secondary-color', '#4ecdc4');
-          break;
-        case 'peach':
-          root.style.setProperty('--primary-color', '#ffb347');
-          root.style.setProperty('--secondary-color', '#ffcc99');
-          break;
-        case 'sky':
-          root.style.setProperty('--primary-color', '#87ceeb');
-          root.style.setProperty('--secondary-color', '#b0e0e6');
-          break;
-      }
-    }
-    
     // Custom Cursor
     const cursor = document.querySelector('.custom-cursor');
     const follower = document.querySelector('.cursor-follower');
@@ -1902,14 +1843,8 @@ body.dark-mode .theme-btn {
           });
       });
     }
-    
-    // Initialize features when DOM is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      updateVisitorCount();
-      initThreeJS();
-    });
 
- 
+    // ===== THEME PERSONALIZATION =====
     
     // Theme Personalization for both light and dark modes
     const themeButtons = document.querySelectorAll('.theme-btn');
@@ -1988,10 +1923,60 @@ body.dark-mode .theme-btn {
         : '<i class="fa-solid fa-moon"></i> Dark Mode';
     });
 
-</script> <!-- This is the closing script tag - make sure the theme code is ABOVE this -->
-  </script>
+    // Scroll to top button
+    const topBtn = document.getElementById("topBtn");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    };
+    
+    topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    // Initialize features when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      updateVisitorCount();
+      initThreeJS();
+    });
+
+    // Contact form JavaScript
+    const form = document.getElementById("contactForm");
+    const popup = document.getElementById("successPopup");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Get values
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      // Validation
+      if (!name || !email || !message) {
+        alert("⚠️ Please fill in all fields.");
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert("⚠️ Please enter a valid email.");
+        return;
+      }
+
+      // Success
+      popup.style.display = "block";
+
+      setTimeout(() => {
+        popup.style.display = "none";
+        form.reset();
+      }, 3000);
+    });
+</script>
 </body>
 </html>
+
 
 
 
