@@ -523,15 +523,25 @@
     }
     
     body.dark-mode {
-      color: #f5f5f5;
-      background: linear-gradient(270deg, #2b2b3a, #1f1f2e, #2a2a3d, #242436, #1c1c28);
-      background-size: 600% 600%;
-      animation: animatedBackground 20s ease infinite;
-    }
-    /* Dark mode pastel colors update */
-body.dark-mode header {
-  background: linear-gradient(270deg, #c44569, #546de5, #c44569);
+  color: #f5f5f5;
+  background: linear-gradient(270deg, #2b2b3a, #1f1f2e, #2a2a3d, #242436, #1c1c28);
   background-size: 600% 600%;
+  animation: animatedBackground 20s ease infinite;
+}
+
+/* Dark mode pastel colors update - DARKER PASTELS */
+body.dark-mode header {
+  background: linear-gradient(270deg, #8a4a6b, #5a6fa3, #8a4a6b); /* Much darker pastel pink/blue */
+  background-size: 600% 600%;
+  animation: gradientMove 12s ease infinite;
+  color: #f5f5f5;
+}
+
+body.dark-mode header h1 {
+  background: linear-gradient(90deg, #8a4a6b, #5a6fa3, #8a4a6b); /* Darker pastel gradient for text */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 5s infinite alternate;
 }
 
 body.dark-mode .nav-container {
@@ -544,7 +554,7 @@ body.dark-mode .nav-main a {
 }
 
 body.dark-mode .nav-main a:hover {
-  color: #778beb;
+  color: #8fa8d4; /* Darker pastel blue */
 }
 
 body.dark-mode section {
@@ -554,20 +564,20 @@ body.dark-mode section {
 }
 
 body.dark-mode section:hover {
-  box-shadow: 0 12px 30px rgba(119, 139, 235, 0.2);
+  box-shadow: 0 12px 30px rgba(143, 168, 212, 0.2); /* Darker pastel blue shadow */
 }
 
 body.dark-mode footer {
-  background: linear-gradient(120deg, #3742fa 0%, #c44569 100%);
+  background: linear-gradient(120deg, #5a6fa3 0%, #8a4a6b 100%); /* Darker pastels */
 }
 
 body.dark-mode .professional-subtitle {
   color: #e0e0e0;
 }
 
-/* Dark mode for new features */
+/* Dark mode for new features - DARKER PASTELS */
 body.dark-mode .ai-chat-bubble {
-  background: linear-gradient(135deg, #546de5, #c44569);
+  background: linear-gradient(135deg, #5a6fa3, #8a4a6b); /* Darker pastels */
 }
 
 body.dark-mode .ai-chat-window {
@@ -576,7 +586,7 @@ body.dark-mode .ai-chat-window {
 }
 
 body.dark-mode .chat-header {
-  background: linear-gradient(135deg, #546de5, #c44569);
+  background: linear-gradient(135deg, #5a6fa3, #8a4a6b); /* Darker pastels */
 }
 
 body.dark-mode .chat-bot {
@@ -609,12 +619,12 @@ body.dark-mode .timeline-details {
 
 body.dark-mode .skill-filter {
   background: #3a3a4a;
-  border-color: #546de5;
+  border-color: #5a6fa3; /* Darker pastel blue */
   color: #f5f5f5;
 }
 
 body.dark-mode .skill-filter.active {
-  background: #546de5;
+  background: #5a6fa3; /* Darker pastel blue */
   color: #f5f5f5;
 }
 
@@ -623,10 +633,10 @@ body.dark-mode .skill-badge {
   color: #f5f5f5;
 }
 
-body.dark-mode .skill-badge.ai { border-color: #e66767; }
-body.dark-mode .skill-badge.web { border-color: #54a0ff; }
-body.dark-mode .skill-badge.data { border-color: #48dbfb; }
-body.dark-mode .skill-badge.mobile { border-color: #1dd1a1; }
+body.dark-mode .skill-badge.ai { border-color: #b85c5c; } /* Darker pastel red */
+body.dark-mode .skill-badge.web { border-color: #4a8d8d; } /* Darker pastel teal */
+body.dark-mode .skill-badge.data { border-color: #4a8db8; } /* Darker pastel blue */
+body.dark-mode .skill-badge.mobile { border-color: #5ca85c; } /* Darker pastel green */
 
 body.dark-mode .visitor-counter {
   background: rgba(45, 45, 61, 0.9);
@@ -642,7 +652,7 @@ body.dark-mode .contact-form textarea {
 
 body.dark-mode .contact-form input:focus,
 body.dark-mode .contact-form textarea:focus {
-  border-color: #546de5;
+  border-color: #5a6fa3; /* Darker pastel blue */
 }
 
 body.dark-mode .contact-info {
@@ -650,7 +660,7 @@ body.dark-mode .contact-info {
 }
 
 body.dark-mode .contact-info a {
-  color: #778beb;
+  color: #8fa8d4; /* Darker pastel blue */
 }
 
 body.dark-mode .bar {
@@ -658,22 +668,22 @@ body.dark-mode .bar {
 }
 
 body.dark-mode .progress {
-  background: linear-gradient(90deg, #546de5, #c44569);
+  background: linear-gradient(90deg, #5a6fa3, #8a4a6b); /* Darker pastels */
 }
 
 /* Update blob for dark mode */
 body.dark-mode .blob {
-  background: radial-gradient(circle at center, #c44569 0%, #546de5 100%);
-  opacity: 0.3;
+  background: radial-gradient(circle at center, #8a4a6b 0%, #5a6fa3 100%); /* Darker pastels */
+  opacity: 0.2; /* Even more subtle */
 }
 
 /* Dark mode for social sidebar */
 body.dark-mode .social-sidebar a {
-  background: #546de5;
+  background: #5a6fa3; /* Darker pastel blue */
 }
 
 body.dark-mode .social-sidebar a:hover {
-  background: #c44569;
+  background: #8a4a6b; /* Darker pastel pink */
 }
 
 /* Dark mode for buttons */
@@ -683,28 +693,38 @@ body.dark-mode #darkBtn {
 }
 
 body.dark-mode #darkBtn:hover {
-  background: #546de5;
+  background: #5a6fa3; /* Darker pastel blue */
 }
 
 body.dark-mode #topBtn {
-  background: #546de5;
+  background: #5a6fa3; /* Darker pastel blue */
 }
 
 body.dark-mode #topBtn:hover {
-  background: #c44569;
+  background: #8a4a6b; /* Darker pastel pink */
 }
 
 body.dark-mode #hireBtn {
-  background: #c44569;
+  background: #8a4a6b; /* Darker pastel pink */
 }
 
 body.dark-mode #hireBtn:hover {
-  background: #546de5;
+  background: #5a6fa3; /* Darker pastel blue */
 }
 
 /* Dark mode for theme buttons */
 body.dark-mode .theme-btn {
   border-color: #3a3a4a;
+}
+
+/* Fix for header text contrast */
+body.dark-mode header p {
+  color: #e0e0e0;
+}
+
+/* Ensure good contrast for all header content */
+body.dark-mode .header-content {
+  color: #f5f5f5;
 }
     /* Header content alignment */
     .header-content {
@@ -1976,6 +1996,7 @@ body.dark-mode .theme-btn {
 </script>
 </body>
 </html>
+
 
 
 
