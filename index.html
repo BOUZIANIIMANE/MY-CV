@@ -667,29 +667,49 @@
   </section>
   
   <!-- Contact Form Section -->
-  <section id="contact" data-aos="fade-up">
-    <h2><i class="fa-solid fa-envelope"></i> Contact Me</h2>
+<section id="contact" data-aos="fade-up">
+  <h2><i class="fa-solid fa-envelope"></i> Contact Me</h2>
 
-    <!-- Contact information block -->
-    <div class="contact-info">
-      <p><i class="fa-solid fa-envelope"></i><strong> Email:</strong> <a href="mailto:bouzianiimane1@gmail.com">bouzianiimane1@gmail.com</a></p>
-      <p><i class="fa-solid fa-phone"></i><strong> Phone:</strong> +213 664 64 77 79</p>
-      <p><i class="fa-brands fa-whatsapp"></i><strong> WhatsApp:</strong> 0673945830</p>
-      <p><i class="fa-solid fa-location-dot"></i><strong> Location:</strong> Oran, Algeria</p>
-      <p><i class="fa-brands fa-linkedin"></i><strong> LinkedIn:</strong> <a href="https://linkedin.com/in/bouzianiimane" target="_blank">linkedin.com/in/bouzianiimane</a></p>
-      <p><i class="fa-brands fa-github"></i><strong> GitHub:</strong> <a href="https://github.com/bouzianiimane" target="_blank">github.com/bouzianiimane</a></p>
-    </div>
+  <!-- Contact information block -->
+  <div class="contact-info">
+    <p><i class="fa-solid fa-envelope"></i><strong> Email:</strong> <a href="mailto:bouzianiimane1@gmail.com">bouzianiimane1@gmail.com</a></p>
+    <p><i class="fa-solid fa-phone"></i><strong> Phone:</strong> +213 664 64 77 79</p>
+    <p><i class="fa-brands fa-whatsapp"></i><strong> WhatsApp:</strong> 0673945830</p>
+    <p><i class="fa-solid fa-location-dot"></i><strong> Location:</strong> Oran, Algeria</p>
+    <p><i class="fa-brands fa-linkedin"></i><strong> LinkedIn:</strong> <a href="https://linkedin.com/in/bouzianiimane" target="_blank">linkedin.com/in/bouzianiimane</a></p>
+    <p><i class="fa-brands fa-github"></i><strong> GitHub:</strong> <a href="https://github.com/bouzianiimane" target="_blank">github.com/bouzianiimane</a></p>
+  </div>
 
-    <div class="illustration"><img src="Contact us-bro.svg" alt="Contact"></div>
-    <form class="contact-form" action="https://formsubmit.co/bouzianiimane1@gmail.com" method="POST">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://bouzianiimane.github.io/MY-CV">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="inquiry" rows="5" placeholder="Your Inquiry" required></textarea>
-      <button type="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
-    </form>
-  </section>
+  <div class="illustration"><img src="Contact us-bro.svg" alt="Contact"></div>
+
+  <!-- Contact Form -->
+  <form id="contactForm" class="contact-form" action="https://formsubmit.co/bouzianiimane1@gmail.com" method="POST">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://bouzianiimane.github.io/MY-CV">
+
+    <input type="text" id="name" name="name" placeholder="Your Name" required>
+    <input type="email" id="email" name="email" placeholder="Your Email" required>
+    <textarea id="message" name="inquiry" rows="5" placeholder="Your Inquiry" required></textarea>
+    <button type="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+  </form>
+</section>
+
+<!-- Success Popup -->
+<div id="successPopup" style="
+  display:none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  text-align:center;
+  z-index: 9999;
+">
+  ✅ Your message has been sent successfully!
+</div>
 
   <footer>
     <p>© 2025 Bouziani Imane | All Rights Reserved</p>
@@ -954,5 +974,42 @@
       });
     }
   </script>
+
+
+  <script>
+  const form = document.getElementById("contactForm");
+  const popup = document.getElementById("successPopup");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Get values
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    // Validation
+    if (!name || !email || !message) {
+      alert("⚠️ Please fill in all fields.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("⚠️ Please enter a valid email.");
+      return;
+    }
+
+    // Success
+    popup.style.display = "block";
+
+    setTimeout(() => {
+      popup.style.display = "none";
+      form.reset();
+    }, 3000);
+  });
+</script>
+
 </body>
 </html>
+
