@@ -726,6 +726,55 @@ body.dark-mode header p {
 body.dark-mode .header-content {
   color: #f5f5f5;
 }
+  /* Dark mode header colors - DARKER PASTEL WITH GRAYISH TONES */
+body.dark-mode header {
+  background: linear-gradient(270deg, #6a4a6b, #4a5a7a, #6a4a6b); /* Dark muted purple/blue */
+  background-size: 600% 600%;
+  animation: gradientMove 12s ease infinite;
+  color: #f5f5f5;
+}
+
+body.dark-mode header h1 {
+  background: linear-gradient(90deg, #8a6a8b, #6a7a9a, #8a6a8b); /* Dark muted pastel gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 5s infinite alternate;
+}
+
+/* Theme-specific dark mode header colors */
+body.dark-mode.theme-lavender header {
+  background: linear-gradient(270deg, #6a5a7b, #5a6a8b, #6a5a7b); /* Dark lavender-gray */
+}
+
+body.dark-mode.theme-lavender header h1 {
+  background: linear-gradient(90deg, #8a7a9b, #7a8aab, #8a7a9b); /* Dark lavender text */
+}
+
+body.dark-mode.theme-mint header {
+  background: linear-gradient(270deg, #4a6a5b, #5a7a6b, #4a6a5b); /* Dark mint-gray */
+}
+
+body.dark-mode.theme-mint header h1 {
+  background: linear-gradient(90deg, #6a8a7b, #7a9a8b, #6a8a7b); /* Dark mint text */
+}
+
+body.dark-mode.theme-peach header {
+  background: linear-gradient(270deg, #7a5a4a, #8a6a5a, #7a5a4a); /* Dark peach-gray */
+}
+
+body.dark-mode.theme-peach header h1 {
+  background: linear-gradient(90deg, #9a7a6a, #aa8a7a, #9a7a6a); /* Dark peach text */
+}
+
+body.dark-mode.theme-sky header {
+  background: linear-gradient(270deg, #4a6a7a, #5a7a8a, #4a6a7a); /* Dark sky-gray */
+}
+
+body.dark-mode.theme-sky header h1 {
+  background: linear-gradient(90deg, #6a8a9a, #7a9aaa, #6a8a9a); /* Dark sky text */
+}
+    
+    
     /* Header content alignment */
     .header-content {
       max-width: 900px;
@@ -1066,6 +1115,24 @@ body.dark-mode .header-content {
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       z-index: 1000;
     }
+
+
+    @media (max-width: 768px) {
+  .nav-main {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .timeline::after {
+    left: 31px;
+  }
+  
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+}
   </style>
 </head>
 
@@ -1900,14 +1967,14 @@ function updateThemeColors(theme, isDarkMode) {
         secondary: '#fbc2eb', 
         header1: '#fbc2eb', 
         header2: '#a6c1ee',
-        background: 'linear-gradient(270deg, #e6d6f5, #d0c4f2, #c7d8f9)' // Your original light background
+        background: 'linear-gradient(270deg, #e6d6f5, #d0c4f2, #c7d8f9)'
       },
       dark: { 
-        primary: '#a78bfa',     // Deeper Lavender
-        secondary: '#d8b4fe',   // Soft Purple
-        header1: '#c4b5fd',     // Medium Lavender
-        header2: '#a78bfa',     // Deeper Lavender
-        background: 'linear-gradient(270deg, #1a1a2e, #16213e, #0f3460)' // Dark Blue-Base
+        primary: '#8a7a9b',     // Dark lavender-gray
+        secondary: '#7a8aab',   // Dark muted blue
+        header1: '#6a5a7b',     // Dark header color 1
+        header2: '#5a6a8b',     // Dark header color 2
+        background: 'linear-gradient(270deg, #2a2a3a, #252535, #1f1f2f)'
       }
     },
     mint: { 
@@ -1919,11 +1986,11 @@ function updateThemeColors(theme, isDarkMode) {
         background: 'linear-gradient(270deg, #d6f5e6, #c4f2d0, #e6f7ed)'
       },
       dark: { 
-        primary: '#34d399',     // Deeper Mint
-        secondary: '#6ee7b7',   // Soft Green
-        header1: '#10b981',     // Emerald
-        header2: '#34d399',     // Deeper Mint
-        background: 'linear-gradient(270deg, #1a2e2a, #1f3a2f, #1a4532)'
+        primary: '#6a8a7b',     // Dark mint-gray
+        secondary: '#7a9a8b',   // Dark muted green
+        header1: '#4a6a5b',     // Dark header color 1
+        header2: '#5a7a6b',     // Dark header color 2
+        background: 'linear-gradient(270deg, #2a3a2a, #253525, #1f2f1f)'
       }
     },
     peach: { 
@@ -1935,11 +2002,11 @@ function updateThemeColors(theme, isDarkMode) {
         background: 'linear-gradient(270deg, #f5e6d6, #f2d0c4, #fae1d6)'
       },
       dark: { 
-        primary: '#f472b6',     // Deeper Peach Pink
-        secondary: '#f9a8d4',   // Soft Pink
-        header1: '#f472b6',     // Deeper Peach Pink
-        header2: '#fb7185',     // Rosy Pink
-        background: 'linear-gradient(270deg, #2e1a1a, #3d1e1e, #4a2323)'
+        primary: '#9a7a6a',     // Dark peach-gray
+        secondary: '#aa8a7a',   // Dark muted orange
+        header1: '#7a5a4a',     // Dark header color 1
+        header2: '#8a6a5a',     // Dark header color 2
+        background: 'linear-gradient(270deg, #3a2a2a, #352525, #2f1f1f)'
       }
     },
     sky: { 
@@ -1951,11 +2018,11 @@ function updateThemeColors(theme, isDarkMode) {
         background: 'linear-gradient(270deg, #d6e6f5, #c4d4f2, #e6eefa)'
       },
       dark: { 
-        primary: '#38bdf8',     // Deeper Sky Blue
-        secondary: '#7dd3fc',   // Soft Blue
-        header1: '#0ea5e9',     // Bright Sky
-        header2: '#38bdf8',     // Deeper Sky Blue
-        background: 'linear-gradient(270deg, #1e2a3a, #1e3a5f, #1e4a7e)'
+        primary: '#6a8a9a',     // Dark sky-gray
+        secondary: '#7a9aaa',   // Dark muted blue
+        header1: '#4a6a7a',     // Dark header color 1
+        header2: '#5a7a8a',     // Dark header color 2
+        background: 'linear-gradient(270deg, #2a3a4a, #253545, #1f2f3f)'
       }
     }
   };
@@ -1964,11 +2031,15 @@ function updateThemeColors(theme, isDarkMode) {
   
   // Update the main website background
   document.body.style.background = colors.background;
-  document.body.style.backgroundSize = '600% 600%'; // Keep your existing animation
+  document.body.style.backgroundSize = '600% 600%';
   
   // Update header gradient
   document.querySelector('header').style.background = 
     `linear-gradient(270deg, ${colors.header1}, ${colors.header2}, ${colors.header1})`;
+  
+  // Update header text gradient
+  document.querySelector('header h1').style.background = 
+    `linear-gradient(90deg, ${colors.primary}, ${colors.secondary}, ${colors.primary})`;
   
   // Update progress bars
   document.querySelectorAll('.progress').forEach(progress => {
@@ -1979,7 +2050,6 @@ function updateThemeColors(theme, isDarkMode) {
   document.documentElement.style.setProperty('--primary-color', colors.primary);
   document.documentElement.style.setProperty('--secondary-color', colors.secondary);
 }
-
     // Make sure dark mode toggle preserves theme
     const darkBtn = document.getElementById("darkBtn");
     darkBtn.addEventListener("click", () => {
@@ -2052,6 +2122,7 @@ function updateThemeColors(theme, isDarkMode) {
 </script>
 </body>
 </html>
+
 
 
 
