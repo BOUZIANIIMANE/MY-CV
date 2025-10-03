@@ -1123,7 +1123,7 @@ body.dark-mode .header-content {
     <div class="header-content">
       <h1>Bouziani Imane</h1>
       <p id="greeting"></p> <!-- Dynamic greeting -->
-      <p id="typing" class="professional-subtitle">AI Engineer & Computer Scientist</p>
+<p id="typing" class="professional-subtitle"></p>
       <p>| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |</p>
     </div>
   </header>
@@ -1543,20 +1543,24 @@ body.dark-mode .header-content {
       document.getElementById("preloader").style.display = "none";
     });
     
-    // Typing effect
-    const typingElement = document.getElementById("typing");
-    const text = "AI Engineer & Computer Scientist";
-    let i = 0;
-    
-    function typing() {
-      if (i < text.length) {
-        typingElement.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typing, 80);
-      }
-    }
-    
-    typing();
+   // Typing effect - IMPROVED VERSION
+const typingElement = document.getElementById("typing");
+const text = "AI Engineer & Computer Scientist";
+let i = 0;
+
+// Clear the element first to prevent double text
+typingElement.innerHTML = "";
+
+function typing() {
+  if (i < text.length) {
+    typingElement.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 80);
+  }
+}
+
+// Start typing after a short delay to ensure element is cleared
+setTimeout(typing, 500);
     
     // Dynamic greeting based on time of day
     const greetingElement = document.getElementById("greeting");
@@ -1996,6 +2000,7 @@ body.dark-mode .header-content {
 </script>
 </body>
 </html>
+
 
 
 
