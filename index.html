@@ -1958,7 +1958,6 @@ setTimeout(typing, 500);
       
       updateThemeColors(theme, isDarkMode);
     }
-
 function updateThemeColors(theme, isDarkMode) {
   const themes = {
     lavender: { 
@@ -1970,10 +1969,10 @@ function updateThemeColors(theme, isDarkMode) {
         background: 'linear-gradient(270deg, #e6d6f5, #d0c4f2, #c7d8f9)'
       },
       dark: { 
-        primary: '#8a7a9b',     // Dark lavender-gray
-        secondary: '#7a8aab',   // Dark muted blue
-        header1: '#6a5a7b',     // Dark header color 1
-        header2: '#5a6a8b',     // Dark header color 2
+        primary: '#8a7a9b',
+        secondary: '#7a8aab',
+        header1: '#6a5a7b',
+        header2: '#5a6a8b',
         background: 'linear-gradient(270deg, #2a2a3a, #252535, #1f1f2f)'
       }
     },
@@ -1986,10 +1985,10 @@ function updateThemeColors(theme, isDarkMode) {
         background: 'linear-gradient(270deg, #d6f5e6, #c4f2d0, #e6f7ed)'
       },
       dark: { 
-        primary: '#6a8a7b',     // Dark mint-gray
-        secondary: '#7a9a8b',   // Dark muted green
-        header1: '#4a6a5b',     // Dark header color 1
-        header2: '#5a7a6b',     // Dark header color 2
+        primary: '#6a8a7b',
+        secondary: '#7a9a8b',
+        header1: '#4a6a5b',
+        header2: '#5a7a6b',
         background: 'linear-gradient(270deg, #2a3a2a, #253525, #1f2f1f)'
       }
     },
@@ -2002,10 +2001,10 @@ function updateThemeColors(theme, isDarkMode) {
         background: 'linear-gradient(270deg, #f5e6d6, #f2d0c4, #fae1d6)'
       },
       dark: { 
-        primary: '#9a7a6a',     // Dark peach-gray
-        secondary: '#aa8a7a',   // Dark muted orange
-        header1: '#7a5a4a',     // Dark header color 1
-        header2: '#8a6a5a',     // Dark header color 2
+        primary: '#9a7a6a',
+        secondary: '#aa8a7a',
+        header1: '#7a5a4a',
+        header2: '#8a6a5a',
         background: 'linear-gradient(270deg, #3a2a2a, #352525, #2f1f1f)'
       }
     },
@@ -2018,10 +2017,10 @@ function updateThemeColors(theme, isDarkMode) {
         background: 'linear-gradient(270deg, #d6e6f5, #c4d4f2, #e6eefa)'
       },
       dark: { 
-        primary: '#6a8a9a',     // Dark sky-gray
-        secondary: '#7a9aaa',   // Dark muted blue
-        header1: '#4a6a7a',     // Dark header color 1
-        header2: '#5a7a8a',     // Dark header color 2
+        primary: '#6a8a9a',
+        secondary: '#7a9aaa',
+        header1: '#4a6a7a',
+        header2: '#5a7a8a',
         background: 'linear-gradient(270deg, #2a3a4a, #253545, #1f2f3f)'
       }
     }
@@ -2037,7 +2036,7 @@ function updateThemeColors(theme, isDarkMode) {
   document.querySelector('header').style.background = 
     `linear-gradient(270deg, ${colors.header1}, ${colors.header2}, ${colors.header1})`;
   
-  // Update header text gradient
+  // Update header text gradient (This is the new line for your name)
   document.querySelector('header h1').style.background = 
     `linear-gradient(90deg, ${colors.primary}, ${colors.secondary}, ${colors.primary})`;
   
@@ -2122,6 +2121,7 @@ function updateThemeColors(theme, isDarkMode) {
 </script>
 </body>
 </html>
+
 
 
 
