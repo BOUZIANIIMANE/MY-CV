@@ -528,7 +528,184 @@
       background-size: 600% 600%;
       animation: animatedBackground 20s ease infinite;
     }
-    
+    /* Dark mode pastel colors update */
+body.dark-mode header {
+  background: linear-gradient(270deg, #c44569, #546de5, #c44569);
+  background-size: 600% 600%;
+}
+
+body.dark-mode .nav-container {
+  background: #2a2a3a;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .nav-main a {
+  color: #ddd;
+}
+
+body.dark-mode .nav-main a:hover {
+  color: #778beb;
+}
+
+body.dark-mode section {
+  background: #2d2d3d;
+  color: #f5f5f5;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+body.dark-mode section:hover {
+  box-shadow: 0 12px 30px rgba(119, 139, 235, 0.2);
+}
+
+body.dark-mode footer {
+  background: linear-gradient(120deg, #3742fa 0%, #c44569 100%);
+}
+
+body.dark-mode .professional-subtitle {
+  color: #e0e0e0;
+}
+
+/* Dark mode for new features */
+body.dark-mode .ai-chat-bubble {
+  background: linear-gradient(135deg, #546de5, #c44569);
+}
+
+body.dark-mode .ai-chat-window {
+  background: #2d2d3d;
+  color: #f5f5f5;
+}
+
+body.dark-mode .chat-header {
+  background: linear-gradient(135deg, #546de5, #c44569);
+}
+
+body.dark-mode .chat-bot {
+  background: #3a3a4a;
+  color: #f5f5f5;
+}
+
+body.dark-mode .chat-option {
+  background: #3a3a4a;
+  color: #f5f5f5;
+}
+
+body.dark-mode .chat-option:hover {
+  background: #4a4a5a;
+}
+
+body.dark-mode .timeline-content {
+  background: #3a3a4a;
+  color: #f5f5f5;
+}
+
+body.dark-mode .timeline-content:hover {
+  background: #4a4a5a;
+}
+
+body.dark-mode .timeline-details {
+  background: #2d2d3d;
+  color: #f5f5f5;
+}
+
+body.dark-mode .skill-filter {
+  background: #3a3a4a;
+  border-color: #546de5;
+  color: #f5f5f5;
+}
+
+body.dark-mode .skill-filter.active {
+  background: #546de5;
+  color: #f5f5f5;
+}
+
+body.dark-mode .skill-badge {
+  background: #3a3a4a;
+  color: #f5f5f5;
+}
+
+body.dark-mode .skill-badge.ai { border-color: #e66767; }
+body.dark-mode .skill-badge.web { border-color: #54a0ff; }
+body.dark-mode .skill-badge.data { border-color: #48dbfb; }
+body.dark-mode .skill-badge.mobile { border-color: #1dd1a1; }
+
+body.dark-mode .visitor-counter {
+  background: rgba(45, 45, 61, 0.9);
+  color: #f5f5f5;
+}
+
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea {
+  background: #3a3a4a;
+  border-color: #555;
+  color: #f5f5f5;
+}
+
+body.dark-mode .contact-form input:focus,
+body.dark-mode .contact-form textarea:focus {
+  border-color: #546de5;
+}
+
+body.dark-mode .contact-info {
+  color: #e0e0e0;
+}
+
+body.dark-mode .contact-info a {
+  color: #778beb;
+}
+
+body.dark-mode .bar {
+  background: #3a3a4a;
+}
+
+body.dark-mode .progress {
+  background: linear-gradient(90deg, #546de5, #c44569);
+}
+
+/* Update blob for dark mode */
+body.dark-mode .blob {
+  background: radial-gradient(circle at center, #c44569 0%, #546de5 100%);
+  opacity: 0.3;
+}
+
+/* Dark mode for social sidebar */
+body.dark-mode .social-sidebar a {
+  background: #546de5;
+}
+
+body.dark-mode .social-sidebar a:hover {
+  background: #c44569;
+}
+
+/* Dark mode for buttons */
+body.dark-mode #darkBtn {
+  background: #3a3a4a;
+  color: #f5f5f5;
+}
+
+body.dark-mode #darkBtn:hover {
+  background: #546de5;
+}
+
+body.dark-mode #topBtn {
+  background: #546de5;
+}
+
+body.dark-mode #topBtn:hover {
+  background: #c44569;
+}
+
+body.dark-mode #hireBtn {
+  background: #c44569;
+}
+
+body.dark-mode #hireBtn:hover {
+  background: #546de5;
+}
+
+/* Dark mode for theme buttons */
+body.dark-mode .theme-btn {
+  border-color: #3a3a4a;
+}
     /* Header content alignment */
     .header-content {
       max-width: 900px;
@@ -1732,40 +1909,89 @@
       initThreeJS();
     });
 
-    // Your existing contact form JavaScript
-    const form = document.getElementById("contactForm");
-    const popup = document.getElementById("successPopup");
+ 
+    
+    // Theme Personalization for both light and dark modes
+    const themeButtons = document.querySelectorAll('.theme-btn');
 
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      // Get values
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const message = document.getElementById("message").value.trim();
-
-      // Validation
-      if (!name || !email || !message) {
-        alert("⚠️ Please fill in all fields.");
-        return;
-      }
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        alert("⚠️ Please enter a valid email.");
-        return;
-      }
-
-      // Success
-      popup.style.display = "block";
-
-      setTimeout(() => {
-        popup.style.display = "none";
-        form.reset();
-      }, 3000);
+    themeButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const theme = this.getAttribute('data-theme');
+        applyTheme(theme);
+      });
     });
+
+    function applyTheme(theme) {
+      // Remove existing theme classes but keep dark-mode
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      document.body.className = '';
+      if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+      }
+      document.body.classList.add(`theme-${theme}`);
+      
+      updateThemeColors(theme, isDarkMode);
+    }
+
+    function updateThemeColors(theme, isDarkMode) {
+      const themes = {
+        lavender: { 
+          light: { primary: '#a6c1ee', secondary: '#fbc2eb', header1: '#fbc2eb', header2: '#a6c1ee' },
+          dark: { primary: '#778beb', secondary: '#c44569', header1: '#c44569', header2: '#778beb' }
+        },
+        mint: { 
+          light: { primary: '#96ceb4', secondary: '#4ecdc4', header1: '#4ecdc4', header2: '#96ceb4' },
+          dark: { primary: '#1dd1a1', secondary: '#48dbfb', header1: '#48dbfb', header2: '#1dd1a1' }
+        },
+        peach: { 
+          light: { primary: '#ffb347', secondary: '#ffcc99', header1: '#ffcc99', header2: '#ffb347' },
+          dark: { primary: '#e67e22', secondary: '#f39c12', header1: '#f39c12', header2: '#e67e22' }
+        },
+        sky: { 
+          light: { primary: '#87ceeb', secondary: '#b0e0e6', header1: '#b0e0e6', header2: '#87ceeb' },
+          dark: { primary: '#54a0ff', secondary: '#48dbfb', header1: '#48dbfb', header2: '#54a0ff' }
+        }
+      };
+      
+      const colors = isDarkMode ? themes[theme].dark : themes[theme].light;
+      
+      // Update header gradient
+      document.querySelector('header').style.background = 
+        `linear-gradient(270deg, ${colors.header1}, ${colors.header2}, ${colors.header1})`;
+      
+      // Update progress bars
+      document.querySelectorAll('.progress').forEach(progress => {
+        progress.style.background = `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`;
+      });
+      
+      // Update other elements that use these colors
+      document.documentElement.style.setProperty('--primary-color', colors.primary);
+      document.documentElement.style.setProperty('--secondary-color', colors.secondary);
+    }
+
+    // Make sure dark mode toggle preserves theme
+    const darkBtn = document.getElementById("darkBtn");
+    darkBtn.addEventListener("click", () => {
+      const currentTheme = document.body.className.match(/theme-(\w+)/);
+      const wasDarkMode = document.body.classList.contains('dark-mode');
+      
+      document.body.classList.toggle("dark-mode");
+      
+      // Re-apply current theme after toggling dark mode
+      if (currentTheme) {
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        updateThemeColors(currentTheme[1], isDarkMode);
+      }
+      
+      darkBtn.innerHTML = document.body.classList.contains("dark-mode") 
+        ? '<i class="fa-solid fa-sun"></i> Light Mode' 
+        : '<i class="fa-solid fa-moon"></i> Dark Mode';
+    });
+
+</script> <!-- This is the closing script tag - make sure the theme code is ABOVE this -->
   </script>
 </body>
 </html>
+
 
 
