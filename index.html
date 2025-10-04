@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,6 @@
   <meta name="theme-color" content="#a6c1ee">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <link rel="manifest" href="manifest.json">
   
   <!-- Schema.org JSON-LD Markup -->
   <script type="application/ld+json">
@@ -21,7 +19,7 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Bouziani Imane",
-    "jobTitle": "",
+    "jobTitle": "AI Engineer",
     "email": "bouzianiimane1@gmail.com",
     "telephone": "+213-664-64-77-79",
     "address": {
@@ -37,6 +35,13 @@
   </script>
   
   <style>
+    :root {
+      --primary-color: #a6c1ee;
+      --secondary-color: #fbc2eb;
+      --header1: #fbc2eb;
+      --header2: #a6c1ee;
+    }
+    
     html {
       scroll-behavior: smooth;
     }
@@ -59,7 +64,7 @@
     }
 
     header {
-      background: linear-gradient(270deg, #fbc2eb, #a6c1ee, #fbc2eb);
+      background: linear-gradient(270deg, var(--header1), var(--header2), var(--header1));
       background-size: 600% 600%;
       animation: gradientMove 12s ease infinite;
       text-align: center;
@@ -74,48 +79,40 @@
       100% {background-position: 0% 50%;}
     }
     
-header h1 {
-  font-size: 2.8em; 
-  margin: 0;
-  color: #ffffff; /* Always white text */
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4), 
-               0px 0px 15px rgba(0, 0, 0, 0.2);
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-/* Theme-specific shadow adjustments - FIXED VERSION */
-.theme-lavender header h1,
-.theme-mint header h1, 
-.theme-peach header h1,
-.theme-sky header h1 {
-  color: #ffffff !important; /* Force white text */
-  background: none !important; /* Remove gradient background */
-  -webkit-background-clip: initial !important;
-  -webkit-text-fill-color: initial !important;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4), 
-               0px 0px 15px rgba(0, 0, 0, 0.2) !important;
-}
+    /* Header title styling - WHITE TEXT with theme-colored shadows */
+    header h1 {
+      font-size: 2.8em; 
+      margin: 0;
+      color: #ffffff !important; /* Force white text */
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4), 
+                   0px 0px 15px rgba(0, 0, 0, 0.2);
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: none !important; /* Remove gradient background */
+      -webkit-background-clip: initial !important;
+      -webkit-text-fill-color: initial !important;
+    }
 
-/* Optional: Keep your colored shadows but with white text */
-.theme-lavender header h1 {
-  text-shadow: 2px 2px 8px rgba(106, 90, 205, 0.4),
-               0px 0px 15px rgba(138, 43, 226, 0.3) !important;
-}
+    /* Theme-specific shadow adjustments */
+    .theme-lavender header h1 {
+      text-shadow: 2px 2px 8px rgba(106, 90, 205, 0.4),
+                   0px 0px 15px rgba(138, 43, 226, 0.3) !important;
+    }
 
-.theme-mint header h1 {
-  text-shadow: 2px 2px 8px rgba(76, 175, 80, 0.4),
-               0px 0px 15px rgba(46, 125, 50, 0.3) !important;
-}
+    .theme-mint header h1 {
+      text-shadow: 2px 2px 8px rgba(76, 175, 80, 0.4),
+                   0px 0px 15px rgba(46, 125, 50, 0.3) !important;
+    }
 
-.theme-peach header h1 {
-  text-shadow: 2px 2px 8px rgba(255, 152, 0, 0.4),
-               0px 0px 15px rgba(255, 87, 34, 0.3) !important;
-}
+    .theme-peach header h1 {
+      text-shadow: 2px 2px 8px rgba(255, 152, 0, 0.4),
+                   0px 0px 15px rgba(255, 87, 34, 0.3) !important;
+    }
 
-.theme-sky header h1 {
-  text-shadow: 2px 2px 8px rgba(33, 150, 243, 0.4),
-               0px 0px 15px rgba(3, 169, 244, 0.3) !important;
-}
+    .theme-sky header h1 {
+      text-shadow: 2px 2px 8px rgba(33, 150, 243, 0.4),
+                   0px 0px 15px rgba(3, 169, 244, 0.3) !important;
+    }
     
     @keyframes gradientText {
       0% { background-position: 0%; }
@@ -143,7 +140,7 @@ header h1 {
     
     ul li::before {
       content: "●";
-      color: #a6c1ee;
+      color: var(--primary-color);
       margin-right: 8px;
     }
     
@@ -175,12 +172,12 @@ header h1 {
     }
     
     .nav-main a:hover { 
-      color: #a6c1ee; 
+      color: var(--primary-color); 
     }
     
     .nav-main a:hover i { 
       transform: rotate(10deg) scale(1.2); 
-      color: #fbc2eb; 
+      color: var(--secondary-color); 
     }
     
     section {
@@ -195,9 +192,9 @@ header h1 {
     }
     
     .nav-main a.active {
-      border-bottom: 2px solid #a6c1ee;
+      border-bottom: 2px solid var(--primary-color);
       padding-bottom: 2px;
-      color: #a6c1ee;
+      color: var(--primary-color);
     }
 
     section:hover {
@@ -206,7 +203,7 @@ header h1 {
     }
     
     section h2 { 
-      color: #a6c1ee; 
+      color: var(--primary-color); 
       display: flex; 
       align-items: center; 
       gap: 10px; 
@@ -249,7 +246,7 @@ header h1 {
       text-align: center;
       padding: 20px;
       margin-top: 50px;
-      background: linear-gradient(120deg, #a6c1ee 0%, #fbc2eb 100%);
+      background: linear-gradient(120deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       color: white;
       font-weight: 600;
       border-top-left-radius: 20px;
@@ -263,7 +260,7 @@ header h1 {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: #a6c1ee;
+      background: var(--primary-color);
       border: none;
       color: white;
       padding: 12px 15px;
@@ -275,7 +272,7 @@ header h1 {
     }
     
     #topBtn:hover { 
-      background: #fbc2eb; 
+      background: var(--secondary-color); 
     }
     
     #typing { 
@@ -323,7 +320,7 @@ header h1 {
     }
     
     #darkBtn:hover { 
-      background: #a6c1ee; 
+      background: var(--primary-color); 
     }
 
     /* Contact Form Styles */
@@ -345,7 +342,7 @@ header h1 {
     }
     
     .contact-form input:focus, .contact-form textarea:focus {
-      border-color: #a6c1ee;
+      border-color: var(--primary-color);
       outline: none;
     }
     
@@ -353,7 +350,7 @@ header h1 {
       padding: 12px 20px;
       border: none;
       border-radius: 30px;
-      background: #a6c1ee;
+      background: var(--primary-color);
       color: white;
       font-weight: 600;
       cursor: pointer;
@@ -362,7 +359,7 @@ header h1 {
     }
     
     .contact-form button:hover { 
-      background: #fbc2eb; 
+      background: var(--secondary-color); 
     }
 
     /* Skills progress bars */
@@ -380,7 +377,7 @@ header h1 {
     .progress {
       height: 10px;
       width: 0; /* start empty */
-      background: linear-gradient(90deg, #a6c1ee, #fbc2eb);
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
       border-radius: 10px;
       transition: width 2s ease; /* smooth filling */
     }
@@ -394,7 +391,7 @@ header h1 {
       position: fixed;
       bottom: 90px;
       right: 30px;
-      background: #fbc2eb;
+      background: var(--secondary-color);
       padding: 12px 20px;
       border-radius: 30px;
       color: white;
@@ -408,7 +405,7 @@ header h1 {
     
     #hireBtn:hover { 
       transform: scale(1.1); 
-      background: #a6c1ee; 
+      background: var(--primary-color); 
     }
 
     /* Preloader */
@@ -423,7 +420,7 @@ header h1 {
     .spinner {
       width: 50px; height: 50px;
       border: 6px solid #ddd;
-      border-top: 6px solid #a6c1ee;
+      border-top: 6px solid var(--primary-color);
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
@@ -450,14 +447,14 @@ header h1 {
     }
     
     .contact-info a {
-      color: #a6c1ee;
+      color: var(--primary-color);
       text-decoration: none;
     }
     
     .contact-info i {
       width: 24px;
       text-align: center;
-      color: #a6c1ee;
+      color: var(--primary-color);
     }
     
     /* Smooth reveal for AOS */
@@ -486,7 +483,7 @@ header h1 {
     
     .stat h3 {
       font-size: 2em;
-      color: #a6c1ee;
+      color: var(--primary-color);
       margin: 0;
     }
     
@@ -507,7 +504,7 @@ header h1 {
     }
     
     .social-sidebar a {
-      background: #a6c1ee;
+      background: var(--primary-color);
       color: white;
       padding: 10px;
       border-radius: 50%;
@@ -517,7 +514,7 @@ header h1 {
     
     .social-sidebar a:hover {
       transform: scale(1.2);
-      background: #fbc2eb;
+      background: var(--secondary-color);
     }
 
     /* Smooth theme transitions */
@@ -532,7 +529,7 @@ header h1 {
       left: 50%;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle at center, #fbc2eb 0%, #a6c1ee 100%);
+      background: radial-gradient(circle at center, var(--secondary-color) 0%, var(--primary-color) 100%);
       border-radius: 50%;
       filter: blur(180px);
       opacity: 0.5;
@@ -557,402 +554,59 @@ header h1 {
     }
     
     body.dark-mode {
-  color: #f5f5f5;
-  background: linear-gradient(270deg, #2b2b3a, #1f1f2e, #2a2a3d, #242436, #1c1c28);
-  background-size: 600% 600%;
-  animation: animatedBackground 20s ease infinite;
-}
+      color: #f5f5f5;
+      background: linear-gradient(270deg, #2b2b3a, #1f1f2e, #2a2a3d, #242436, #1c1c28);
+      background-size: 600% 600%;
+      animation: animatedBackground 20s ease infinite;
+    }
+
+    body.dark-mode header {
+      background: linear-gradient(270deg, #8a4a6b, #5a6fa3, #8a4a6b);
+      background-size: 600% 600%;
+      animation: gradientMove 12s ease infinite;
+      color: #f5f5f5;
+    }
+
+    body.dark-mode header h1 {
+      background: none !important;
+      -webkit-background-clip: initial !important;
+      -webkit-text-fill-color: initial !important;
+      color: #ffffff !important;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6), 
+                   0px 0px 15px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    body.dark-mode .nav-container {
+      background: #2a2a3a;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    body.dark-mode .nav-main a {
+      color: #ddd;
+    }
+
+    body.dark-mode .nav-main a:hover {
+      color: #8fa8d4;
+    }
+
+    body.dark-mode section {
+      background: #2d2d3d;
+      color: #f5f5f5;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    body.dark-mode section:hover {
+      box-shadow: 0 12px 30px rgba(143, 168, 212, 0.2);
+    }
+
+    body.dark-mode footer {
+      background: linear-gradient(120deg, #5a6fa3 0%, #8a4a6b 100%);
+    }
+
+    body.dark-mode .professional-subtitle {
+      color: #e0e0e0;
+    }
 
-/* Dark mode pastel colors update - DARKER PASTELS */
-body.dark-mode header {
-  background: linear-gradient(270deg, #8a4a6b, #5a6fa3, #8a4a6b); /* Much darker pastel pink/blue */
-  background-size: 600% 600%;
-  animation: gradientMove 12s ease infinite;
-  color: #f5f5f5;
-}
-
-body.dark-mode header h1 {
-  background: linear-gradient(90deg, #8a4a6b, #5a6fa3, #8a4a6b); /* Darker pastel gradient for text */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientText 5s infinite alternate;
-}
-
-body.dark-mode .nav-container {
-  background: #2a2a3a;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-body.dark-mode .nav-main a {
-  color: #ddd;
-}
-
-body.dark-mode .nav-main a:hover {
-  color: #8fa8d4; /* Darker pastel blue */
-}
-
-body.dark-mode section {
-  background: #2d2d3d;
-  color: #f5f5f5;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-body.dark-mode section:hover {
-  box-shadow: 0 12px 30px rgba(143, 168, 212, 0.2); /* Darker pastel blue shadow */
-}
-
-body.dark-mode footer {
-  background: linear-gradient(120deg, #5a6fa3 0%, #8a4a6b 100%); /* Darker pastels */
-}
-
-body.dark-mode .professional-subtitle {
-  color: #e0e0e0;
-}
-
-/* Dark mode for new features - DARKER PASTELS */
-body.dark-mode .ai-chat-bubble {
-  background: linear-gradient(135deg, #5a6fa3, #8a4a6b); /* Darker pastels */
-}
-
-body.dark-mode .ai-chat-window {
-  background: #2d2d3d;
-  color: #f5f5f5;
-}
-
-body.dark-mode .chat-header {
-  background: linear-gradient(135deg, #5a6fa3, #8a4a6b); /* Darker pastels */
-}
-
-body.dark-mode .chat-bot {
-  background: #3a3a4a;
-  color: #f5f5f5;
-}
-
-body.dark-mode .chat-option {
-  background: #3a3a4a;
-  color: #f5f5f5;
-}
-
-body.dark-mode .chat-option:hover {
-  background: #4a4a5a;
-}
-
-body.dark-mode .timeline-content {
-  background: #3a3a4a;
-  color: #f5f5f5;
-}
-
-body.dark-mode .timeline-content:hover {
-  background: #4a4a5a;
-}
-
-body.dark-mode .timeline-details {
-  background: #2d2d3d;
-  color: #f5f5f5;
-}
-
-body.dark-mode .skill-filter {
-  background: #3a3a4a;
-  border-color: #5a6fa3; /* Darker pastel blue */
-  color: #f5f5f5;
-}
-
-body.dark-mode .skill-filter.active {
-  background: #5a6fa3; /* Darker pastel blue */
-  color: #f5f5f5;
-}
-
-body.dark-mode .skill-badge {
-  background: #3a3a4a;
-  color: #f5f5f5;
-}
-
-body.dark-mode .skill-badge.ai { border-color: #b85c5c; } /* Darker pastel red */
-body.dark-mode .skill-badge.web { border-color: #4a8d8d; } /* Darker pastel teal */
-body.dark-mode .skill-badge.data { border-color: #4a8db8; } /* Darker pastel blue */
-body.dark-mode .skill-badge.mobile { border-color: #5ca85c; } /* Darker pastel green */
-
-body.dark-mode .visitor-counter {
-  background: rgba(45, 45, 61, 0.9);
-  color: #f5f5f5;
-}
-
-body.dark-mode .contact-form input,
-body.dark-mode .contact-form textarea {
-  background: #3a3a4a;
-  border-color: #555;
-  color: #f5f5f5;
-}
-
-body.dark-mode .contact-form input:focus,
-body.dark-mode .contact-form textarea:focus {
-  border-color: #5a6fa3; /* Darker pastel blue */
-}
-
-body.dark-mode .contact-info {
-  color: #e0e0e0;
-}
-
-body.dark-mode .contact-info a {
-  color: #8fa8d4; /* Darker pastel blue */
-}
-
-body.dark-mode .bar {
-  background: #3a3a4a;
-}
-
-body.dark-mode .progress {
-  background: linear-gradient(90deg, #5a6fa3, #8a4a6b); /* Darker pastels */
-}
-
-/* Update blob for dark mode */
-body.dark-mode .blob {
-  background: radial-gradient(circle at center, #8a4a6b 0%, #5a6fa3 100%); /* Darker pastels */
-  opacity: 0.2; /* Even more subtle */
-}
-
-/* Dark mode for social sidebar */
-body.dark-mode .social-sidebar a {
-  background: #5a6fa3; /* Darker pastel blue */
-}
-
-body.dark-mode .social-sidebar a:hover {
-  background: #8a4a6b; /* Darker pastel pink */
-}
-
-/* Dark mode for buttons */
-body.dark-mode #darkBtn {
-  background: #3a3a4a;
-  color: #f5f5f5;
-}
-
-body.dark-mode #darkBtn:hover {
-  background: #5a6fa3; /* Darker pastel blue */
-}
-
-body.dark-mode #topBtn {
-  background: #5a6fa3; /* Darker pastel blue */
-}
-
-body.dark-mode #topBtn:hover {
-  background: #8a4a6b; /* Darker pastel pink */
-}
-
-body.dark-mode #hireBtn {
-  background: #8a4a6b; /* Darker pastel pink */
-}
-
-body.dark-mode #hireBtn:hover {
-  background: #5a6fa3; /* Darker pastel blue */
-}
-
-/* Dark mode for theme buttons */
-body.dark-mode .theme-btn {
-  border-color: #3a3a4a;
-}
-
-/* Fix for header text contrast */
-body.dark-mode header p {
-  color: #e0e0e0;
-}
-
-/* Ensure good contrast for all header content */
-body.dark-mode .header-content {
-  color: #f5f5f5;
-}
-  /* Dark mode header colors - DARKER PASTEL WITH GRAYISH TONES */
-body.dark-mode header {
-  background: linear-gradient(270deg, #6a4a6b, #4a5a7a, #6a4a6b); /* Dark muted purple/blue */
-  background-size: 600% 600%;
-  animation: gradientMove 12s ease infinite;
-  color: #f5f5f5;
-}
-
-body.dark-mode header h1 {
-  background: linear-gradient(90deg, #8a6a8b, #6a7a9a, #8a6a8b); /* Dark muted pastel gradient */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientText 5s infinite alternate;
-}
-
-/* Theme-specific dark mode header colors */
-body.dark-mode.theme-lavender header {
-  background: linear-gradient(270deg, #6a5a7b, #5a6a8b, #6a5a7b); /* Dark lavender-gray */
-}
-
-body.dark-mode.theme-lavender header h1 {
-  background: linear-gradient(90deg, #8a7a9b, #7a8aab, #8a7a9b); /* Dark lavender text */
-}
-
-body.dark-mode.theme-mint header {
-  background: linear-gradient(270deg, #4a6a5b, #5a7a6b, #4a6a5b); /* Dark mint-gray */
-}
-
-body.dark-mode.theme-mint header h1 {
-  background: linear-gradient(90deg, #6a8a7b, #7a9a8b, #6a8a7b); /* Dark mint text */
-}
-
-body.dark-mode.theme-peach header {
-  background: linear-gradient(270deg, #7a5a4a, #8a6a5a, #7a5a4a); /* Dark peach-gray */
-}
-
-body.dark-mode.theme-peach header h1 {
-  background: linear-gradient(90deg, #9a7a6a, #aa8a7a, #9a7a6a); /* Dark peach text */
-}
-
-body.dark-mode.theme-sky header {
-  background: linear-gradient(270deg, #4a6a7a, #5a7a8a, #4a6a7a); /* Dark sky-gray */
-}
-
-body.dark-mode.theme-sky header h1 {
-  background: linear-gradient(90deg, #6a8a9a, #7a9aaa, #6a8a9a); /* Dark sky text */
-}
-
-/* ========== THEME FIXES ========== */
-/* Force theme headers to work in light mode */
-.theme-lavender header,
-.theme-mint header,
-.theme-peach header,
-.theme-sky header {
-  background: linear-gradient(270deg, var(--header1), var(--header2), var(--header1)) !important;
-  background-size: 600% 600% !important;
-  animation: gradientMove 12s ease infinite !important;
-}
-
-.theme-lavender header h1,
-.theme-mint header h1,
-.theme-peach header h1,
-.theme-sky header h1 {
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color)) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  animation: gradientText 5s infinite alternate !important;
-}
-
-/* Theme-specific button colors */
-.theme-lavender #hireBtn { background: var(--secondary-color) !important; }
-.theme-lavender #hireBtn:hover { background: var(--primary-color) !important; }
-
-.theme-mint #hireBtn { background: var(--secondary-color) !important; }
-.theme-mint #hireBtn:hover { background: var(--primary-color) !important; }
-
-.theme-peach #hireBtn { background: var(--secondary-color) !important; }
-.theme-peach #hireBtn:hover { background: var(--primary-color) !important; }
-
-.theme-sky #hireBtn { background: var(--secondary-color) !important; }
-.theme-sky #hireBtn:hover { background: var(--primary-color) !important; }
-
-/* Theme progress bars */
-.theme-lavender .progress { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) !important; }
-.theme-mint .progress { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) !important; }
-.theme-peach .progress { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) !important; }
-.theme-sky .progress { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) !important; }
-
-/* Theme section headings */
-.theme-lavender section h2 { color: var(--primary-color) !important; }
-.theme-mint section h2 { color: var(--primary-color) !important; }
-.theme-peach section h2 { color: var(--primary-color) !important; }
-.theme-sky section h2 { color: var(--primary-color) !important; }
-
-/* Theme navigation */
-.theme-lavender .nav-main a:hover { color: var(--primary-color) !important; }
-.theme-mint .nav-main a:hover { color: var(--primary-color) !important; }
-.theme-peach .nav-main a:hover { color: var(--primary-color) !important; }
-.theme-sky .nav-main a:hover { color: var(--primary-color) !important; }
-
-.theme-lavender .nav-main a.active { color: var(--primary-color) !important; border-color: var(--primary-color) !important; }
-.theme-mint .nav-main a.active { color: var(--primary-color) !important; border-color: var(--primary-color) !important; }
-.theme-peach .nav-main a.active { color: var(--primary-color) !important; border-color: var(--primary-color) !important; }
-.theme-sky .nav-main a.active { color: var(--primary-color) !important; border-color: var(--primary-color) !important; }
-
-/* Theme list bullets */
-.theme-lavender ul li::before { color: var(--primary-color) !important; }
-.theme-mint ul li::before { color: var(--primary-color) !important; }
-.theme-peach ul li::before { color: var(--primary-color) !important; }
-.theme-sky ul li::before { color: var(--primary-color) !important; }
-
-/* Theme contact info */
-.theme-lavender .contact-info a { color: var(--primary-color) !important; }
-.theme-mint .contact-info a { color: var(--primary-color) !important; }
-.theme-peach .contact-info a { color: var(--primary-color) !important; }
-.theme-sky .contact-info a { color: var(--primary-color) !important; }
-
-.theme-lavender .contact-info i { color: var(--primary-color) !important; }
-.theme-mint .contact-info i { color: var(--primary-color) !important; }
-.theme-peach .contact-info i { color: var(--primary-color) !important; }
-.theme-sky .contact-info i { color: var(--primary-color) !important; }
-
-/* Theme form elements */
-.theme-lavender .contact-form input:focus,
-.theme-lavender .contact-form textarea:focus { border-color: var(--primary-color) !important; }
-.theme-mint .contact-form input:focus,
-.theme-mint .contact-form textarea:focus { border-color: var(--primary-color) !important; }
-.theme-peach .contact-form input:focus,
-.theme-peach .contact-form textarea:focus { border-color: var(--primary-color) !important; }
-.theme-sky .contact-form input:focus,
-.theme-sky .contact-form textarea:focus { border-color: var(--primary-color) !important; }
-
-.theme-lavender .contact-form button { background: var(--primary-color) !important; }
-.theme-mint .contact-form button { background: var(--primary-color) !important; }
-.theme-peach .contact-form button { background: var(--primary-color) !important; }
-.theme-sky .contact-form button { background: var(--primary-color) !important; }
-
-.theme-lavender .contact-form button:hover { background: var(--secondary-color) !important; }
-.theme-mint .contact-form button:hover { background: var(--secondary-color) !important; }
-.theme-peach .contact-form button:hover { background: var(--secondary-color) !important; }
-.theme-sky .contact-form button:hover { background: var(--secondary-color) !important; }
-
-/* Theme footer */
-.theme-lavender footer { background: linear-gradient(120deg, var(--primary-color), var(--secondary-color)) !important; }
-.theme-mint footer { background: linear-gradient(120deg, var(--primary-color), var(--secondary-color)) !important; }
-.theme-peach footer { background: linear-gradient(120deg, var(--primary-color), var(--secondary-color)) !important; }
-.theme-sky footer { background: linear-gradient(120deg, var(--primary-color), var(--secondary-color)) !important; }
-
-/* Theme social sidebar */
-.theme-lavender .social-sidebar a { background: var(--primary-color) !important; }
-.theme-mint .social-sidebar a { background: var(--primary-color) !important; }
-.theme-peach .social-sidebar a { background: var(--primary-color) !important; }
-.theme-sky .social-sidebar a { background: var(--primary-color) !important; }
-
-.theme-lavender .social-sidebar a:hover { background: var(--secondary-color) !important; }
-.theme-mint .social-sidebar a:hover { background: var(--secondary-color) !important; }
-.theme-peach .social-sidebar a:hover { background: var(--secondary-color) !important; }
-.theme-sky .social-sidebar a:hover { background: var(--secondary-color) !important; }
-
-/* Theme top button */
-.theme-lavender #topBtn { background: var(--primary-color) !important; }
-.theme-mint #topBtn { background: var(--primary-color) !important; }
-.theme-peach #topBtn { background: var(--primary-color) !important; }
-.theme-sky #topBtn { background: var(--primary-color) !important; }
-
-.theme-lavender #topBtn:hover { background: var(--secondary-color) !important; }
-.theme-mint #topBtn:hover { background: var(--secondary-color) !important; }
-.theme-peach #topBtn:hover { background: var(--secondary-color) !important; }
-.theme-sky #topBtn:hover { background: var(--secondary-color) !important; }
-
-/* Theme skill filters */
-.theme-lavender .skill-filter { border-color: var(--primary-color) !important; }
-.theme-mint .skill-filter { border-color: var(--primary-color) !important; }
-.theme-peach .skill-filter { border-color: var(--primary-color) !important; }
-.theme-sky .skill-filter { border-color: var(--primary-color) !important; }
-
-.theme-lavender .skill-filter.active { background: var(--primary-color) !important; }
-.theme-mint .skill-filter.active { background: var(--primary-color) !important; }
-.theme-peach .skill-filter.active { background: var(--primary-color) !important; }
-.theme-sky .skill-filter.active { background: var(--primary-color) !important; }
-
-/* Theme AI chat */
-.theme-lavender .ai-chat-bubble { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
-.theme-mint .ai-chat-bubble { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
-.theme-peach .ai-chat-bubble { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
-.theme-sky .ai-chat-bubble { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
-
-.theme-lavender .chat-header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
-.theme-mint .chat-header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
-.theme-peach .chat-header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
-.theme-sky .chat-header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
-    
-    
     /* Header content alignment */
     .header-content {
       max-width: 900px;
@@ -973,246 +627,7 @@ body.dark-mode.theme-sky header h1 {
       color: #f5f5f5;
     }
 
-    /* ========== NEW FEATURES STYLES ========== */
-    
-    /* AI Chat Bubble */
-    .ai-chat-bubble {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, #a6c1ee, #fbc2eb);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      z-index: 1000;
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: pulse 2s infinite;
-    }
-    
-    .ai-chat-bubble:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    }
-    
-    .ai-chat-bubble i {
-      color: white;
-      font-size: 1.5em;
-    }
-    
-    .ai-chat-window {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      width: 300px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.15);
-      z-index: 1000;
-      display: none;
-      overflow: hidden;
-      animation: slideUp 0.3s ease;
-    }
-    
-    @keyframes slideUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    
-    .chat-header {
-      background: linear-gradient(135deg, #a6c1ee, #fbc2eb);
-      color: white;
-      padding: 15px;
-      font-weight: 600;
-    }
-    
-    .chat-body {
-      padding: 15px;
-      max-height: 200px;
-      overflow-y: auto;
-    }
-    
-    .chat-message {
-      margin-bottom: 10px;
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 0.9em;
-    }
-    
-    .chat-bot {
-      background: #f0f4ff;
-      text-align: left;
-    }
-    
-    .chat-options {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    
-    .chat-option {
-      padding: 8px 12px;
-      background: #e6eeff;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      font-size: 0.85em;
-      text-align: left;
-      transition: background 0.3s;
-    }
-    
-    .chat-option:hover {
-      background: #d6e4ff;
-    }
-    
-    /* Interactive Timeline */
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .timeline::after {
-      content: '';
-      position: absolute;
-      width: 4px;
-      background: #a6c1ee;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -2px;
-    }
-    
-    .timeline-item {
-      padding: 10px 40px;
-      position: relative;
-      width: 50%;
-      box-sizing: border-box;
-    }
-    
-    .timeline-item:nth-child(odd) {
-      left: 0;
-    }
-    
-    .timeline-item:nth-child(even) {
-      left: 50%;
-    }
-    
-    .timeline-item::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: #fbc2eb;
-      border: 4px solid #a6c1ee;
-      top: 15px;
-      border-radius: 50%;
-      z-index: 1;
-    }
-    
-    .timeline-item:nth-child(odd)::after {
-      right: -10px;
-    }
-    
-    .timeline-item:nth-child(even)::after {
-      left: -10px;
-    }
-    
-    .timeline-content {
-      padding: 15px;
-      background: #f8faff;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    
-    .timeline-content:hover {
-      background: #eef2ff;
-      transform: translateY(-2px);
-    }
-    
-    .timeline-details {
-      display: none;
-      padding: 15px;
-      background: white;
-      border-radius: 8px;
-      margin-top: 10px;
-      border-left: 4px solid #a6c1ee;
-    }
-    
-    .timeline-year {
-      font-weight: 700;
-      color: #a6c1ee;
-      margin-bottom: 5px;
-    }
-    
-    /* Skill Badges with Filters */
-    .skill-filters {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
-    
-    .skill-filter {
-      padding: 8px 16px;
-      background: #f0f4ff;
-      border: 2px solid #a6c1ee;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-weight: 600;
-    }
-    
-    .skill-filter.active {
-      background: #a6c1ee;
-      color: white;
-    }
-    
-    .skill-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-    
-    .skill-badge {
-      padding: 15px;
-      background: white;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-      transition: all 0.3s;
-      border: 2px solid transparent;
-    }
-    
-    .skill-badge:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .skill-badge.ai { border-color: #ff6b6b; }
-    .skill-badge.web { border-color: #4ecdc4; }
-    .skill-badge.data { border-color: #45b7d1; }
-    .skill-badge.mobile { border-color: #96ceb4; }
-    
-    .skill-badge.hidden {
-      display: none;
-    }
-    
-    /* Theme Personalization */
+    /* Theme Selector */
     .theme-selector {
       position: fixed;
       top: 20px;
@@ -1240,47 +655,6 @@ body.dark-mode.theme-sky header h1 {
     .theme-peach { background: linear-gradient(135deg, #f5e6d6, #f2d0c4); }
     .theme-sky { background: linear-gradient(135deg, #d6e6f5, #c4d4f2); }
     
-    /* Custom Cursor */
-    .custom-cursor {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(166, 193, 238, 0.3);
-      pointer-events: none;
-      z-index: 9999;
-      mix-blend-mode: difference;
-      transition: transform 0.1s;
-    }
-    
-    .cursor-follower {
-      position: fixed;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 2px solid rgba(166, 193, 238, 0.5);
-      pointer-events: none;
-      z-index: 9998;
-      transition: transform 0.15s;
-    }
-    
-    /* 3D Elements Container */
-    .three-d-container {
-      width: 100%;
-      height: 300px;
-      margin: 20px 0;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    
-    /* Section Transitions */
-    .section-transition {
-      height: 100px;
-      width: 100%;
-      background: linear-gradient(to bottom, transparent, #f8faff);
-      margin: -50px 0 50px 0;
-    }
-    
     /* Analytics Counter */
     .visitor-counter {
       position: fixed;
@@ -1294,23 +668,22 @@ body.dark-mode.theme-sky header h1 {
       z-index: 1000;
     }
 
-
     @media (max-width: 768px) {
-  .nav-main {
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .timeline::after {
-    left: 31px;
-  }
-  
-  .timeline-item {
-    width: 100%;
-    padding-left: 70px;
-    padding-right: 25px;
-  }
-}
+      .nav-main {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .theme-selector {
+        top: 10px;
+        left: 10px;
+      }
+      
+      #darkBtn {
+        top: 10px;
+        right: 10px;
+      }
+    }
   </style>
 </head>
 
@@ -1319,10 +692,6 @@ body.dark-mode.theme-sky header h1 {
   <div class="blob"></div>
   <!-- 🔺 Floating Triangles Canvas -->
   <canvas id="trianglesCanvas"></canvas>
-
-  <!-- Custom Cursor -->
-  <div class="custom-cursor"></div>
-  <div class="cursor-follower"></div>
 
   <!-- Theme Selector -->
   <div class="theme-selector">
@@ -1337,28 +706,6 @@ body.dark-mode.theme-sky header h1 {
     👁️ <span id="visitorCount">0</span> Visitors
   </div>
 
-  <!-- AI Chat Bubble -->
-  <div class="ai-chat-bubble" id="chatBubble">
-    <i class="fa-solid fa-robot"></i>
-  </div>
-  
-  <div class="ai-chat-window" id="chatWindow">
-    <div class="chat-header">
-      <i class="fa-solid fa-robot"></i> Imane's AI Assistant
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="chat-message chat-bot">
-        Hi, I'm Imane! 👋 Want to know about my skills or experience?
-      </div>
-      <div class="chat-options">
-        <button class="chat-option" data-option="skills">Tell me about your skills</button>
-        <button class="chat-option" data-option="experience">What's your experience?</button>
-        <button class="chat-option" data-option="projects">Show me your projects</button>
-        <button class="chat-option" data-option="contact">How can I contact you?</button>
-      </div>
-    </div>
-  </div>
-
   <!-- Preloader -->
   <div id="preloader">
     <div class="spinner"></div>
@@ -1368,14 +715,14 @@ body.dark-mode.theme-sky header h1 {
     <div class="header-content">
       <h1>Bouziani Imane</h1>
       <p id="greeting"></p> <!-- Dynamic greeting -->
-<p id="typing" class="professional-subtitle"></p>
+      <p id="typing" class="professional-subtitle"></p>
       <p>| bouzianiimane1@gmail.com | +213 664 64 77 79 | WhatsApp: 0673945830 | Oran, Algeria |</p>
     </div>
   </header>
 
   <button id="darkBtn"><i class="fa-solid fa-moon"></i> Dark Mode</button>
 
-  <!-- Clean navigation without MORE button -->
+  <!-- Clean navigation -->
   <div class="nav-container">
     <div class="nav-main">
       <a href="#about"><i class="fa-solid fa-user"></i> About</a>
@@ -1403,7 +750,7 @@ body.dark-mode.theme-sky header h1 {
 
   <section id="education" data-aos="fade-up">
     <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
-    <div class="illustration"><img src="images/college project-bro.svg" alt="Education"></div>
+    <div class="illustration"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Education"></div>
     <ul>
       <li>Master in Artificial Intelligence – With Distinction - 2025</li>
       <li>Bachelor in Computer Science – Information Systems - 2023</li>
@@ -1414,7 +761,7 @@ body.dark-mode.theme-sky header h1 {
 
   <section id="experience" data-aos="fade-up">
     <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
-    <div class="illustration"><img src="images/Pair programming-bro.svg" alt="Work"></div>
+    <div class="illustration"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Work"></div>
     <ul>
       <li>IT Specialist – ZHONGMA International Construction (2023 – 2025)</li>
       <li>IT Specialist – Private Neurology Clinic (2024 – 2025)</li>
@@ -1428,62 +775,8 @@ body.dark-mode.theme-sky header h1 {
 
   <section id="skills" data-aos="fade-up">
     <h2><i class="fa-solid fa-laptop-code"></i> Technical Skills</h2>
-    <div class="illustration"><img src="images/Data extraction-amico.svg" alt="Skills"></div>
+    <div class="illustration"><img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Skills"></div>
     
-    <!-- NEW: Skill Filters -->
-    <div class="skill-filters">
-      <div class="skill-filter active" data-filter="all">All</div>
-      <div class="skill-filter" data-filter="ai">AI & ML</div>
-      <div class="skill-filter" data-filter="web">Web Dev</div>
-      <div class="skill-filter" data-filter="data">Data Science</div>
-      <div class="skill-filter" data-filter="mobile">Mobile</div>
-    </div>
-    
-    <!-- NEW: Skill Grid -->
-    <div class="skill-grid">
-      <div class="skill-badge ai" data-categories="ai">
-        <i class="fa-solid fa-brain fa-2x"></i>
-        <h4>Machine Learning</h4>
-        <p>TensorFlow, PyTorch</p>
-      </div>
-      <div class="skill-badge ai web" data-categories="ai,web">
-        <i class="fa-solid fa-robot fa-2x"></i>
-        <h4>AI Engineering</h4>
-        <p>Deep Learning, NLP</p>
-      </div>
-      <div class="skill-badge web" data-categories="web">
-        <i class="fa-brands fa-js fa-2x"></i>
-        <h4>JavaScript</h4>
-        <p>React, Node.js</p>
-      </div>
-      <div class="skill-badge data" data-categories="data">
-        <i class="fa-solid fa-chart-line fa-2x"></i>
-        <h4>Data Analysis</h4>
-        <p>Python, R, SQL</p>
-      </div>
-      <div class="skill-badge mobile" data-categories="mobile">
-        <i class="fa-solid fa-mobile fa-2x"></i>
-        <h4>Mobile Dev</h4>
-        <p>Flutter, Swift</p>
-      </div>
-      <div class="skill-badge web" data-categories="web">
-        <i class="fa-brands fa-html5 fa-2x"></i>
-        <h4>Frontend</h4>
-        <p>HTML, CSS, JS</p>
-      </div>
-      <div class="skill-badge ai data" data-categories="ai,data">
-        <i class="fa-solid fa-eye fa-2x"></i>
-        <h4>Computer Vision</h4>
-        <p>OpenCV, CNN</p>
-      </div>
-      <div class="skill-badge web data" data-categories="web,data">
-        <i class="fa-solid fa-database fa-2x"></i>
-        <h4>Databases</h4>
-        <p>MySQL, MongoDB</p>
-      </div>
-    </div>
-    
-    <!-- Your existing skills list -->
     <ul>
       <li>Languages: Python, Java, C/C++, Dart, Swift, R, MATLAB, SQL, HTML, CSS, JavaScript</li>
       <li>AI & Data Science: TensorFlow, PyTorch, Keras, Scikit-Learn, OpenCV...</li>
@@ -1502,58 +795,9 @@ body.dark-mode.theme-sky header h1 {
     </div>
   </section>
 
-  <!-- NEW: Interactive Timeline Section -->
-  <section id="timeline" data-aos="fade-up">
-    <h2><i class="fa-solid fa-timeline"></i> Professional Timeline</h2>
-    <div class="illustration"><img src="Timeline-bro.svg" alt="Timeline"></div>
-    
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <div class="timeline-year">2025</div>
-          <h4>Master in AI - With Distinction</h4>
-          <p>Click for details</p>
-          <div class="timeline-details">
-            <p>Completed Master's degree in Artificial Intelligence with distinction. Specialized in deep learning and computer vision applications.</p>
-          </div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <div class="timeline-year">2023-2025</div>
-          <h4>IT Specialist - ZHONGMA International</h4>
-          <p>Click for details</p>
-          <div class="timeline-details">
-            <p>Managed IT infrastructure and developed custom software solutions for international construction projects.</p>
-          </div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <div class="timeline-year">2023</div>
-          <h4>Bachelor in Computer Science</h4>
-          <p>Click for details</p>
-          <div class="timeline-details">
-            <p>Graduated with Bachelor's degree in Computer Science, focusing on information systems and software engineering.</p>
-          </div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <div class="timeline-year">2022-2023</div>
-          <h4>STEAM & Programming Lecturer</h4>
-          <p>Click for details</p>
-          <div class="timeline-details">
-            <p>Taught programming and STEAM concepts at university level, developing creative educational programs.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="languages" data-aos="fade-up">
     <h2><i class="fa-solid fa-language"></i> Languages</h2>
-    <div class="illustration"><img src="images/Collaboration-bro.svg" alt="Languages"></div>
+    <div class="illustration"><img src="https://images.unsplash.com/photo-1529338296731-c4280a44fc48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Languages"></div>
     <ul>
       <li>Arabic: Native</li>
       <li>English: Advanced</li>
@@ -1564,9 +808,7 @@ body.dark-mode.theme-sky header h1 {
   <section id="activities" data-aos="fade-up">
     <h2><i class="fa-solid fa-star"></i> Activities & Achievements</h2>
     <div class="illustration">
-      <img src="images/people creating robot-bro.svg" alt="Activity 1">
-      <img src="images/Kids Studying from Home-bro.svg" alt="Activity 2">
-      <img src="images/Doctor-bro.svg" alt="Activity 3">
+      <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Activity 1">
     </div>
 
     <ul>
@@ -1580,28 +822,19 @@ body.dark-mode.theme-sky header h1 {
 
   <section id="qualities" data-aos="fade-up">
     <h2><i class="fa-solid fa-heart"></i> Professional Qualities</h2>
-    <div class="illustration"><img src="images/Blog post-bro.svg" alt="Qualities"></div>
+    <div class="illustration"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Qualities"></div>
     <ul>
       <li>Independent │ Creative │ Rigorous │ Dynamic │ Team Spirit │ Analytical</li>
     </ul>
   </section>
 
-  <!-- NEW: 3D Elements Section -->
-  <section id="3d-elements" data-aos="fade-up">
-    <h2><i class="fa-solid fa-cube"></i> Interactive 3D Models</h2>
-    <div class="three-d-container" id="threejs-container">
-      <!-- Three.js will render here -->
-    </div>
-    <p style="text-align: center;">Interactive 3D models showcasing my work in AI and development</p>
-  </section>
-
   <section id="cv" data-aos="fade-up">
     <h2><i class="fa-solid fa-file-pdf"></i> My CV</h2>
     <div class="illustration">
-      <img src="Resume folder-bro.svg" alt="CV Illustration">
+      <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="CV Illustration">
     </div>
     <p style="text-align:center;">
-      <a href="My_c .pdf" target="_blank" id="cvLink" style="background:#a6c1ee; color:white; padding:12px 25px; 
+      <a href="#" target="_blank" id="cvLink" style="background:var(--primary-color); color:white; padding:12px 25px; 
                 border-radius:30px; text-decoration:none; font-weight:600; 
                 box-shadow:0 4px 10px rgba(0,0,0,0.2); transition:0.3s;">
         📄 View / Download My CV
@@ -1623,13 +856,10 @@ body.dark-mode.theme-sky header h1 {
     <p><i class="fa-brands fa-github"></i><strong> GitHub:</strong> <a href="https://github.com/bouzianiimane" target="_blank">github.com/bouzianiimane</a></p>
   </div>
 
-  <div class="illustration"><img src="Contact us-bro.svg" alt="Contact"></div>
+  <div class="illustration"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Contact"></div>
 
   <!-- Contact Form -->
-  <form id="contactForm" class="contact-form" action="https://formsubmit.co/bouzianiimane1@gmail.com" method="POST">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://bouzianiimane.github.io/MY-CV">
-
+  <form id="contactForm" class="contact-form">
     <input type="text" id="name" name="name" placeholder="Your Name" required>
     <input type="email" id="email" name="email" placeholder="Your Email" required>
     <textarea id="message" name="inquiry" rows="5" placeholder="Your Inquiry" required></textarea>
@@ -1672,15 +902,12 @@ body.dark-mode.theme-sky header h1 {
     <a href="https://github.com/bouzianiimane" target="_blank"><i class="fab fa-github"></i></a>
     <a href="mailto:bouzianiimane1@gmail.com"><i class="fa-solid fa-envelope"></i></a>
   </div>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-<!-- Three.js for 3D elements -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     // ===== YOUR EXISTING JAVASCRIPT CODE =====
     
-    // Floating shapes animation (Circles + Triangles + Squares + Hexagons)
+    // Floating shapes animation
     const canvas = document.getElementById("trianglesCanvas");
     const ctx = canvas.getContext("2d");
     
@@ -1893,226 +1120,6 @@ setTimeout(typing, 500);
       });
     });
     
-    // Apply tilt to all images inside .illustration sections
-    if (typeof VanillaTilt !== "undefined") {
-      VanillaTilt.init(document.querySelectorAll(".illustration img"), {
-        max: 15,       // how much it tilts
-        speed: 300,    // speed of the effect
-        glare: true,   // adds light reflection
-        "max-glare": 0.3
-      });
-    }
-
-    // ===== NEW FEATURES JAVASCRIPT =====
-    
-    // AI Chat Bubble Functionality
-    const chatBubble = document.getElementById('chatBubble');
-    const chatWindow = document.getElementById('chatWindow');
-    const chatBody = document.getElementById('chatBody');
-    
-    chatBubble.addEventListener('click', function() {
-      chatWindow.style.display = chatWindow.style.display === 'block' ? 'none' : 'block';
-    });
-    
-    // Chat option handlers
-    document.querySelectorAll('.chat-option').forEach(option => {
-      option.addEventListener('click', function() {
-        const optionType = this.getAttribute('data-option');
-        let response = '';
-        
-        switch(optionType) {
-          case 'skills':
-            response = "I specialize in AI Engineering with expertise in Machine Learning, Deep Learning, Computer Vision, and NLP. I'm also proficient in full-stack web development with JavaScript, Python, and various frameworks.";
-            break;
-          case 'experience':
-            response = "I have experience as an IT Specialist at ZHONGMA International (2023-2025), STEAM Lecturer at University (2022-2023), and have worked on multiple AI projects including medical imaging and intelligent vehicle systems.";
-            break;
-          case 'projects':
-            response = "My projects include AI-powered diagnostic systems, educational 3D games, professional websites, and mobile applications. Check my GitHub for more details!";
-            break;
-          case 'contact':
-            response = "You can reach me at bouzianiimane1@gmail.com or +213 664 64 77 79. I'm also available on LinkedIn and WhatsApp.";
-            break;
-        }
-        
-        const responseElement = document.createElement('div');
-        responseElement.className = 'chat-message chat-bot';
-        responseElement.textContent = response;
-        chatBody.appendChild(responseElement);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      });
-    });
-    
-    // Skill Filters Functionality
-    const skillFilters = document.querySelectorAll('.skill-filter');
-    const skillBadges = document.querySelectorAll('.skill-badge');
-    
-    skillFilters.forEach(filter => {
-      filter.addEventListener('click', function() {
-        // Update active filter
-        skillFilters.forEach(f => f.classList.remove('active'));
-        this.classList.add('active');
-        
-        const filterValue = this.getAttribute('data-filter');
-        
-        // Filter skills
-        skillBadges.forEach(badge => {
-          if (filterValue === 'all') {
-            badge.classList.remove('hidden');
-          } else {
-            const categories = badge.getAttribute('data-categories').split(' ');
-            if (categories.includes(filterValue)) {
-              badge.classList.remove('hidden');
-            } else {
-              badge.classList.add('hidden');
-            }
-          }
-        });
-      });
-    });
-    
-    // Interactive Timeline
-    const timelineItems = document.querySelectorAll('.timeline-content');
-    
-    timelineItems.forEach(item => {
-      item.addEventListener('click', function() {
-        const details = this.querySelector('.timeline-details');
-        const isVisible = details.style.display === 'block';
-        
-        // Close all other details
-        timelineItems.forEach(otherItem => {
-          otherItem.querySelector('.timeline-details').style.display = 'none';
-        });
-        
-        // Toggle current details
-        details.style.display = isVisible ? 'none' : 'block';
-      });
-    });
-    
-    // Custom Cursor
-    const cursor = document.querySelector('.custom-cursor');
-    const follower = document.querySelector('.cursor-follower');
-    
-    document.addEventListener('mousemove', function(e) {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-      
-      setTimeout(() => {
-        follower.style.left = e.clientX + 'px';
-        follower.style.top = e.clientY + 'px';
-      }, 100);
-    });
-    
-    // Add hover effect to interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .skill-badge, .timeline-content');
-    
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(1.5)';
-        follower.style.transform = 'scale(1.2)';
-      });
-      
-      el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-        follower.style.transform = 'scale(1)';
-      });
-    });
-    
-    // Three.js 3D Elements
-    function initThreeJS() {
-      const container = document.getElementById('threejs-container');
-      if (!container) return;
-      
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-      
-      renderer.setSize(container.clientWidth, container.clientHeight);
-      container.appendChild(renderer.domElement);
-      
-      // Add some basic 3D objects
-      const geometry = new THREE.BoxGeometry(2, 2, 2);
-      const material = new THREE.MeshBasicMaterial({ 
-        color: 0xa6c1ee,
-        wireframe: true 
-      });
-      const cube = new THREE.Mesh(geometry, material);
-      scene.add(cube);
-      
-      camera.position.z = 5;
-      
-      // Animation
-      function animate() {
-        requestAnimationFrame(animate);
-        
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-        
-        renderer.render(scene, camera);
-      }
-      
-      animate();
-      
-      // Handle resize
-      window.addEventListener('resize', function() {
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(container.clientWidth, container.clientHeight);
-      });
-    }
-    
-    // Initialize 3D when page loads
-    window.addEventListener('load', initThreeJS);
-    
-    // Hover Sound Effects
-    function playHoverSound() {
-      // Create a simple click sound using Web Audio API
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      
-      oscillator.frequency.value = 800;
-      oscillator.type = 'sine';
-      
-      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-      
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + 0.1);
-    }
-    
-    // Add hover sound to interactive elements
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', playHoverSound);
-    });
-    
-    // Analytics and Visitor Counter
-    function updateVisitorCount() {
-      let count = localStorage.getItem('visitorCount');
-      if (!count) {
-        count = 0;
-      }
-      count = parseInt(count) + 1;
-      localStorage.setItem('visitorCount', count);
-      document.getElementById('visitorCount').textContent = count;
-    }
-    
-    // PWA Service Worker Registration
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js')
-          .then(function(registration) {
-            console.log('ServiceWorker registration successful');
-          })
-          .catch(function(err) {
-            console.log('ServiceWorker registration failed: ', err);
-          });
-      });
-    }
-
     // ===== THEME PERSONALIZATION =====
     
     // Theme Personalization for both light and dark modes
@@ -2137,115 +1144,115 @@ setTimeout(typing, 500);
       updateThemeColors(theme, isDarkMode);
     }
 
-function updateThemeColors(theme, isDarkMode) {
-  const themes = {
-    lavender: { 
-      light: { 
-        primary: '#a6c1ee', 
-        secondary: '#fbc2eb', 
-        header1: '#fbc2eb', 
-        header2: '#a6c1ee',
-        background: 'linear-gradient(270deg, #e6d6f5, #d0c4f2, #c7d8f9)'
-      },
-      dark: { 
-        primary: '#8a7a9b',
-        secondary: '#7a8aab',
-        header1: '#6a5a7b',
-        header2: '#5a6a8b',
-        background: 'linear-gradient(270deg, #2a2a3a, #252535, #1f1f2f)'
-      }
-    },
-    mint: { 
-      light: { 
-        primary: '#96ceb4', 
-        secondary: '#4ecdc4', 
-        header1: '#4ecdc4', 
-        header2: '#96ceb4',
-        background: 'linear-gradient(270deg, #d6f5e6, #c4f2d0, #e6f7ed)'
-      },
-      dark: { 
-        primary: '#6a8a7b',
-        secondary: '#7a9a8b',
-        header1: '#4a6a5b',
-        header2: '#5a7a6b',
-        background: 'linear-gradient(270deg, #2a3a2a, #253525, #1f2f1f)'
-      }
-    },
-    peach: { 
-      light: { 
-        primary: '#ffd8b1',  // Calmer pastel orange
-        secondary: '#ffccbc', // Softer peach
-        header1: '#ffccbc', 
-        header2: '#ffd8b1',
-        background: 'linear-gradient(270deg, #fff3e0, #ffe0b2, #ffecb3)' // Calmer peach gradient
-      },
-      dark: { 
-        primary: '#9a7a6a',
-        secondary: '#aa8a7a',
-        header1: '#7a5a4a',
-        header2: '#8a6a5a',
-        background: 'linear-gradient(270deg, #3a2a2a, #352525, #2f1f1f)'
-      }
-    },
-    sky: { 
-      light: { 
-        primary: '#b3e5fc',  // Calmer pastel blue
-        secondary: '#e1f5fe', // Softer sky blue
-        header1: '#e1f5fe', 
-        header2: '#b3e5fc',
-        background: 'linear-gradient(270deg, #e3f2fd, #e1f5fe, #f3e5f5)' // Calmer sky gradient
-      },
-      dark: { 
-        primary: '#6a8a9a',
-        secondary: '#7a9aaa',
-        header1: '#4a6a7a',
-        header2: '#5a7a8a',
-        background: 'linear-gradient(270deg, #2a3a4a, #253545, #1f2f3f)'
-      }
-    }
-  };
-  
-  const colors = isDarkMode ? themes[theme].dark : themes[theme].light;
-  
-  // Update CSS variables for theme elements
-  document.documentElement.style.setProperty('--primary-color', colors.primary);
-  document.documentElement.style.setProperty('--secondary-color', colors.secondary);
-  document.documentElement.style.setProperty('--header1', colors.header1);
-  document.documentElement.style.setProperty('--header2', colors.header2);
-  
-  // Update the main website background
-  document.body.style.background = colors.background;
-  document.body.style.backgroundSize = '600% 600%';
-  
-  // Update header gradient
-  const header = document.querySelector('header');
-  header.style.background = `linear-gradient(270deg, ${colors.header1}, ${colors.header2}, ${colors.header1})`;
-  
- // Update "Bouziani Imane" text - FIXED VERSION
-const headerTitle = document.querySelector('header h1');
-headerTitle.style.color = '#ffffff';
-headerTitle.style.background = 'none';
-headerTitle.style.webkitBackgroundClip = 'initial';
-headerTitle.style.webkitTextFillColor = 'initial';
+    function updateThemeColors(theme, isDarkMode) {
+      const themes = {
+        lavender: { 
+          light: { 
+            primary: '#a6c1ee', 
+            secondary: '#fbc2eb', 
+            header1: '#fbc2eb', 
+            header2: '#a6c1ee',
+            background: 'linear-gradient(270deg, #e6d6f5, #d0c4f2, #c7d8f9)'
+          },
+          dark: { 
+            primary: '#8a7a9b',
+            secondary: '#7a8aab',
+            header1: '#6a5a7b',
+            header2: '#5a6a8b',
+            background: 'linear-gradient(270deg, #2a2a3a, #252535, #1f1f2f)'
+          }
+        },
+        mint: { 
+          light: { 
+            primary: '#96ceb4', 
+            secondary: '#4ecdc4', 
+            header1: '#4ecdc4', 
+            header2: '#96ceb4',
+            background: 'linear-gradient(270deg, #d6f5e6, #c4f2d0, #e6f7ed)'
+          },
+          dark: { 
+            primary: '#6a8a7b',
+            secondary: '#7a9a8b',
+            header1: '#4a6a5b',
+            header2: '#5a7a6b',
+            background: 'linear-gradient(270deg, #2a3a2a, #253525, #1f2f1f)'
+          }
+        },
+        peach: { 
+          light: { 
+            primary: '#ffd8b1',  // Calmer pastel orange
+            secondary: '#ffccbc', // Softer peach
+            header1: '#ffccbc', 
+            header2: '#ffd8b1',
+            background: 'linear-gradient(270deg, #fff3e0, #ffe0b2, #ffecb3)' // Calmer peach gradient
+          },
+          dark: { 
+            primary: '#9a7a6a',
+            secondary: '#aa8a7a',
+            header1: '#7a5a4a',
+            header2: '#8a6a5a',
+            background: 'linear-gradient(270deg, #3a2a2a, #352525, #2f1f1f)'
+          }
+        },
+        sky: { 
+          light: { 
+            primary: '#b3e5fc',  // Calmer pastel blue
+            secondary: '#e1f5fe', // Softer sky blue
+            header1: '#e1f5fe', 
+            header2: '#b3e5fc',
+            background: 'linear-gradient(270deg, #e3f2fd, #e1f5fe, #f3e5f5)' // Calmer sky gradient
+          },
+          dark: { 
+            primary: '#6a8a9a',
+            secondary: '#7a9aaa',
+            header1: '#4a6a7a',
+            header2: '#5a7a8a',
+            background: 'linear-gradient(270deg, #2a3a4a, #253545, #1f2f3f)'
+          }
+        }
+      };
+      
+      const colors = isDarkMode ? themes[theme].dark : themes[theme].light;
+      
+      // Update CSS variables for theme elements
+      document.documentElement.style.setProperty('--primary-color', colors.primary);
+      document.documentElement.style.setProperty('--secondary-color', colors.secondary);
+      document.documentElement.style.setProperty('--header1', colors.header1);
+      document.documentElement.style.setProperty('--header2', colors.header2);
+      
+      // Update the main website background
+      document.body.style.background = colors.background;
+      document.body.style.backgroundSize = '600% 600%';
+      
+      // Update header gradient
+      const header = document.querySelector('header');
+      header.style.background = `linear-gradient(270deg, ${colors.header1}, ${colors.header2}, ${colors.header1})`;
+      
+      // Update "Bouziani Imane" text - FIXED VERSION
+      const headerTitle = document.querySelector('header h1');
+      headerTitle.style.color = '#ffffff';
+      headerTitle.style.background = 'none';
+      headerTitle.style.webkitBackgroundClip = 'initial';
+      headerTitle.style.webkitTextFillColor = 'initial';
 
-// Apply theme-specific shadow
-if (theme === 'lavender') {
-  headerTitle.style.textShadow = '2px 2px 8px rgba(106, 90, 205, 0.4), 0px 0px 15px rgba(138, 43, 226, 0.3)';
-} else if (theme === 'mint') {
-  headerTitle.style.textShadow = '2px 2px 8px rgba(76, 175, 80, 0.4), 0px 0px 15px rgba(46, 125, 50, 0.3)';
-} else if (theme === 'peach') {
-  headerTitle.style.textShadow = '2px 2px 8px rgba(255, 152, 0, 0.4), 0px 0px 15px rgba(255, 87, 34, 0.3)';
-} else if (theme === 'sky') {
-  headerTitle.style.textShadow = '2px 2px 8px rgba(33, 150, 243, 0.4), 0px 0px 15px rgba(3, 169, 244, 0.3)';
-} else {
-  headerTitle.style.textShadow = '2px 2px 8px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(0, 0, 0, 0.2)';
-}
-  
-  // Update progress bars
-  document.querySelectorAll('.progress').forEach(progress => {
-    progress.style.background = `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`;
-  });
-}
+      // Apply theme-specific shadow
+      if (theme === 'lavender') {
+        headerTitle.style.textShadow = '2px 2px 8px rgba(106, 90, 205, 0.4), 0px 0px 15px rgba(138, 43, 226, 0.3)';
+      } else if (theme === 'mint') {
+        headerTitle.style.textShadow = '2px 2px 8px rgba(76, 175, 80, 0.4), 0px 0px 15px rgba(46, 125, 50, 0.3)';
+      } else if (theme === 'peach') {
+        headerTitle.style.textShadow = '2px 2px 8px rgba(255, 152, 0, 0.4), 0px 0px 15px rgba(255, 87, 34, 0.3)';
+      } else if (theme === 'sky') {
+        headerTitle.style.textShadow = '2px 2px 8px rgba(33, 150, 243, 0.4), 0px 0px 15px rgba(3, 169, 244, 0.3)';
+      } else {
+        headerTitle.style.textShadow = '2px 2px 8px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(0, 0, 0, 0.2)';
+      }
+      
+      // Update progress bars
+      document.querySelectorAll('.progress').forEach(progress => {
+        progress.style.background = `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`;
+      });
+    }
 
     // Make sure dark mode toggle preserves theme
     const darkBtn = document.getElementById("darkBtn");
@@ -2278,11 +1285,16 @@ if (theme === 'lavender') {
     
     topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-    // Initialize features when DOM is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      updateVisitorCount();
-      initThreeJS();
-    });
+    // Analytics and Visitor Counter
+    function updateVisitorCount() {
+      let count = localStorage.getItem('visitorCount');
+      if (!count) {
+        count = 0;
+      }
+      count = parseInt(count) + 1;
+      localStorage.setItem('visitorCount', count);
+      document.getElementById('visitorCount').textContent = count;
+    }
 
     // Contact form JavaScript
     const form = document.getElementById("contactForm");
@@ -2316,14 +1328,11 @@ if (theme === 'lavender') {
         form.reset();
       }, 3000);
     });
+
+    // Initialize features when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      updateVisitorCount();
+    });
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
