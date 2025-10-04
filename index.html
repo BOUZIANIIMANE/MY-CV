@@ -773,6 +773,150 @@ body.dark-mode.theme-sky header {
 body.dark-mode.theme-sky header h1 {
   background: linear-gradient(90deg, #6a8a9a, #7a9aaa, #6a8a9a); /* Dark sky text */
 }
+
+/* ========== THEME FIXES ========== */
+/* Force theme headers to work in light mode */
+.theme-lavender header,
+.theme-mint header,
+.theme-peach header,
+.theme-sky header {
+  background: linear-gradient(270deg, var(--header1), var(--header2), var(--header1)) !important;
+  background-size: 600% 600% !important;
+  animation: gradientMove 12s ease infinite !important;
+}
+
+.theme-lavender header h1,
+.theme-mint header h1,
+.theme-peach header h1,
+.theme-sky header h1 {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: gradientText 5s infinite alternate !important;
+}
+
+/* Theme-specific button colors */
+.theme-lavender #hireBtn { background: var(--secondary-color) !important; }
+.theme-lavender #hireBtn:hover { background: var(--primary-color) !important; }
+
+.theme-mint #hireBtn { background: var(--secondary-color) !important; }
+.theme-mint #hireBtn:hover { background: var(--primary-color) !important; }
+
+.theme-peach #hireBtn { background: var(--secondary-color) !important; }
+.theme-peach #hireBtn:hover { background: var(--primary-color) !important; }
+
+.theme-sky #hireBtn { background: var(--secondary-color) !important; }
+.theme-sky #hireBtn:hover { background: var(--primary-color) !important; }
+
+/* Theme progress bars */
+.theme-lavender .progress { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) !important; }
+.theme-mint .progress { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) !important; }
+.theme-peach .progress { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) !important; }
+.theme-sky .progress { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) !important; }
+
+/* Theme section headings */
+.theme-lavender section h2 { color: var(--primary-color) !important; }
+.theme-mint section h2 { color: var(--primary-color) !important; }
+.theme-peach section h2 { color: var(--primary-color) !important; }
+.theme-sky section h2 { color: var(--primary-color) !important; }
+
+/* Theme navigation */
+.theme-lavender .nav-main a:hover { color: var(--primary-color) !important; }
+.theme-mint .nav-main a:hover { color: var(--primary-color) !important; }
+.theme-peach .nav-main a:hover { color: var(--primary-color) !important; }
+.theme-sky .nav-main a:hover { color: var(--primary-color) !important; }
+
+.theme-lavender .nav-main a.active { color: var(--primary-color) !important; border-color: var(--primary-color) !important; }
+.theme-mint .nav-main a.active { color: var(--primary-color) !important; border-color: var(--primary-color) !important; }
+.theme-peach .nav-main a.active { color: var(--primary-color) !important; border-color: var(--primary-color) !important; }
+.theme-sky .nav-main a.active { color: var(--primary-color) !important; border-color: var(--primary-color) !important; }
+
+/* Theme list bullets */
+.theme-lavender ul li::before { color: var(--primary-color) !important; }
+.theme-mint ul li::before { color: var(--primary-color) !important; }
+.theme-peach ul li::before { color: var(--primary-color) !important; }
+.theme-sky ul li::before { color: var(--primary-color) !important; }
+
+/* Theme contact info */
+.theme-lavender .contact-info a { color: var(--primary-color) !important; }
+.theme-mint .contact-info a { color: var(--primary-color) !important; }
+.theme-peach .contact-info a { color: var(--primary-color) !important; }
+.theme-sky .contact-info a { color: var(--primary-color) !important; }
+
+.theme-lavender .contact-info i { color: var(--primary-color) !important; }
+.theme-mint .contact-info i { color: var(--primary-color) !important; }
+.theme-peach .contact-info i { color: var(--primary-color) !important; }
+.theme-sky .contact-info i { color: var(--primary-color) !important; }
+
+/* Theme form elements */
+.theme-lavender .contact-form input:focus,
+.theme-lavender .contact-form textarea:focus { border-color: var(--primary-color) !important; }
+.theme-mint .contact-form input:focus,
+.theme-mint .contact-form textarea:focus { border-color: var(--primary-color) !important; }
+.theme-peach .contact-form input:focus,
+.theme-peach .contact-form textarea:focus { border-color: var(--primary-color) !important; }
+.theme-sky .contact-form input:focus,
+.theme-sky .contact-form textarea:focus { border-color: var(--primary-color) !important; }
+
+.theme-lavender .contact-form button { background: var(--primary-color) !important; }
+.theme-mint .contact-form button { background: var(--primary-color) !important; }
+.theme-peach .contact-form button { background: var(--primary-color) !important; }
+.theme-sky .contact-form button { background: var(--primary-color) !important; }
+
+.theme-lavender .contact-form button:hover { background: var(--secondary-color) !important; }
+.theme-mint .contact-form button:hover { background: var(--secondary-color) !important; }
+.theme-peach .contact-form button:hover { background: var(--secondary-color) !important; }
+.theme-sky .contact-form button:hover { background: var(--secondary-color) !important; }
+
+/* Theme footer */
+.theme-lavender footer { background: linear-gradient(120deg, var(--primary-color), var(--secondary-color)) !important; }
+.theme-mint footer { background: linear-gradient(120deg, var(--primary-color), var(--secondary-color)) !important; }
+.theme-peach footer { background: linear-gradient(120deg, var(--primary-color), var(--secondary-color)) !important; }
+.theme-sky footer { background: linear-gradient(120deg, var(--primary-color), var(--secondary-color)) !important; }
+
+/* Theme social sidebar */
+.theme-lavender .social-sidebar a { background: var(--primary-color) !important; }
+.theme-mint .social-sidebar a { background: var(--primary-color) !important; }
+.theme-peach .social-sidebar a { background: var(--primary-color) !important; }
+.theme-sky .social-sidebar a { background: var(--primary-color) !important; }
+
+.theme-lavender .social-sidebar a:hover { background: var(--secondary-color) !important; }
+.theme-mint .social-sidebar a:hover { background: var(--secondary-color) !important; }
+.theme-peach .social-sidebar a:hover { background: var(--secondary-color) !important; }
+.theme-sky .social-sidebar a:hover { background: var(--secondary-color) !important; }
+
+/* Theme top button */
+.theme-lavender #topBtn { background: var(--primary-color) !important; }
+.theme-mint #topBtn { background: var(--primary-color) !important; }
+.theme-peach #topBtn { background: var(--primary-color) !important; }
+.theme-sky #topBtn { background: var(--primary-color) !important; }
+
+.theme-lavender #topBtn:hover { background: var(--secondary-color) !important; }
+.theme-mint #topBtn:hover { background: var(--secondary-color) !important; }
+.theme-peach #topBtn:hover { background: var(--secondary-color) !important; }
+.theme-sky #topBtn:hover { background: var(--secondary-color) !important; }
+
+/* Theme skill filters */
+.theme-lavender .skill-filter { border-color: var(--primary-color) !important; }
+.theme-mint .skill-filter { border-color: var(--primary-color) !important; }
+.theme-peach .skill-filter { border-color: var(--primary-color) !important; }
+.theme-sky .skill-filter { border-color: var(--primary-color) !important; }
+
+.theme-lavender .skill-filter.active { background: var(--primary-color) !important; }
+.theme-mint .skill-filter.active { background: var(--primary-color) !important; }
+.theme-peach .skill-filter.active { background: var(--primary-color) !important; }
+.theme-sky .skill-filter.active { background: var(--primary-color) !important; }
+
+/* Theme AI chat */
+.theme-lavender .ai-chat-bubble { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
+.theme-mint .ai-chat-bubble { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
+.theme-peach .ai-chat-bubble { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
+.theme-sky .ai-chat-bubble { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
+
+.theme-lavender .chat-header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
+.theme-mint .chat-header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
+.theme-peach .chat-header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
+.theme-sky .chat-header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; }
     
     
     /* Header content alignment */
@@ -1958,6 +2102,7 @@ setTimeout(typing, 500);
       
       updateThemeColors(theme, isDarkMode);
     }
+
 function updateThemeColors(theme, isDarkMode) {
   const themes = {
     lavender: { 
@@ -1994,11 +2139,11 @@ function updateThemeColors(theme, isDarkMode) {
     },
     peach: { 
       light: { 
-        primary: '#ffb347', 
-        secondary: '#ffcc99', 
-        header1: '#ffcc99', 
-        header2: '#ffb347',
-        background: 'linear-gradient(270deg, #f5e6d6, #f2d0c4, #fae1d6)'
+        primary: '#ffd8b1',  // Calmer pastel orange
+        secondary: '#ffccbc', // Softer peach
+        header1: '#ffccbc', 
+        header2: '#ffd8b1',
+        background: 'linear-gradient(270deg, #fff3e0, #ffe0b2, #ffecb3)' // Calmer peach gradient
       },
       dark: { 
         primary: '#9a7a6a',
@@ -2010,11 +2155,11 @@ function updateThemeColors(theme, isDarkMode) {
     },
     sky: { 
       light: { 
-        primary: '#87ceeb', 
-        secondary: '#b0e0e6', 
-        header1: '#b0e0e6', 
-        header2: '#87ceeb',
-        background: 'linear-gradient(270deg, #d6e6f5, #c4d4f2, #e6eefa)'
+        primary: '#b3e5fc',  // Calmer pastel blue
+        secondary: '#e1f5fe', // Softer sky blue
+        header1: '#e1f5fe', 
+        header2: '#b3e5fc',
+        background: 'linear-gradient(270deg, #e3f2fd, #e1f5fe, #f3e5f5)' // Calmer sky gradient
       },
       dark: { 
         primary: '#6a8a9a',
@@ -2028,27 +2173,32 @@ function updateThemeColors(theme, isDarkMode) {
   
   const colors = isDarkMode ? themes[theme].dark : themes[theme].light;
   
+  // Update CSS variables for theme elements
+  document.documentElement.style.setProperty('--primary-color', colors.primary);
+  document.documentElement.style.setProperty('--secondary-color', colors.secondary);
+  document.documentElement.style.setProperty('--header1', colors.header1);
+  document.documentElement.style.setProperty('--header2', colors.header2);
+  
   // Update the main website background
   document.body.style.background = colors.background;
   document.body.style.backgroundSize = '600% 600%';
   
   // Update header gradient
-  document.querySelector('header').style.background = 
-    `linear-gradient(270deg, ${colors.header1}, ${colors.header2}, ${colors.header1})`;
+  const header = document.querySelector('header');
+  header.style.background = `linear-gradient(270deg, ${colors.header1}, ${colors.header2}, ${colors.header1})`;
   
   // Update "Bouziani Imane" text gradient
-  document.querySelector('header h1').style.background = 
-    `linear-gradient(90deg, ${colors.primary}, ${colors.secondary}, ${colors.primary})`;
+  const headerTitle = document.querySelector('header h1');
+  headerTitle.style.background = `linear-gradient(90deg, ${colors.primary}, ${colors.secondary}, ${colors.primary})`;
+  headerTitle.style.webkitBackgroundClip = 'text';
+  headerTitle.style.webkitTextFillColor = 'transparent';
   
   // Update progress bars
   document.querySelectorAll('.progress').forEach(progress => {
     progress.style.background = `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`;
   });
-  
-  // Update CSS variables for other elements
-  document.documentElement.style.setProperty('--primary-color', colors.primary);
-  document.documentElement.style.setProperty('--secondary-color', colors.secondary);
 }
+
     // Make sure dark mode toggle preserves theme
     const darkBtn = document.getElementById("darkBtn");
     darkBtn.addEventListener("click", () => {
@@ -2121,15 +2271,3 @@ function updateThemeColors(theme, isDarkMode) {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
