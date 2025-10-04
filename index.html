@@ -74,20 +74,15 @@
       100% {background-position: 0% 50%;}
     }
     
- header h1 {
+header h1 {
   font-size: 2.8em; 
   margin: 0;
-  color: #ffffff;
-  text-shadow: 
-    0 0 10px #a6c1ee,
-    0 0 20px #a6c1ee, 
-    0 0 30px #fbc2eb,
-    0 0 40px #fbc2eb,
-    0 0 70px #ff00ff,
-    0 0 80px #ff00ff;
-  animation: neonPulse 2s ease-in-out infinite alternate;
+  background: linear-gradient(90deg, #ffffff, #f0f8ff, #ffffff); /* White to light blue-white */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 
@@ -2280,6 +2275,7 @@ function updateThemeColors(theme, isDarkMode) {
 </script>
 </body>
 </html>
+
 
 
 
