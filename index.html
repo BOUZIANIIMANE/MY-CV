@@ -83,29 +83,39 @@ header h1 {
   font-weight: 700;
   letter-spacing: 1px;
 }
+/* Theme-specific shadow adjustments - FIXED VERSION */
+.theme-lavender header h1,
+.theme-mint header h1, 
+.theme-peach header h1,
+.theme-sky header h1 {
+  color: #ffffff !important; /* Force white text */
+  background: none !important; /* Remove gradient background */
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4), 
+               0px 0px 15px rgba(0, 0, 0, 0.2) !important;
+}
 
-/* Theme-specific shadow adjustments */
+/* Optional: Keep your colored shadows but with white text */
 .theme-lavender header h1 {
-  text-shadow: 2px 2px 8px rgba(106, 90, 205, 0.3),
-               0px 0px 15px rgba(138, 43, 226, 0.2);
+  text-shadow: 2px 2px 8px rgba(106, 90, 205, 0.4),
+               0px 0px 15px rgba(138, 43, 226, 0.3) !important;
 }
 
 .theme-mint header h1 {
-  text-shadow: 2px 2px 8px rgba(76, 175, 80, 0.3),
-               0px 0px 15px rgba(46, 125, 50, 0.2);
+  text-shadow: 2px 2px 8px rgba(76, 175, 80, 0.4),
+               0px 0px 15px rgba(46, 125, 50, 0.3) !important;
 }
 
 .theme-peach header h1 {
-  text-shadow: 2px 2px 8px rgba(255, 152, 0, 0.3),
-               0px 0px 15px rgba(255, 87, 34, 0.2);
+  text-shadow: 2px 2px 8px rgba(255, 152, 0, 0.4),
+               0px 0px 15px rgba(255, 87, 34, 0.3) !important;
 }
 
 .theme-sky header h1 {
-  text-shadow: 2px 2px 8px rgba(33, 150, 243, 0.3),
-               0px 0px 15px rgba(3, 169, 244, 0.2);
+  text-shadow: 2px 2px 8px rgba(33, 150, 243, 0.4),
+               0px 0px 15px rgba(3, 169, 244, 0.3) !important;
 }
-
-
     
     @keyframes gradientText {
       0% { background-position: 0%; }
@@ -2295,6 +2305,7 @@ function updateThemeColors(theme, isDarkMode) {
 </script>
 </body>
 </html>
+
 
 
 
