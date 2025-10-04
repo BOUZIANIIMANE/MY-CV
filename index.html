@@ -2221,11 +2221,25 @@ function updateThemeColors(theme, isDarkMode) {
   const header = document.querySelector('header');
   header.style.background = `linear-gradient(270deg, ${colors.header1}, ${colors.header2}, ${colors.header1})`;
   
-  // Update "Bouziani Imane" text gradient
-  const headerTitle = document.querySelector('header h1');
-  headerTitle.style.background = `linear-gradient(90deg, ${colors.primary}, ${colors.secondary}, ${colors.primary})`;
-  headerTitle.style.webkitBackgroundClip = 'text';
-  headerTitle.style.webkitTextFillColor = 'transparent';
+ // Update "Bouziani Imane" text - FIXED VERSION
+const headerTitle = document.querySelector('header h1');
+headerTitle.style.color = '#ffffff';
+headerTitle.style.background = 'none';
+headerTitle.style.webkitBackgroundClip = 'initial';
+headerTitle.style.webkitTextFillColor = 'initial';
+
+// Apply theme-specific shadow
+if (theme === 'lavender') {
+  headerTitle.style.textShadow = '2px 2px 8px rgba(106, 90, 205, 0.4), 0px 0px 15px rgba(138, 43, 226, 0.3)';
+} else if (theme === 'mint') {
+  headerTitle.style.textShadow = '2px 2px 8px rgba(76, 175, 80, 0.4), 0px 0px 15px rgba(46, 125, 50, 0.3)';
+} else if (theme === 'peach') {
+  headerTitle.style.textShadow = '2px 2px 8px rgba(255, 152, 0, 0.4), 0px 0px 15px rgba(255, 87, 34, 0.3)';
+} else if (theme === 'sky') {
+  headerTitle.style.textShadow = '2px 2px 8px rgba(33, 150, 243, 0.4), 0px 0px 15px rgba(3, 169, 244, 0.3)';
+} else {
+  headerTitle.style.textShadow = '2px 2px 8px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(0, 0, 0, 0.2)';
+}
   
   // Update progress bars
   document.querySelectorAll('.progress').forEach(progress => {
@@ -2305,6 +2319,7 @@ function updateThemeColors(theme, isDarkMode) {
 </script>
 </body>
 </html>
+
 
 
 
