@@ -1647,14 +1647,13 @@ body.dark-mode.theme-sky header {
     </ul>
   </section>
 
- <!-- UPDATED: Interactive 3D Brain Models Section -->
+<!-- Interactive 3D Brain Model -->
 <section id="3d-elements" data-aos="fade-up">
   <h2><i class="fa-solid fa-brain"></i> Interactive 3D Brain Models</h2>
   <div class="three-d-container" id="threejs-container" style="width:100%; height:600px;"></div>
   <p style="text-align: center;">Explore interactive 3D brain models demonstrating AI and medical imaging projects</p>
 </section>
 
-<!-- Three.js Library -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.162.0/examples/js/loaders/GLTFLoader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.162.0/examples/js/controls/OrbitControls.js"></script>
@@ -1673,25 +1672,25 @@ body.dark-mode.theme-sky header {
   renderer.setPixelRatio(window.devicePixelRatio);
   container.appendChild(renderer.domElement);
 
-  // Lighting
+  // Lights
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
   scene.add(ambientLight);
   const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
   directionalLight.position.set(5, 5, 5);
   scene.add(directionalLight);
 
-  // Controls
+  // Orbit Controls
   const controls = new THREE.OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.dampingFactor = 0.05;
   controls.rotateSpeed = 0.5;
   controls.zoomSpeed = 1.2;
 
-  // Load Brain Model (replace 'brain_model.glb' with your actual file)
+  // Remove any cube geometry: only load the brain model
   const loader = new THREE.GLTFLoader();
   loader.load('brain_model.glb', function(gltf) {
       const brain = gltf.scene;
-      brain.scale.set(1.5, 1.5, 1.5);
+      brain.scale.set(1.5, 1.5, 1.5); // adjust size
       scene.add(brain);
   }, undefined, function(error) {
       console.error('Error loading brain model:', error);
@@ -2438,6 +2437,7 @@ setTimeout(typing, 500);
 </script>
 </body>
 </html>
+
 
 
 
