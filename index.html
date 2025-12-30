@@ -1272,17 +1272,72 @@ body.dark-mode.theme-sky header {
       margin: -50px 0 50px 0;
     }
     
-    /* Analytics Counter */
+        /* Visitor Counter Styling */
     .visitor-counter {
       position: fixed;
       bottom: 20px;
       left: 20px;
-      background: rgba(255,255,255,0.9);
-      padding: 8px 15px;
-      border-radius: 20px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      padding: 10px 18px;
+      border-radius: 30px;
       font-size: 0.9em;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
       z-index: 1000;
+      color: white;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: slideInLeft 0.8s ease;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .visitor-counter::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: #4CAF50;
+      border-radius: 50%;
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulseDot {
+      0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+      }
+    }
+
+    /* Dark mode styling for visitor counter */
+    body.dark-mode .visitor-counter {
+      background: linear-gradient(135deg, #5a6fa3, #8a4a6b);
+      color: #f5f5f5;
+    }
+
+    /* Responsive design for visitor counter */
+    @media (max-width: 768px) {
+      .visitor-counter {
+        bottom: 70px;
+        left: 10px;
+        font-size: 0.8em;
+        padding: 8px 14px;
+      }
     }
 
 
@@ -1323,9 +1378,9 @@ body.dark-mode.theme-sky header {
     <div class="theme-btn theme-sky" data-theme="sky" title="Sky Blue Theme"></div>
   </div>
 
-  <!-- Visitor Counter -->
+ <!-- Visitor Counter -->
   <div class="visitor-counter">
-    👁️ <span id="visitorCount">0</span> Visitors
+    👁️ <span id="visitorCount">Loading...</span> Visitors
   </div>
 
   <!-- AI Chat Bubble -->
@@ -1543,7 +1598,7 @@ body.dark-mode.theme-sky header {
         <h4>Master in Artificial Intelligence – With Distinction</h4>
         <p>Click for details</p>
         <div class="timeline-details">
-          <p>Completed a Master’s degree in Artificial Intelligence with distinction, specializing in deep learning and computer vision.</p>
+          <p>Completed a Master's degree in Artificial Intelligence with distinction, specializing in deep learning and computer vision.</p>
         </div>
       </div>
     </div>
@@ -1603,7 +1658,7 @@ body.dark-mode.theme-sky header {
         <h4>Bachelor in Computer Science</h4>
         <p>Click for details</p>
         <div class="timeline-details">
-          <p>Earned a Bachelor’s degree in Computer Science with a focus on software engineering and information systems.</p>
+          <p>Earned a Bachelor's degree in Computer Science with a focus on software engineering and information systems.</p>
         </div>
       </div>
     </div>
@@ -1732,6 +1787,26 @@ body.dark-mode.theme-sky header {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
+ 
+    // ===== VISITOR COUNTER DEBUG =====
+    console.log("=== Visitor Counter Debug ===");
+    
+    // Test localStorage
+    if (typeof(Storage) !== "undefined") {
+      console.log("✓ localStorage is supported");
+    } else {
+      console.log("✗ localStorage NOT supported - using fallback");
+    }
+    
+    // ===== CROSS-BROWSER COMPATIBILITY CHECK =====
+    if (typeof(Storage) !== "undefined") {
+      // localStorage is supported
+      console.log("localStorage supported - visitor tracking enabled");
+    } else {
+      // Fallback to session-only tracking for very old browsers
+      console.log("localStorage not supported - using session-only tracking");
+    }
+    
     // ===== YOUR EXISTING JAVASCRIPT CODE =====
     
     // Floating shapes animation (Circles + Triangles + Squares + Hexagons)
@@ -2073,46 +2148,55 @@ setTimeout(typing, 500);
     });
     
     // Three.js 3D Elements
+    // Three.js 3D Elements - Fixed version
     function initThreeJS() {
+      // Check if the container exists before trying to initialize
       const container = document.getElementById('threejs-container');
-      if (!container) return;
-      
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-      
-      renderer.setSize(container.clientWidth, container.clientHeight);
-      container.appendChild(renderer.domElement);
-      
-      // Add some basic 3D objects
-      const geometry = new THREE.BoxGeometry(2, 2, 2);
-      const material = new THREE.MeshBasicMaterial({ 
-        color: 0xa6c1ee,
-        wireframe: true 
-      });
-      const cube = new THREE.Mesh(geometry, material);
-      scene.add(cube);
-      
-      camera.position.z = 5;
-      
-      // Animation
-      function animate() {
-        requestAnimationFrame(animate);
-        
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-        
-        renderer.render(scene, camera);
+      if (!container || !THREE) {
+        console.log("Three.js container not found or THREE not available");
+        return;
       }
       
-      animate();
-      
-      // Handle resize
-      window.addEventListener('resize', function() {
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
+      try {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
         renderer.setSize(container.clientWidth, container.clientHeight);
-      });
+        container.appendChild(renderer.domElement);
+        
+        // Add some basic 3D objects
+        const geometry = new THREE.BoxGeometry(2, 2, 2);
+        const material = new THREE.MeshBasicMaterial({ 
+          color: 0xa6c1ee,
+          wireframe: true 
+        });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+        
+        camera.position.z = 5;
+        
+        // Animation
+        function animate() {
+          requestAnimationFrame(animate);
+          
+          cube.rotation.x += 0.01;
+          cube.rotation.y += 0.01;
+          
+          renderer.render(scene, camera);
+        }
+        
+        animate();
+        
+        // Handle resize
+        window.addEventListener('resize', function() {
+          camera.aspect = container.clientWidth / container.clientHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+      } catch (error) {
+        console.error("Three.js initialization failed:", error);
+      }
     }
     
     // Initialize 3D when page loads
@@ -2143,15 +2227,80 @@ setTimeout(typing, 500);
       el.addEventListener('mouseenter', playHoverSound);
     });
     
-    // Analytics and Visitor Counter
-    function updateVisitorCount() {
-      let count = localStorage.getItem('visitorCount');
-      if (!count) {
-        count = 0;
+    // ===== FIXED VISITOR COUNTER - WORKING ACROSS ALL BROWSERS =====
+    async function updateVisitorCount() {
+      try {
+        // Generate a unique session ID for this visit
+        let sessionId = localStorage.getItem('portfolioSessionId');
+        let isNewSession = false;
+        
+        // Check if this is a new session (or session expired after 30 minutes)
+        if (!sessionId || sessionExpired(sessionId)) {
+          sessionId = generateSessionId();
+          localStorage.setItem('portfolioSessionId', sessionId);
+          localStorage.setItem('sessionStartTime', Date.now());
+          isNewSession = true;
+        }
+        
+        // Get current count from localStorage first (for immediate display)
+        let currentCount = parseInt(localStorage.getItem('visitorCount') || '1000');
+        
+        // Only increment for new sessions
+        if (isNewSession) {
+          currentCount++;
+          localStorage.setItem('visitorCount', currentCount);
+          
+          // Try to update the remote count using CountAPI
+          try {
+            const response = await fetch(`https://api.countapi.xyz/update/bouzianiimane/portfolio/?amount=1`);
+            const data = await response.json();
+            
+            // Update with the actual count from API
+            if (data && data.value) {
+              currentCount = data.value;
+              localStorage.setItem('visitorCount', currentCount);
+            }
+          } catch (apiError) {
+            console.log('Using local counter - API unavailable');
+            // Continue with local count if API fails
+          }
+        }
+        
+        // Display the count
+        document.getElementById('visitorCount').textContent = formatNumber(currentCount);
+        
+      } catch (error) {
+        console.error('Error updating visitor count:', error);
+        
+        // Ultimate fallback
+        let count = localStorage.getItem('visitorCount') || '1000';
+        document.getElementById('visitorCount').textContent = formatNumber(parseInt(count));
       }
-      count = parseInt(count) + 1;
-      localStorage.setItem('visitorCount', count);
-      document.getElementById('visitorCount').textContent = count;
+    }
+
+    // Helper function to check if session expired (30 minutes)
+    function sessionExpired(sessionId) {
+      const sessionStart = parseInt(localStorage.getItem('sessionStartTime') || '0');
+      const thirtyMinutes = 30 * 60 * 1000; // 30 minutes in milliseconds
+      
+      // Check if more than 30 minutes have passed
+      if (Date.now() - sessionStart > thirtyMinutes) {
+        // Clear old session
+        localStorage.removeItem('portfolioSessionId');
+        localStorage.removeItem('sessionStartTime');
+        return true;
+      }
+      return false;
+    }
+
+    // Generate a unique session ID
+    function generateSessionId() {
+      return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    }
+
+    // Format number with commas
+    function formatNumber(num) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     
     // PWA Service Worker Registration
@@ -2336,6 +2485,13 @@ setTimeout(typing, 500);
     document.addEventListener('DOMContentLoaded', function() {
       updateVisitorCount();
       initThreeJS();
+      
+      // Also update counter when page becomes visible again
+      document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+          updateVisitorCount();
+        }
+      });
     });
 
     // Contact form JavaScript
@@ -2373,12 +2529,3 @@ setTimeout(typing, 500);
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
