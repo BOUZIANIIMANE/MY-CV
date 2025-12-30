@@ -1787,745 +1787,742 @@ body.dark-mode.theme-sky header {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
- 
-    // ===== VISITOR COUNTER DEBUG =====
-    console.log("=== Visitor Counter Debug ===");
+  // ===== ULTIMATE FIXED VISITOR COUNTER - CROSS BROWSER COMPATIBLE =====
+  // This version combines multiple methods to work across all browsers
+  
+  // Function to get a unique visitor identifier
+  function getVisitorId() {
+    // Method 1: Try to use localStorage with a persistent ID
+    let visitorId = localStorage.getItem('portfolio_visitor_id');
     
-    // Test localStorage
-    if (typeof(Storage) !== "undefined") {
-      console.log("✓ localStorage is supported");
-    } else {
-      console.log("✗ localStorage NOT supported - using fallback");
+    if (!visitorId) {
+      // Generate a new unique ID
+      visitorId = 'visitor_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+      localStorage.setItem('portfolio_visitor_id', visitorId);
     }
     
-    // ===== CROSS-BROWSER COMPATIBILITY CHECK =====
-    if (typeof(Storage) !== "undefined") {
-      // localStorage is supported
-      console.log("localStorage supported - visitor tracking enabled");
-    } else {
-      // Fallback to session-only tracking for very old browsers
-      console.log("localStorage not supported - using session-only tracking");
-    }
-    
-    // ===== YOUR EXISTING JAVASCRIPT CODE =====
-    
-    // Floating shapes animation (Circles + Triangles + Squares + Hexagons)
-    const canvas = document.getElementById("trianglesCanvas");
-    const ctx = canvas.getContext("2d");
-    
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    // Shape class
-    class Shape {
-      constructor(type) {
-        this.type = type; // "circle", "triangle", "square", "hexagon"
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = 15 + Math.random() * 25;
-        this.speedX = (Math.random() - 0.5) * 2;
-        this.speedY = (Math.random() - 0.5) * 2;
-        // Pastel purples and baby blues
-        const colors = [
-          "rgba(186, 170, 255, 0.6)", // pastel purple
-          "rgba(204, 191, 255, 0.6)", // lavender
-          "rgba(221, 210, 255, 0.6)", // light lilac
-          "rgba(173, 216, 230, 0.6)", // baby blue
-          "rgba(200, 180, 255, 0.6)"  // soft violet
-        ];
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-      }
-      
-      draw() {
-        ctx.beginPath();
-        ctx.fillStyle = this.color;
-
-        if (this.type === "circle") {
-          ctx.arc(this.x, this.y, this.size / 2, 0, Math.PI * 2);
-        } 
-        else if (this.type === "triangle") {
-          ctx.moveTo(this.x, this.y - this.size / 2);
-          ctx.lineTo(this.x - this.size / 2, this.y + this.size / 2);
-          ctx.lineTo(this.x + this.size / 2, this.y + this.size / 2);
-          ctx.closePath();
-        } 
-        else if (this.type === "square") {
-          ctx.rect(this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
-        }
-        else if (this.type === "hexagon") {
-          const sides = 6;
-          const step = (Math.PI * 2) / sides;
-          const shift = Math.PI / 6;
-          for (let i = 0; i < sides; i++) {
-            const curX = this.x + this.size * Math.cos(i * step + shift);
-            const curY = this.y + this.size * Math.sin(i * step + shift);
-            if (i === 0) ctx.moveTo(curX, curY);
-            else ctx.lineTo(curX, curY);
-          }
-          ctx.closePath();
-        }
-        ctx.fill();
-      }
-      
-      update(shapes) {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        // Bounce from walls
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-        // Simple collision
-        for (let s of shapes) {
-          if (s !== this) {
-            const dx = this.x - s.x;
-            const dy = this.y - s.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < (this.size + s.size) / 2) {
-              this.speedX *= -1;
-              this.speedY *= -1;
-            }
-          }
-        }
-        this.draw();
-      }
-    }
-    
-    // Create shapes
-    let shapes = [];
-    const types = ["circle", "hexagon"];
-    for (let i = 0; i < 25; i++) {
-      const type = types[Math.floor(Math.random() * types.length)];
-      shapes.push(new Shape(type));
-    }
-    
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let s of shapes) {
-        s.update(shapes);
-      }
-      requestAnimationFrame(animate);
-    }
-    
-    animate();
-
-    // Preloader
-    window.addEventListener("load", function() {
-      document.getElementById("preloader").style.display = "none";
-    });
-    
-   // Typing effect - IMPROVED VERSION
-const typingElement = document.getElementById("typing");
-const text = "AI Engineer & Computer Scientist";
-let i = 0;
-
-// Clear the element first to prevent double text
-typingElement.innerHTML = "";
-
-function typing() {
-  if (i < text.length) {
-    typingElement.innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typing, 80);
+    return visitorId;
   }
-}
-
-// Start typing after a short delay to ensure element is cleared
-setTimeout(typing, 500);
+  
+  // Function to check if this is a new visit
+  function isNewVisit(visitorId) {
+    // Check if we have a session cookie
+    const sessionKey = 'session_' + visitorId;
+    const sessionTime = localStorage.getItem(sessionKey);
+    const currentTime = Date.now();
     
-    // Dynamic greeting based on time of day
-    const greetingElement = document.getElementById("greeting");
-    const hour = new Date().getHours();
-    let greetingText = "";
-    
-    if (hour < 12) {
-      greetingText = "Good Morning!";
-    } else if (hour < 18) {
-      greetingText = "Good Afternoon!";
-    } else {
-      greetingText = "Good Evening!";
+    // If no session or session expired (30 minutes)
+    if (!sessionTime || (currentTime - parseInt(sessionTime) > 30 * 60 * 1000)) {
+      // Update session time
+      localStorage.setItem(sessionKey, currentTime.toString());
+      return true;
     }
     
-    // Add fade-in effect
-    greetingElement.innerHTML = `<span style="opacity:0; display:inline-block; animation:fadeInGreeting 2s forwards;">${greetingText}</span>`;
-    
-    // Add animation keyframes
-    const style = document.createElement("style");
-    style.innerHTML = `
-      @keyframes fadeInGreeting {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-    `;
-    document.head.appendChild(style);
-    
-    // AOS Animation
-    AOS.init({ duration: 1200 });
-    
-    // Animate progress bars when Skills section is visible
-    const skillSection = document.getElementById("skills");
-    const progressBars = skillSection.querySelectorAll(".progress");
-
-    function fillProgressBars() {
-      progressBars.forEach(bar => {
-        const target = bar.getAttribute("data-width");
-        bar.style.width = target;
-      });
-    }
-    
-    function resetProgressBars() {
-      progressBars.forEach(bar => {
-        bar.style.width = "0";
-      });
-    }
-    
-    // Observer to detect when skills section is visible
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          fillProgressBars();
-        } else {
-          resetProgressBars(); // reset when leaving section
-        }
-      });
-    }, { threshold: 0.4 });
-
-    observer.observe(skillSection);
-
-    // Also trigger when clicking nav "Skills"
-    document.querySelector('a[href="#skills"]').addEventListener("click", () => {
-      resetProgressBars();
-      setTimeout(fillProgressBars, 600); // after scroll
-    });
-    
-    // Highlight active nav link while scrolling
-    const navLinks = document.querySelectorAll(".nav-main a");
-    const sectionsNav = document.querySelectorAll("section");
-
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sectionsNav.forEach(section => {
-        const sectionTop = section.offsetTop - 150; // adjust offset for sticky nav
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute("id");
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href").includes(current)) {
-          link.classList.add("active");
-        }
-      });
-    });
-    
-    // Apply tilt to all images inside .illustration sections
-    if (typeof VanillaTilt !== "undefined") {
-      VanillaTilt.init(document.querySelectorAll(".illustration img"), {
-        max: 15,       // how much it tilts
-        speed: 300,    // speed of the effect
-        glare: true,   // adds light reflection
-        "max-glare": 0.3
-      });
-    }
-
-    // ===== NEW FEATURES JAVASCRIPT =====
-    
-    // AI Chat Bubble Functionality
-    const chatBubble = document.getElementById('chatBubble');
-    const chatWindow = document.getElementById('chatWindow');
-    const chatBody = document.getElementById('chatBody');
-    
-    chatBubble.addEventListener('click', function() {
-      chatWindow.style.display = chatWindow.style.display === 'block' ? 'none' : 'block';
-    });
-    
-    // Chat option handlers
-    document.querySelectorAll('.chat-option').forEach(option => {
-      option.addEventListener('click', function() {
-        const optionType = this.getAttribute('data-option');
-        let response = '';
-        
-        switch(optionType) {
-          case 'skills':
-            response = "I specialize in AI Engineering with expertise in Machine Learning, Deep Learning, Computer Vision, and NLP. I'm also proficient in full-stack web development with JavaScript, Python, and various frameworks.";
-            break;
-          case 'experience':
-            response = "I have experience as an IT Specialist at ZHONGMA International (2023-2025), STEAM Lecturer at University (2022-2023), and have worked on multiple AI projects including medical imaging and intelligent vehicle systems.";
-            break;
-          case 'projects':
-            response = "My projects include AI-powered diagnostic systems, educational 3D games, professional websites, and mobile applications. Check my GitHub for more details!";
-            break;
-          case 'contact':
-            response = "You can reach me at bouzianiimane1@gmail.com or +213 664 64 77 79. I'm also available on LinkedIn and WhatsApp.";
-            break;
-        }
-        
-        const responseElement = document.createElement('div');
-        responseElement.className = 'chat-message chat-bot';
-        responseElement.textContent = response;
-        chatBody.appendChild(responseElement);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      });
-    });
-    
-    // Skill Filters Functionality
-    const skillFilters = document.querySelectorAll('.skill-filter');
-    const skillBadges = document.querySelectorAll('.skill-badge');
-    
-    skillFilters.forEach(filter => {
-      filter.addEventListener('click', function() {
-        // Update active filter
-        skillFilters.forEach(f => f.classList.remove('active'));
-        this.classList.add('active');
-        
-        const filterValue = this.getAttribute('data-filter');
-        
-        // Filter skills
-        skillBadges.forEach(badge => {
-          if (filterValue === 'all') {
-            badge.classList.remove('hidden');
-          } else {
-            const categories = badge.getAttribute('data-categories').split(' ');
-            if (categories.includes(filterValue)) {
-              badge.classList.remove('hidden');
-            } else {
-              badge.classList.add('hidden');
-            }
-          }
-        });
-      });
-    });
-    
-    // Interactive Timeline
-    const timelineItems = document.querySelectorAll('.timeline-content');
-    
-    timelineItems.forEach(item => {
-      item.addEventListener('click', function() {
-        const details = this.querySelector('.timeline-details');
-        const isVisible = details.style.display === 'block';
-        
-        // Close all other details
-        timelineItems.forEach(otherItem => {
-          otherItem.querySelector('.timeline-details').style.display = 'none';
-        });
-        
-        // Toggle current details
-        details.style.display = isVisible ? 'none' : 'block';
-      });
-    });
-    
-    // Custom Cursor
-    const cursor = document.querySelector('.custom-cursor');
-    const follower = document.querySelector('.cursor-follower');
-    
-    document.addEventListener('mousemove', function(e) {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+    return false;
+  }
+  
+  // Function to update visitor count
+  async function updateVisitorCount() {
+    try {
+      const visitorId = getVisitorId();
+      const isNew = isNewVisit(visitorId);
       
-      setTimeout(() => {
-        follower.style.left = e.clientX + 'px';
-        follower.style.top = e.clientY + 'px';
-      }, 100);
-    });
-    
-    // Add hover effect to interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .skill-badge, .timeline-content');
-    
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(1.5)';
-        follower.style.transform = 'scale(1.2)';
-      });
+      // Get current count from localStorage
+      let currentCount = parseInt(localStorage.getItem('portfolio_visitor_count') || '1000');
       
-      el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-        follower.style.transform = 'scale(1)';
-      });
-    });
-    
-    // Three.js 3D Elements
-    // Three.js 3D Elements - Fixed version
-    function initThreeJS() {
-      // Check if the container exists before trying to initialize
-      const container = document.getElementById('threejs-container');
-      if (!container || !THREE) {
-        console.log("Three.js container not found or THREE not available");
-        return;
-      }
-      
-      try {
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      if (isNew) {
+        // Increment local count
+        currentCount++;
+        localStorage.setItem('portfolio_visitor_count', currentCount);
         
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        container.appendChild(renderer.domElement);
-        
-        // Add some basic 3D objects
-        const geometry = new THREE.BoxGeometry(2, 2, 2);
-        const material = new THREE.MeshBasicMaterial({ 
-          color: 0xa6c1ee,
-          wireframe: true 
-        });
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-        
-        camera.position.z = 5;
-        
-        // Animation
-        function animate() {
-          requestAnimationFrame(animate);
-          
-          cube.rotation.x += 0.01;
-          cube.rotation.y += 0.01;
-          
-          renderer.render(scene, camera);
-        }
-        
-        animate();
-        
-        // Handle resize
-        window.addEventListener('resize', function() {
-          camera.aspect = container.clientWidth / container.clientHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(container.clientWidth, container.clientHeight);
-        });
-      } catch (error) {
-        console.error("Three.js initialization failed:", error);
-      }
-    }
-    
-    // Initialize 3D when page loads
-    window.addEventListener('load', initThreeJS);
-    
-    // Hover Sound Effects
-    function playHoverSound() {
-      // Create a simple click sound using Web Audio API
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      
-      oscillator.frequency.value = 800;
-      oscillator.type = 'sine';
-      
-      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-      
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + 0.1);
-    }
-    
-    // Add hover sound to interactive elements
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', playHoverSound);
-    });
-    
-    // ===== FIXED VISITOR COUNTER - WORKING ACROSS ALL BROWSERS =====
-    async function updateVisitorCount() {
-      try {
-        // Generate a unique session ID for this visit
-        let sessionId = localStorage.getItem('portfolioSessionId');
-        let isNewSession = false;
-        
-        // Check if this is a new session (or session expired after 30 minutes)
-        if (!sessionId || sessionExpired(sessionId)) {
-          sessionId = generateSessionId();
-          localStorage.setItem('portfolioSessionId', sessionId);
-          localStorage.setItem('sessionStartTime', Date.now());
-          isNewSession = true;
-        }
-        
-        // Get current count from localStorage first (for immediate display)
-        let currentCount = parseInt(localStorage.getItem('visitorCount') || '1000');
-        
-        // Only increment for new sessions
-        if (isNewSession) {
-          currentCount++;
-          localStorage.setItem('visitorCount', currentCount);
-          
-          // Try to update the remote count using CountAPI
-          try {
-            const response = await fetch(`https://api.countapi.xyz/update/bouzianiimane/portfolio/?amount=1`);
+        // Try to update to a remote service (optional - works even if this fails)
+        try {
+          // Method 1: CountAPI
+          const response = await fetch(`https://api.countapi.xyz/hit/bouzianiimane/portfolio`);
+          if (response.ok) {
             const data = await response.json();
-            
-            // Update with the actual count from API
             if (data && data.value) {
               currentCount = data.value;
-              localStorage.setItem('visitorCount', currentCount);
+              localStorage.setItem('portfolio_visitor_count', currentCount);
             }
-          } catch (apiError) {
-            console.log('Using local counter - API unavailable');
-            // Continue with local count if API fails
           }
+        } catch (apiError) {
+          console.log('Using local counter - API unavailable');
+          // Continue with local count
         }
         
-        // Display the count
-        document.getElementById('visitorCount').textContent = formatNumber(currentCount);
-        
-      } catch (error) {
-        console.error('Error updating visitor count:', error);
-        
-        // Ultimate fallback
-        let count = localStorage.getItem('visitorCount') || '1000';
-        document.getElementById('visitorCount').textContent = formatNumber(parseInt(count));
+        // Also store in sessionStorage as backup
+        sessionStorage.setItem('visitor_session', 'true');
       }
-    }
-
-    // Helper function to check if session expired (30 minutes)
-    function sessionExpired(sessionId) {
-      const sessionStart = parseInt(localStorage.getItem('sessionStartTime') || '0');
-      const thirtyMinutes = 30 * 60 * 1000; // 30 minutes in milliseconds
       
-      // Check if more than 30 minutes have passed
-      if (Date.now() - sessionStart > thirtyMinutes) {
-        // Clear old session
-        localStorage.removeItem('portfolioSessionId');
-        localStorage.removeItem('sessionStartTime');
-        return true;
+      // Display the count
+      document.getElementById('visitorCount').textContent = formatNumber(currentCount);
+      
+      // Debug info
+      console.log(`Visitor ID: ${visitorId}`);
+      console.log(`Is new visit: ${isNew}`);
+      console.log(`Current count: ${currentCount}`);
+      
+    } catch (error) {
+      console.error('Error updating visitor count:', error);
+      
+      // Ultimate fallback
+      let count = localStorage.getItem('portfolio_visitor_count') || '1000';
+      document.getElementById('visitorCount').textContent = formatNumber(parseInt(count));
+    }
+  }
+  
+  // Format number with commas
+  function formatNumber(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  
+  // Initialize the counter when page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    updateVisitorCount();
+    
+    // Update counter when page becomes visible again
+    document.addEventListener('visibilitychange', function() {
+      if (!document.hidden) {
+        setTimeout(updateVisitorCount, 1000);
       }
-      return false;
-    }
-
-    // Generate a unique session ID
-    function generateSessionId() {
-      return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    }
-
-    // Format number with commas
-    function formatNumber(num) {
-      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-    
-    // PWA Service Worker Registration
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js')
-          .then(function(registration) {
-            console.log('ServiceWorker registration successful');
-          })
-          .catch(function(err) {
-            console.log('ServiceWorker registration failed: ', err);
-          });
-      });
-    }
-
-    // ===== THEME PERSONALIZATION =====
-    
-    // Theme Personalization for both light and dark modes
-    const themeButtons = document.querySelectorAll('.theme-btn');
-
-    themeButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const theme = this.getAttribute('data-theme');
-        applyTheme(theme);
-      });
     });
+  });
+  
+  // ===== YOUR EXISTING JAVASCRIPT CODE =====
+  
+  // Floating shapes animation (Circles + Triangles + Squares + Hexagons)
+  const canvas = document.getElementById("trianglesCanvas");
+  const ctx = canvas.getContext("2d");
+  
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
 
-    function applyTheme(theme) {
-      // Remove existing theme classes but keep dark-mode
-      const isDarkMode = document.body.classList.contains('dark-mode');
-      document.body.className = '';
-      if (isDarkMode) {
-        document.body.classList.add('dark-mode');
-      }
-      document.body.classList.add(`theme-${theme}`);
-      
-      updateThemeColors(theme, isDarkMode);
+  // Shape class
+  class Shape {
+    constructor(type) {
+      this.type = type; // "circle", "triangle", "square", "hexagon"
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = 15 + Math.random() * 25;
+      this.speedX = (Math.random() - 0.5) * 2;
+      this.speedY = (Math.random() - 0.5) * 2;
+      // Pastel purples and baby blues
+      const colors = [
+        "rgba(186, 170, 255, 0.6)", // pastel purple
+        "rgba(204, 191, 255, 0.6)", // lavender
+        "rgba(221, 210, 255, 0.6)", // light lilac
+        "rgba(173, 216, 230, 0.6)", // baby blue
+        "rgba(200, 180, 255, 0.6)"  // soft violet
+      ];
+      this.color = colors[Math.floor(Math.random() * colors.length)];
     }
+    
+    draw() {
+      ctx.beginPath();
+      ctx.fillStyle = this.color;
 
-    function updateThemeColors(theme, isDarkMode) {
-      const themes = {
-        lavender: { 
-          light: { 
-            primary: '#a6c1ee', 
-            secondary: '#fbc2eb', 
-            header1: '#fbc2eb', 
-            header2: '#a6c1ee',
-            background: 'linear-gradient(270deg, #e6d6f5, #d0c4f2, #c7d8f9)'
-          },
-          dark: { 
-            primary: '#8a7a9b',
-            secondary: '#7a8aab',
-            header1: '#6a5a7b',
-            header2: '#5a6a8b',
-            background: 'linear-gradient(270deg, #2a2a3a, #252535, #1f1f2f)'
-          }
-        },
-        mint: { 
-          light: { 
-            primary: '#96ceb4', 
-            secondary: '#4ecdc4', 
-            header1: '#4ecdc4', 
-            header2: '#96ceb4',
-            background: 'linear-gradient(270deg, #d6f5e6, #c4f2d0, #e6f7ed)'
-          },
-          dark: { 
-            primary: '#6a8a7b',
-            secondary: '#7a9a8b',
-            header1: '#4a6a5b',
-            header2: '#5a7a6b',
-            background: 'linear-gradient(270deg, #2a3a2a, #253525, #1f2f1f)'
-          }
-        },
-        peach: { 
-          light: { 
-            primary: '#ffd8b1',  // Calmer pastel orange
-            secondary: '#ffccbc', // Softer peach
-            header1: '#ffccbc', 
-            header2: '#ffd8b1',
-            background: 'linear-gradient(270deg, #fff3e0, #ffe0b2, #ffecb3)' // Calmer peach gradient
-          },
-          dark: { 
-            primary: '#9a7a6a',
-            secondary: '#aa8a7a',
-            header1: '#7a5a4a',
-            header2: '#8a6a5a',
-            background: 'linear-gradient(270deg, #3a2a2a, #352525, #2f1f1f)'
-          }
-        },
-        sky: { 
-          light: { 
-            primary: '#b3e5fc',  // Calmer pastel blue
-            secondary: '#e1f5fe', // Softer sky blue
-            header1: '#e1f5fe', 
-            header2: '#b3e5fc',
-            background: 'linear-gradient(270deg, #e3f2fd, #e1f5fe, #f3e5f5)' // Calmer sky gradient
-          },
-          dark: { 
-            primary: '#6a8a9a',
-            secondary: '#7a9aaa',
-            header1: '#4a6a7a',
-            header2: '#5a7a8a',
-            background: 'linear-gradient(270deg, #2a3a4a, #253545, #1f2f3f)'
+      if (this.type === "circle") {
+        ctx.arc(this.x, this.y, this.size / 2, 0, Math.PI * 2);
+      } 
+      else if (this.type === "triangle") {
+        ctx.moveTo(this.x, this.y - this.size / 2);
+        ctx.lineTo(this.x - this.size / 2, this.y + this.size / 2);
+        ctx.lineTo(this.x + this.size / 2, this.y + this.size / 2);
+        ctx.closePath();
+      } 
+      else if (this.type === "square") {
+        ctx.rect(this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
+      }
+      else if (this.type === "hexagon") {
+        const sides = 6;
+        const step = (Math.PI * 2) / sides;
+        const shift = Math.PI / 6;
+        for (let i = 0; i < sides; i++) {
+          const curX = this.x + this.size * Math.cos(i * step + shift);
+          const curY = this.y + this.size * Math.sin(i * step + shift);
+          if (i === 0) ctx.moveTo(curX, curY);
+          else ctx.lineTo(curX, curY);
+        }
+        ctx.closePath();
+      }
+      ctx.fill();
+    }
+    
+    update(shapes) {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      // Bounce from walls
+      if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      // Simple collision
+      for (let s of shapes) {
+        if (s !== this) {
+          const dx = this.x - s.x;
+          const dy = this.y - s.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < (this.size + s.size) / 2) {
+            this.speedX *= -1;
+            this.speedY *= -1;
           }
         }
-      };
-      
-      const colors = isDarkMode ? themes[theme].dark : themes[theme].light;
-      
-      // Update CSS variables for theme elements
-      document.documentElement.style.setProperty('--primary-color', colors.primary);
-      document.documentElement.style.setProperty('--secondary-color', colors.secondary);
-      document.documentElement.style.setProperty('--header1', colors.header1);
-      document.documentElement.style.setProperty('--header2', colors.header2);
-      
-      // Update the main website background
-      document.body.style.background = colors.background;
-      document.body.style.backgroundSize = '600% 600%';
-      
-      // Update header gradient
-      const header = document.querySelector('header');
-      header.style.background = `linear-gradient(270deg, ${colors.header1}, ${colors.header2}, ${colors.header1})`;
-      
-      // FIXED: Update "Bouziani Imane" text - Force white text with theme shadows
-      const headerTitle = document.querySelector('header h1');
-      headerTitle.style.color = '#ffffff';
-      headerTitle.style.background = 'none';
-      headerTitle.style.webkitBackgroundClip = 'initial';
-      headerTitle.style.webkitTextFillColor = 'initial';
-
-      // Apply theme-specific shadow
-      if (theme === 'lavender') {
-        headerTitle.style.textShadow = '2px 2px 8px rgba(106, 90, 205, 0.4), 0px 0px 15px rgba(138, 43, 226, 0.3)';
-      } else if (theme === 'mint') {
-        headerTitle.style.textShadow = '2px 2px 8px rgba(76, 175, 80, 0.4), 0px 0px 15px rgba(46, 125, 50, 0.3)';
-      } else if (theme === 'peach') {
-        headerTitle.style.textShadow = '2px 2px 8px rgba(255, 152, 0, 0.4), 0px 0px 15px rgba(255, 87, 34, 0.3)';
-      } else if (theme === 'sky') {
-        headerTitle.style.textShadow = '2px 2px 8px rgba(33, 150, 243, 0.4), 0px 0px 15px rgba(3, 169, 244, 0.3)';
-      } else {
-        headerTitle.style.textShadow = '2px 2px 8px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(0, 0, 0, 0.2)';
       }
-      
-      // Update progress bars
-      document.querySelectorAll('.progress').forEach(progress => {
-        progress.style.background = `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`;
-      });
+      this.draw();
     }
+  }
+  
+  // Create shapes
+  let shapes = [];
+  const types = ["circle", "hexagon"];
+  for (let i = 0; i < 25; i++) {
+    const type = types[Math.floor(Math.random() * types.length)];
+    shapes.push(new Shape(type));
+  }
+  
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let s of shapes) {
+      s.update(shapes);
+    }
+    requestAnimationFrame(animate);
+  }
+  
+  animate();
 
-    // Make sure dark mode toggle preserves theme
-    const darkBtn = document.getElementById("darkBtn");
-    darkBtn.addEventListener("click", () => {
-      const currentTheme = document.body.className.match(/theme-(\w+)/);
-      const wasDarkMode = document.body.classList.contains('dark-mode');
-      
-      document.body.classList.toggle("dark-mode");
-      
-      // Re-apply current theme after toggling dark mode
-      if (currentTheme) {
-        const isDarkMode = document.body.classList.contains('dark-mode');
-        updateThemeColors(currentTheme[1], isDarkMode);
+  // Preloader
+  window.addEventListener("load", function() {
+    document.getElementById("preloader").style.display = "none";
+  });
+  
+  // Typing effect - IMPROVED VERSION
+  const typingElement = document.getElementById("typing");
+  const text = "AI Engineer & Computer Scientist";
+  let i = 0;
+
+  // Clear the element first to prevent double text
+  typingElement.innerHTML = "";
+
+  function typing() {
+    if (i < text.length) {
+      typingElement.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, 80);
+    }
+  }
+
+  // Start typing after a short delay to ensure element is cleared
+  setTimeout(typing, 500);
+    
+  // Dynamic greeting based on time of day
+  const greetingElement = document.getElementById("greeting");
+  const hour = new Date().getHours();
+  let greetingText = "";
+  
+  if (hour < 12) {
+    greetingText = "Good Morning!";
+  } else if (hour < 18) {
+    greetingText = "Good Afternoon!";
+  } else {
+    greetingText = "Good Evening!";
+  }
+  
+  // Add fade-in effect
+  greetingElement.innerHTML = `<span style="opacity:0; display:inline-block; animation:fadeInGreeting 2s forwards;">${greetingText}</span>`;
+  
+  // Add animation keyframes
+  const style = document.createElement("style");
+  style.innerHTML = `
+    @keyframes fadeInGreeting {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  `;
+  document.head.appendChild(style);
+  
+  // AOS Animation
+  AOS.init({ duration: 1200 });
+  
+  // Animate progress bars when Skills section is visible
+  const skillSection = document.getElementById("skills");
+  const progressBars = skillSection.querySelectorAll(".progress");
+
+  function fillProgressBars() {
+    progressBars.forEach(bar => {
+      const target = bar.getAttribute("data-width");
+      bar.style.width = target;
+    });
+  }
+  
+  function resetProgressBars() {
+    progressBars.forEach(bar => {
+      bar.style.width = "0";
+    });
+  }
+  
+  // Observer to detect when skills section is visible
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        fillProgressBars();
+      } else {
+        resetProgressBars(); // reset when leaving section
       }
-      
-      darkBtn.innerHTML = document.body.classList.contains("dark-mode") 
-        ? '<i class="fa-solid fa-sun"></i> Light Mode' 
-        : '<i class="fa-solid fa-moon"></i> Dark Mode';
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(skillSection);
+
+  // Also trigger when clicking nav "Skills"
+  document.querySelector('a[href="#skills"]').addEventListener("click", () => {
+    resetProgressBars();
+    setTimeout(fillProgressBars, 600); // after scroll
+  });
+  
+  // Highlight active nav link while scrolling
+  const navLinks = document.querySelectorAll(".nav-main a");
+  const sectionsNav = document.querySelectorAll("section");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sectionsNav.forEach(section => {
+      const sectionTop = section.offsetTop - 150; // adjust offset for sticky nav
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute("id");
+      }
     });
 
-    // Scroll to top button
-    const topBtn = document.getElementById("topBtn");
-    window.onscroll = function() {
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        topBtn.style.display = "block";
-      } else {
-        topBtn.style.display = "none";
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href").includes(current)) {
+        link.classList.add("active");
+      }
+    });
+  });
+  
+  // Apply tilt to all images inside .illustration sections
+  if (typeof VanillaTilt !== "undefined") {
+    VanillaTilt.init(document.querySelectorAll(".illustration img"), {
+      max: 15,       // how much it tilts
+      speed: 300,    // speed of the effect
+      glare: true,   // adds light reflection
+      "max-glare": 0.3
+    });
+  }
+
+  // ===== NEW FEATURES JAVASCRIPT =====
+  
+  // AI Chat Bubble Functionality
+  const chatBubble = document.getElementById('chatBubble');
+  const chatWindow = document.getElementById('chatWindow');
+  const chatBody = document.getElementById('chatBody');
+  
+  chatBubble.addEventListener('click', function() {
+    chatWindow.style.display = chatWindow.style.display === 'block' ? 'none' : 'block';
+  });
+  
+  // Chat option handlers
+  document.querySelectorAll('.chat-option').forEach(option => {
+    option.addEventListener('click', function() {
+      const optionType = this.getAttribute('data-option');
+      let response = '';
+      
+      switch(optionType) {
+        case 'skills':
+          response = "I specialize in AI Engineering with expertise in Machine Learning, Deep Learning, Computer Vision, and NLP. I'm also proficient in full-stack web development with JavaScript, Python, and various frameworks.";
+          break;
+        case 'experience':
+          response = "I have experience as an IT Specialist at ZHONGMA International (2023-2025), STEAM Lecturer at University (2022-2023), and have worked on multiple AI projects including medical imaging and intelligent vehicle systems.";
+          break;
+        case 'projects':
+          response = "My projects include AI-powered diagnostic systems, educational 3D games, professional websites, and mobile applications. Check my GitHub for more details!";
+          break;
+        case 'contact':
+          response = "You can reach me at bouzianiimane1@gmail.com or +213 664 64 77 79. I'm also available on LinkedIn and WhatsApp.";
+          break;
+      }
+      
+      const responseElement = document.createElement('div');
+      responseElement.className = 'chat-message chat-bot';
+      responseElement.textContent = response;
+      chatBody.appendChild(responseElement);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    });
+  });
+  
+  // Skill Filters Functionality
+  const skillFilters = document.querySelectorAll('.skill-filter');
+  const skillBadges = document.querySelectorAll('.skill-badge');
+  
+  skillFilters.forEach(filter => {
+    filter.addEventListener('click', function() {
+      // Update active filter
+      skillFilters.forEach(f => f.classList.remove('active'));
+      this.classList.add('active');
+      
+      const filterValue = this.getAttribute('data-filter');
+      
+      // Filter skills
+      skillBadges.forEach(badge => {
+        if (filterValue === 'all') {
+          badge.classList.remove('hidden');
+        } else {
+          const categories = badge.getAttribute('data-categories').split(' ');
+          if (categories.includes(filterValue)) {
+            badge.classList.remove('hidden');
+          } else {
+            badge.classList.add('hidden');
+          }
+        }
+      });
+    });
+  });
+  
+  // Interactive Timeline
+  const timelineItems = document.querySelectorAll('.timeline-content');
+  
+  timelineItems.forEach(item => {
+    item.addEventListener('click', function() {
+      const details = this.querySelector('.timeline-details');
+      const isVisible = details.style.display === 'block';
+      
+      // Close all other details
+      timelineItems.forEach(otherItem => {
+        otherItem.querySelector('.timeline-details').style.display = 'none';
+      });
+      
+      // Toggle current details
+      details.style.display = isVisible ? 'none' : 'block';
+    });
+  });
+  
+  // Custom Cursor
+  const cursor = document.querySelector('.custom-cursor');
+  const follower = document.querySelector('.cursor-follower');
+  
+  document.addEventListener('mousemove', function(e) {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    
+    setTimeout(() => {
+      follower.style.left = e.clientX + 'px';
+      follower.style.top = e.clientY + 'px';
+    }, 100);
+  });
+  
+  // Add hover effect to interactive elements
+  const interactiveElements = document.querySelectorAll('a, button, .skill-badge, .timeline-content');
+  
+  interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'scale(1.5)';
+      follower.style.transform = 'scale(1.2)';
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'scale(1)';
+      follower.style.transform = 'scale(1)';
+    });
+  });
+  
+  // Three.js 3D Elements - Fixed version
+  function initThreeJS() {
+    // Check if the container exists before trying to initialize
+    const container = document.getElementById('threejs-container');
+    if (!container || !THREE) {
+      console.log("Three.js container not found or THREE not available");
+      return;
+    }
+    
+    try {
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      container.appendChild(renderer.domElement);
+      
+      // Add some basic 3D objects
+      const geometry = new THREE.BoxGeometry(2, 2, 2);
+      const material = new THREE.MeshBasicMaterial({ 
+        color: 0xa6c1ee,
+        wireframe: true 
+      });
+      const cube = new THREE.Mesh(geometry, material);
+      scene.add(cube);
+      
+      camera.position.z = 5;
+      
+      // Animation
+      function animate() {
+        requestAnimationFrame(animate);
+        
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        
+        renderer.render(scene, camera);
+      }
+      
+      animate();
+      
+      // Handle resize
+      window.addEventListener('resize', function() {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+      });
+    } catch (error) {
+      console.error("Three.js initialization failed:", error);
+    }
+  }
+  
+  // Initialize 3D when page loads
+  window.addEventListener('load', initThreeJS);
+  
+  // Hover Sound Effects
+  function playHoverSound() {
+    // Create a simple click sound using Web Audio API
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.frequency.value = 800;
+    oscillator.type = 'sine';
+    
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+    
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.1);
+  }
+  
+  // Add hover sound to interactive elements
+  interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', playHoverSound);
+  });
+  
+  // PWA Service Worker Registration
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js')
+        .then(function(registration) {
+          console.log('ServiceWorker registration successful');
+        })
+        .catch(function(err) {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+  }
+
+  // ===== THEME PERSONALIZATION =====
+  
+  // Theme Personalization for both light and dark modes
+  const themeButtons = document.querySelectorAll('.theme-btn');
+
+  themeButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const theme = this.getAttribute('data-theme');
+      applyTheme(theme);
+    });
+  });
+
+  function applyTheme(theme) {
+    // Remove existing theme classes but keep dark-mode
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    document.body.className = '';
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    }
+    document.body.classList.add(`theme-${theme}`);
+    
+    updateThemeColors(theme, isDarkMode);
+  }
+
+  function updateThemeColors(theme, isDarkMode) {
+    const themes = {
+      lavender: { 
+        light: { 
+          primary: '#a6c1ee', 
+          secondary: '#fbc2eb', 
+          header1: '#fbc2eb', 
+          header2: '#a6c1ee',
+          background: 'linear-gradient(270deg, #e6d6f5, #d0c4f2, #c7d8f9)'
+        },
+        dark: { 
+          primary: '#8a7a9b',
+          secondary: '#7a8aab',
+          header1: '#6a5a7b',
+          header2: '#5a6a8b',
+          background: 'linear-gradient(270deg, #2a2a3a, #252535, #1f1f2f)'
+        }
+      },
+      mint: { 
+        light: { 
+          primary: '#96ceb4', 
+          secondary: '#4ecdc4', 
+          header1: '#4ecdc4', 
+          header2: '#96ceb4',
+          background: 'linear-gradient(270deg, #d6f5e6, #c4f2d0, #e6f7ed)'
+        },
+        dark: { 
+          primary: '#6a8a7b',
+          secondary: '#7a9a8b',
+          header1: '#4a6a5b',
+          header2: '#5a7a6b',
+          background: 'linear-gradient(270deg, #2a3a2a, #253525, #1f2f1f)'
+        }
+      },
+      peach: { 
+        light: { 
+          primary: '#ffd8b1',  // Calmer pastel orange
+          secondary: '#ffccbc', // Softer peach
+          header1: '#ffccbc', 
+          header2: '#ffd8b1',
+          background: 'linear-gradient(270deg, #fff3e0, #ffe0b2, #ffecb3)' // Calmer peach gradient
+        },
+        dark: { 
+          primary: '#9a7a6a',
+          secondary: '#aa8a7a',
+          header1: '#7a5a4a',
+          header2: '#8a6a5a',
+          background: 'linear-gradient(270deg, #3a2a2a, #352525, #2f1f1f)'
+        }
+      },
+      sky: { 
+        light: { 
+          primary: '#b3e5fc',  // Calmer pastel blue
+          secondary: '#e1f5fe', // Softer sky blue
+          header1: '#e1f5fe', 
+          header2: '#b3e5fc',
+          background: 'linear-gradient(270deg, #e3f2fd, #e1f5fe, #f3e5f5)' // Calmer sky gradient
+        },
+        dark: { 
+          primary: '#6a8a9a',
+          secondary: '#7a9aaa',
+          header1: '#4a6a7a',
+          header2: '#5a7a8a',
+          background: 'linear-gradient(270deg, #2a3a4a, #253545, #1f2f3f)'
+        }
       }
     };
     
-    topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    const colors = isDarkMode ? themes[theme].dark : themes[theme].light;
+    
+    // Update CSS variables for theme elements
+    document.documentElement.style.setProperty('--primary-color', colors.primary);
+    document.documentElement.style.setProperty('--secondary-color', colors.secondary);
+    document.documentElement.style.setProperty('--header1', colors.header1);
+    document.documentElement.style.setProperty('--header2', colors.header2);
+    
+    // Update the main website background
+    document.body.style.background = colors.background;
+    document.body.style.backgroundSize = '600% 600%';
+    
+    // Update header gradient
+    const header = document.querySelector('header');
+    header.style.background = `linear-gradient(270deg, ${colors.header1}, ${colors.header2}, ${colors.header1})`;
+    
+    // FIXED: Update "Bouziani Imane" text - Force white text with theme shadows
+    const headerTitle = document.querySelector('header h1');
+    headerTitle.style.color = '#ffffff';
+    headerTitle.style.background = 'none';
+    headerTitle.style.webkitBackgroundClip = 'initial';
+    headerTitle.style.webkitTextFillColor = 'initial';
 
-    // Initialize features when DOM is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      updateVisitorCount();
-      initThreeJS();
-      
-      // Also update counter when page becomes visible again
-      document.addEventListener('visibilitychange', function() {
-        if (!document.hidden) {
-          updateVisitorCount();
-        }
-      });
+    // Apply theme-specific shadow
+    if (theme === 'lavender') {
+      headerTitle.style.textShadow = '2px 2px 8px rgba(106, 90, 205, 0.4), 0px 0px 15px rgba(138, 43, 226, 0.3)';
+    } else if (theme === 'mint') {
+      headerTitle.style.textShadow = '2px 2px 8px rgba(76, 175, 80, 0.4), 0px 0px 15px rgba(46, 125, 50, 0.3)';
+    } else if (theme === 'peach') {
+      headerTitle.style.textShadow = '2px 2px 8px rgba(255, 152, 0, 0.4), 0px 0px 15px rgba(255, 87, 34, 0.3)';
+    } else if (theme === 'sky') {
+      headerTitle.style.textShadow = '2px 2px 8px rgba(33, 150, 243, 0.4), 0px 0px 15px rgba(3, 169, 244, 0.3)';
+    } else {
+      headerTitle.style.textShadow = '2px 2px 8px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(0, 0, 0, 0.2)';
+    }
+    
+    // Update progress bars
+    document.querySelectorAll('.progress').forEach(progress => {
+      progress.style.background = `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`;
     });
+  }
 
-    // Contact form JavaScript
-    const form = document.getElementById("contactForm");
-    const popup = document.getElementById("successPopup");
+  // Make sure dark mode toggle preserves theme
+  const darkBtn = document.getElementById("darkBtn");
+  darkBtn.addEventListener("click", () => {
+    const currentTheme = document.body.className.match(/theme-(\w+)/);
+    const wasDarkMode = document.body.classList.contains('dark-mode');
+    
+    document.body.classList.toggle("dark-mode");
+    
+    // Re-apply current theme after toggling dark mode
+    if (currentTheme) {
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      updateThemeColors(currentTheme[1], isDarkMode);
+    }
+    
+    darkBtn.innerHTML = document.body.classList.contains("dark-mode") 
+      ? '<i class="fa-solid fa-sun"></i> Light Mode' 
+      : '<i class="fa-solid fa-moon"></i> Dark Mode';
+  });
 
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();
+  // Scroll to top button
+  const topBtn = document.getElementById("topBtn");
+  window.onscroll = function() {
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      topBtn.style.display = "block";
+    } else {
+      topBtn.style.display = "none";
+    }
+  };
+  
+  topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-      // Get values
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const message = document.getElementById("message").value.trim();
+  // Initialize features when DOM is loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    initThreeJS();
+  });
 
-      // Validation
-      if (!name || !email || !message) {
-        alert("⚠️ Please fill in all fields.");
-        return;
-      }
+  // Contact form JavaScript
+  const form = document.getElementById("contactForm");
+  const popup = document.getElementById("successPopup");
 
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        alert("⚠️ Please enter a valid email.");
-        return;
-      }
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
 
-      // Success
-      popup.style.display = "block";
+    // Get values
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-      setTimeout(() => {
-        popup.style.display = "none";
-        form.reset();
-      }, 3000);
-    });
+    // Validation
+    if (!name || !email || !message) {
+      alert("⚠️ Please fill in all fields.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("⚠️ Please enter a valid email.");
+      return;
+    }
+
+    // Success
+    popup.style.display = "block";
+
+    setTimeout(() => {
+      popup.style.display = "none";
+      form.reset();
+    }, 3000);
+  });
 </script>
 </body>
 </html>
